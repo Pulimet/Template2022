@@ -1,7 +1,7 @@
-package net.alexandroid.template2022
+package net.alexandroid.template2022.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import net.alexandroid.template2022.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
