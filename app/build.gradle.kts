@@ -32,6 +32,7 @@ android {
 
 dependencies {
     val navVersion: String by rootProject.extra
+    val koinVersion = "3.1.5"
 
     // com.google
     implementation("com.google.android.material:material:1.5.0")
@@ -45,6 +46,14 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
+    // Koin Core features
+    implementation ("io.insert-koin:koin-android:$koinVersion")
+    // Koin main features for Android
+    implementation ("io.insert-koin:koin-android:$koinVersion")
+    // Koin - Jetpack WorkManager
+    implementation ("io.insert-koin:koin-androidx-workmanager:$koinVersion")
+    // Koin - Navigation Graph
+    implementation ("io.insert-koin:koin-androidx-navigation:$koinVersion")
 
     // Tests
     testImplementation("junit:junit:4.13.2")
