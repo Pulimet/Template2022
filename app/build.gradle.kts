@@ -47,13 +47,16 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
     // Koin Core features
-    implementation ("io.insert-koin:koin-android:$koinVersion")
+    implementation("io.insert-koin:koin-android:$koinVersion")
     // Koin main features for Android
-    implementation ("io.insert-koin:koin-android:$koinVersion")
+    implementation("io.insert-koin:koin-android:$koinVersion")
     // Koin - Jetpack WorkManager
-    implementation ("io.insert-koin:koin-androidx-workmanager:$koinVersion")
+    implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
     // Koin - Navigation Graph
-    implementation ("io.insert-koin:koin-androidx-navigation:$koinVersion")
+    implementation("io.insert-koin:koin-androidx-navigation:$koinVersion")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
     // Tests
     testImplementation("junit:junit:4.13.2")

@@ -12,7 +12,7 @@ import org.koin.dsl.module
 object Di {
     fun setup(applicationContext: Context) {
         startKoin {
-            KoinLogs()
+            logger(KoinLogs())
             androidContext(applicationContext)
             modules(appModule)
         }
