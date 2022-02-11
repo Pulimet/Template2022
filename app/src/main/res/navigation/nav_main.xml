@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="net.alexandroid.template2022.ui.home.MainFragment"
+        android:name="net.alexandroid.template2022.ui.home.HomeFragment"
         android:label="MainFragment" />
 </navigation>
