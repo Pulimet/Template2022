@@ -58,6 +58,9 @@ dependencies {
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
+    // Lifecycle components
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
+
     // Tests
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
