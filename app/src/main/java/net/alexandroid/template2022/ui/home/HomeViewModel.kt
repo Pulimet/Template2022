@@ -5,6 +5,6 @@ import net.alexandroid.template2022.utils.logD
 
 class HomeViewModel : BaseViewModel() {
     fun onFragmentViewCreated() {
-        logD()
+        logD("${hashCode()}")
     }
 }

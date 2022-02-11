@@ -9,11 +9,14 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val mainViewModel by viewModel<MainViewModel>()
+    private val navViewModel by viewModel<NavViewModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setViewBinding()
         mainViewModel.onActivityOnCreate()
+        navViewModel.onActivityOnCreate()
     }
 
     private fun setViewBinding() {
