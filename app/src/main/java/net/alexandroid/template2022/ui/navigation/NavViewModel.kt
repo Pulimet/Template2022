@@ -1,5 +1,6 @@
 package net.alexandroid.template2022.ui.navigation
 
+import android.content.Intent
 import androidx.navigation.NavDirections
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,7 +21,7 @@ class NavViewModel : BaseViewModel() {
     val getStartActivity: StateFlow<IntentParams> = _startActivity
 
     fun startActivity(clazz: Class<*>) {
-        _startActivity.value = IntentParams(clazz, finish = false)
+        _startActivity.value = IntentParams(clazz, Intent(), false)
         _startActivity.value = IntentParams()
     }
 }
