@@ -5,6 +5,7 @@ import net.alexandroid.template2022.network.NetworkConstants
 import net.alexandroid.template2022.network.services.TmdbApiService
 import net.alexandroid.template2022.network.utils.NetworkObjectsCreator
 import net.alexandroid.template2022.network.utils.NetworkObjectsCreator.createWebService
+import net.alexandroid.template2022.repo.MoviesRepo
 import net.alexandroid.template2022.ui.MainViewModel
 import net.alexandroid.template2022.ui.example.ExampleViewModel
 import net.alexandroid.template2022.ui.home.HomeViewModel
@@ -26,6 +27,8 @@ object Di {
     }
 
     private val appModule = module {
+        single { MoviesRepo(get()) }
+
         viewModel { NavViewModel() }
         viewModel { MainViewModel() }
         viewModel { HomeViewModel(get()) }
