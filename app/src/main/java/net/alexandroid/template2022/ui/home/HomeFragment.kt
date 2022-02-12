@@ -19,7 +19,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.onFragmentViewCreated()
-        navViewModel.onFragmentViewCreated()
 
         binding.btnOpenExample.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_exampleFragment)

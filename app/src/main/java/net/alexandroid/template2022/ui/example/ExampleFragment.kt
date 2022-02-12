@@ -17,6 +17,5 @@ class ExampleFragment : Fragment(R.layout.fragment_example) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navViewModel.onFragmentViewCreated()
     }
 }
