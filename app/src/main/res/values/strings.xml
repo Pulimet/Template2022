@@ -4,7 +4,6 @@
     <string name="open_example_activity">Open Example Activity</string>
     <string name="network_test">Network Test</string>
     <string name="movies">Movies</string>
-    <string name="movies_list">Movies List</string>
     <string name="example">Example</string>
     <string name="example_activity">Example Activity</string>
 </resources>

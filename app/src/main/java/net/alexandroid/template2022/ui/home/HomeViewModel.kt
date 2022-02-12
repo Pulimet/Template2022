@@ -20,17 +20,18 @@ class HomeViewModel(
     lateinit var navViewModel: NavViewModel
 
     fun onBtnOpenFragmentClick() {
-        navViewModel.navigateTo(HomeFragmentDirections.actionMainFragmentToExampleFragment())
+        navViewModel.navigateTo(HomeFragmentDirections.actionHomeFragmentToExampleFragment())
     }
 
     fun onBtnOpenActivityClick() {
         navViewModel.startActivity(ExampleActivity::class.java)
     }
 
+    @Suppress("NON_EXHAUSTIVE_WHEN_STATEMENT")
     fun onBtnNetworkTestClick() {
         viewModelScope.launch(ioDispatcher) {
             when (val movieResult = moviesRepo.getMovies()) {
-                is MovieResult.Success -> logI(movieResult.result.results[0].title)
+                is MovieResult.Success -> logI(movieResult.moviesList[0].title)
                 is MovieResult.Error -> logE("Failed to get movies, ${movieResult.exception.message}")
             }
         }
