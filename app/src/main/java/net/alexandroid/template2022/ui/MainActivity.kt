@@ -8,8 +8,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import net.alexandroid.template2022.R
 import net.alexandroid.template2022.databinding.ActivityMainBinding
+import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.collectIt
-import net.alexandroid.template2022.utils.logD
+import net.alexandroid.template2022.utils.logE
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -21,11 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setViewBinding()
-        mainViewModel.onActivityOnCreate()
-
-        mainViewModel.uiState.collectIt(this) {
-            logD("It: $it")
-        }
+        observeNavigation()
     }
 
     private fun setViewBinding() {
@@ -44,9 +41,23 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
     }
 
+    private fun observeNavigation() {
+        navViewModel.navigation.collectIt(this) { navParams ->
+            if (navParams.navDirections == null) return@collectIt
+            try {
+                navController.navigate(
+                    navParams.navDirections.actionId,
+                    navParams.navDirections.arguments,
+                    navParams.navOptions,
+                    navParams.extras
+                )
+            } catch (e: IllegalArgumentException) {
+                logE(t = e)
+            }
+        }
+    }
+
     private fun getListOfHomeDestinations() = setOf(R.id.homeFragment)
 
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
-    }
+    override fun onSupportNavigateUp() = navController.navigateUp() || super.onSupportNavigateUp()
 }

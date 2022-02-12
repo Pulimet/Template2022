@@ -5,8 +5,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import net.alexandroid.template2022.R
 import net.alexandroid.template2022.databinding.FragmentExampleBinding
-import net.alexandroid.template2022.ui.NavViewModel
 import net.alexandroid.template2022.ui.binding.FragmentBinding
+import net.alexandroid.template2022.ui.navigation.NavViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
