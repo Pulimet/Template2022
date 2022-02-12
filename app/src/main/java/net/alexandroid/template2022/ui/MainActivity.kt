@@ -75,6 +75,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startActivity(intentParams: IntentParams) {
+        if (intentParams.clazz == null) return
+        // TODO Add support for just Intent
         intentParams.clazz?.let {
             intentParams.intent.setClass(this, intentParams.clazz)
         }

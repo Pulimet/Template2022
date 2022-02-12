@@ -34,4 +34,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnOpenFragment" />
 
+    <Button
+        android:id="@+id/btnNetworkTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Network Test"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnOpenActivity" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
