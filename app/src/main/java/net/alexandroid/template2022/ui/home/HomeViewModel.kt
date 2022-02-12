@@ -35,4 +35,8 @@ class HomeViewModel(
             }
         }
     }
+
+    fun onBntMoviesClick() {
+        navViewModel.navigateTo(HomeFragmentDirections.actionHomeFragmentToMoviesListFragment())
+    }
 }

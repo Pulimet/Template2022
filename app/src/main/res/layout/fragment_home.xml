@@ -11,7 +11,6 @@
         android:gravity="center"
         android:text="@string/app_name"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,7 +19,7 @@
         android:id="@+id/btnOpenFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Open Example Fragment"
+        android:text="@string/open_example_fragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvText" />
@@ -29,7 +28,7 @@
         android:id="@+id/btnOpenActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Open Example Activity"
+        android:text="@string/open_example_activity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnOpenFragment" />
@@ -38,9 +37,18 @@
         android:id="@+id/btnNetworkTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Network Test"
+        android:text="@string/network_test"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnOpenActivity" />
+
+    <Button
+        android:id="@+id/btnMovies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/movies"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnNetworkTest" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

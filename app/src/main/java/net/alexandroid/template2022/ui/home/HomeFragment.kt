@@ -26,7 +26,8 @@ class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
         setOnClickListeners(
             binding.btnOpenFragment,
             binding.btnOpenActivity,
-            binding.btnNetworkTest
+            binding.btnNetworkTest,
+            binding.btnMovies
         )
     }
 
@@ -36,6 +37,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
             R.id.btnOpenFragment -> viewModel.onBtnOpenFragmentClick()
             R.id.btnOpenActivity -> viewModel.onBtnOpenActivityClick()
             R.id.btnNetworkTest -> viewModel.onBtnNetworkTestClick()
+            R.id.btnMovies -> viewModel.onBntMoviesClick()
         }
     }
 }

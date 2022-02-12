@@ -9,10 +9,13 @@
         android:id="@+id/homeFragment"
         android:name="net.alexandroid.template2022.ui.home.HomeFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_mainFragment_to_exampleFragment"
             app:destination="@id/exampleFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_moviesListFragment"
+            app:destination="@id/moviesListFragment" />
     </fragment>
 
     <fragment
@@ -20,4 +23,9 @@
         android:name="net.alexandroid.template2022.ui.example.ExampleFragment"
         android:label="ExampleFragment"
         tools:layout="@layout/fragment_example" />
+    <fragment
+        android:id="@+id/moviesListFragment"
+        android:name="net.alexandroid.template2022.ui.movies.MoviesListFragment"
+        android:label="MoviesListFragment"
+        tools:layout="@layout/fragment_movies_list" />
 </navigation>
