@@ -1,5 +1,6 @@
 package net.alexandroid.template2022.utils
 
+import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
@@ -28,4 +29,9 @@ fun LifecycleOwner.launchOnStarted(function: () -> Unit) {
             function.invoke()
         }
     }
+}
+
+// Set on click listener
+fun View.OnClickListener.setOnClickListeners(vararg views: View) {
+    views.forEach { it.setOnClickListener(this) }
 }

@@ -7,6 +7,7 @@ import net.alexandroid.template2022.R
 import net.alexandroid.template2022.databinding.FragmentHomeBinding
 import net.alexandroid.template2022.ui.binding.FragmentBinding
 import net.alexandroid.template2022.ui.navigation.NavViewModel
+import net.alexandroid.template2022.utils.setOnClickListeners
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -22,9 +23,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
     }
 
     private fun setClickListener() {
-        binding.btnOpenFragment.setOnClickListener(this)
-        binding.btnOpenActivity.setOnClickListener(this)
-        binding.btnNetworkTest.setOnClickListener(this)
+        setOnClickListeners(
+            binding.btnOpenFragment,
+            binding.btnOpenActivity,
+            binding.btnNetworkTest
+        )
     }
 
     // View.OnClickListener
