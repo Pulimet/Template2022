@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="net.alexandroid.template2022.ui.home.HomeFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_mainFragment_to_exampleFragment"
+            app:destination="@id/exampleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/exampleFragment"
+        android:name="net.alexandroid.template2022.ui.example.ExampleFragment"
+        android:label="ExampleFragment"
+        tools:layout="@layout/fragment_example" />
 </navigation>

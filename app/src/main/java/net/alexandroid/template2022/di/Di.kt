@@ -3,6 +3,7 @@ package net.alexandroid.template2022.di
 import android.content.Context
 import net.alexandroid.template2022.ui.MainViewModel
 import net.alexandroid.template2022.ui.NavViewModel
+import net.alexandroid.template2022.ui.example.ExampleViewModel
 import net.alexandroid.template2022.ui.home.HomeViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -22,5 +23,6 @@ object Di {
         viewModel { NavViewModel() }
         viewModel { MainViewModel() }
         viewModel { HomeViewModel() }
+        viewModel { ExampleViewModel() }
     }
 }
