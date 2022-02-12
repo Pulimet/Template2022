@@ -28,7 +28,7 @@ object Di {
     private val appModule = module {
         viewModel { NavViewModel() }
         viewModel { MainViewModel() }
-        viewModel { HomeViewModel() }
+        viewModel { HomeViewModel(get()) }
         viewModel { ExampleViewModel() }
     }
 

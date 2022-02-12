@@ -3,17 +3,10 @@ package net.alexandroid.template2022.ui.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import net.alexandroid.template2022.R
 import net.alexandroid.template2022.databinding.FragmentHomeBinding
-import net.alexandroid.template2022.network.services.TmdbApiService
 import net.alexandroid.template2022.ui.binding.FragmentBinding
-import net.alexandroid.template2022.ui.example.ExampleActivity
 import net.alexandroid.template2022.ui.navigation.NavViewModel
-import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -24,6 +17,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.navViewModel = navViewModel
         setClickListener()
     }
 
@@ -36,21 +30,9 @@ class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
     // View.OnClickListener
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btnOpenFragment -> {
-                navViewModel.navigateTo(HomeFragmentDirections.actionMainFragmentToExampleFragment())
-            }
-            R.id.btnOpenActivity -> {
-                navViewModel.startActivity(ExampleActivity::class.java)
-            }
-            R.id.btnNetworkTest -> {
-                lifecycleScope.launch(Dispatchers.IO) {
-                    val service = get<TmdbApiService>()
-                    val result = service.getMovies()
-                    withContext(Dispatchers.Main) {
-                        binding.tvText.text = result.results[0].title
-                    }
-                }
-            }
+            R.id.btnOpenFragment -> viewModel.onBtnOpenFragmentClick()
+            R.id.btnOpenActivity -> viewModel.onBtnOpenActivityClick()
+            R.id.btnNetworkTest -> viewModel.onBtnNetworkTestClick()
         }
     }
 }
