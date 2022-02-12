@@ -8,6 +8,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import net.alexandroid.template2022.R
 import net.alexandroid.template2022.databinding.ActivityMainBinding
+import net.alexandroid.template2022.ui.navigation.IntentParams
+import net.alexandroid.template2022.ui.navigation.NavParams
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.collectIt
 import net.alexandroid.template2022.utils.logE
@@ -22,7 +24,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setViewBinding()
-        observeNavigation()
+        observeFragmentNavigation()
+        observeActivityNavigation()
     }
 
     private fun setViewBinding() {
@@ -41,39 +44,42 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
     }
 
-    private fun observeNavigation() {
-        observeFragmentNavigation()
-        observeActivityNavigation()
-    }
-
     private fun observeFragmentNavigation() {
         navViewModel.getChangeFragment.collectIt(this) { navParams ->
-            if (navParams.navDirections == null) return@collectIt
             try {
-                navController.navigate(
-                    navParams.navDirections.actionId,
-                    navParams.navDirections.arguments,
-                    navParams.navOptions,
-                    navParams.extras
-                )
+                navigateToFragment(navParams)
             } catch (e: IllegalArgumentException) {
                 logE(t = e)
             }
         }
     }
 
+    private fun navigateToFragment(navParams: NavParams) {
+        if (navParams.navDirections == null) return
+        navController.navigate(
+            navParams.navDirections.actionId,
+            navParams.navDirections.arguments,
+            navParams.navOptions,
+            navParams.extras
+        )
+    }
+
     private fun observeActivityNavigation() {
         navViewModel.getStartActivity.collectIt(this) { intentParams ->
             try {
-                intentParams.clazz?.let {
-                    intentParams.intent.setClass(this, intentParams.clazz)
-                }
-                startActivity(intentParams.intent)
-                if (intentParams.finish) finish()
+                startActivity(intentParams)
             } catch (e: Exception) {
                 logE(t = e)
             }
         }
+    }
+
+    private fun startActivity(intentParams: IntentParams) {
+        intentParams.clazz?.let {
+            intentParams.intent.setClass(this, intentParams.clazz)
+        }
+        startActivity(intentParams.intent)
+        if (intentParams.finish) finish()
     }
 
     private fun getListOfHomeDestinations() = setOf(R.id.homeFragment)

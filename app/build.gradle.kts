@@ -35,6 +35,9 @@ dependencies {
     val navVersion: String by rootProject.extra
     val koinVersion = "3.1.5"
 
+    // Modules dependencies
+    implementation(project(":network"))
+
     // com.google
     implementation("com.google.android.material:material:1.5.0")
 
