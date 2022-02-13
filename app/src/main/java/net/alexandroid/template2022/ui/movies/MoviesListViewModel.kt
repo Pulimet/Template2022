@@ -22,15 +22,16 @@ class MoviesListViewModel(
     val uiState: StateFlow<MovieResult> = _uiState
 
     fun onUserRefreshedMain() {
-        TODO("Not yet implemented")
+        fetchMovies()
     }
 
     fun saveClickedItemPosition(position: Int) {
-        TODO("Not yet implemented")
+        savedItemPosition = position
     }
 
     fun onUserMovieClick(movie: Movie, extras: FragmentNavigator.Extras) {
         TODO("Not yet implemented")
+        // NavParams(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie), extras)
     }
 
     fun fetchMovies() {
