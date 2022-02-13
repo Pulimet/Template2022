@@ -30,6 +30,7 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), OnMovieClick
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.navViewModel = navViewModel
         setRecyclerView()
         setSwipeRefreshLayout()
         observeViewModel()

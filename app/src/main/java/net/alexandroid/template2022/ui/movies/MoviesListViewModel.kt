@@ -11,11 +11,14 @@ import net.alexandroid.template2022.db.model.Movie
 import net.alexandroid.template2022.repo.MovieResult
 import net.alexandroid.template2022.repo.MoviesRepo
 import net.alexandroid.template2022.ui.base.BaseViewModel
+import net.alexandroid.template2022.ui.navigation.NavViewModel
 
 class MoviesListViewModel(
     private val moviesRepo: MoviesRepo,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : BaseViewModel() {
+
+    lateinit var navViewModel: NavViewModel
     var savedItemPosition = 0
 
     private val _uiState = MutableStateFlow<MovieResult>(MovieResult.Empty)
