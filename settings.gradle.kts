@@ -13,5 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Template 2022"
-include (":app", ":network")
-include(":db")
+include (":app", ":network", ":db")

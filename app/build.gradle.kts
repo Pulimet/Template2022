@@ -18,7 +18,7 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false  // TODO enable
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
