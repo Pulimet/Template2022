@@ -1,4 +1,4 @@
-package net.alexandroid.template2022.ui.movies
+package net.alexandroid.template2022.ui.movies.list
 
 import androidx.navigation.fragment.FragmentNavigator
 import net.alexandroid.template2022.db.model.Movie

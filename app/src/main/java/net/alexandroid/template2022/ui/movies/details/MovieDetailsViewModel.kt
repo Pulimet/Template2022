@@ -1,8 +1,8 @@
-package net.alexandroid.template2022.ui.example
+package net.alexandroid.template2022.ui.movies.details
 
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 
-class ExampleViewModel : BaseViewModel() {
+class MovieDetailsViewModel : BaseViewModel() {
     lateinit var navViewModel: NavViewModel
 }

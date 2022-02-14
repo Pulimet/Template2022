@@ -11,7 +11,8 @@ import net.alexandroid.template2022.repo.MoviesRepo
 import net.alexandroid.template2022.ui.MainViewModel
 import net.alexandroid.template2022.ui.example.ExampleViewModel
 import net.alexandroid.template2022.ui.home.HomeViewModel
-import net.alexandroid.template2022.ui.movies.MoviesListViewModel
+import net.alexandroid.template2022.ui.movies.details.MovieDetailsViewModel
+import net.alexandroid.template2022.ui.movies.list.MoviesListViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.OkHttpLogs
 import okhttp3.logging.HttpLoggingInterceptor
@@ -37,6 +38,7 @@ object Di {
         viewModel { HomeViewModel(get()) }
         viewModel { ExampleViewModel() }
         viewModel { MoviesListViewModel(get()) }
+        viewModel { MovieDetailsViewModel() }
     }
 
     private val networkModule = module {

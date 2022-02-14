@@ -1,4 +1,4 @@
-package net.alexandroid.template2022.ui.movies
+package net.alexandroid.template2022.ui.movies.list
 
 import android.os.Bundle
 import android.view.View

@@ -2,6 +2,7 @@ package net.alexandroid.template2022.ui.navigation
 
 import android.content.Intent
 import androidx.navigation.NavDirections
+import androidx.navigation.fragment.FragmentNavigator
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import net.alexandroid.template2022.ui.base.BaseViewModel
@@ -11,8 +12,8 @@ class NavViewModel : BaseViewModel() {
     private val _navigate = MutableStateFlow(NavParams())
     val getChangeFragment: StateFlow<NavParams> = _navigate
 
-    fun navigateTo(navDirections: NavDirections) {
-        _navigate.value = NavParams(navDirections)
+    fun navigateTo(navDirections: NavDirections, extras: FragmentNavigator.Extras? = null) {
+        _navigate.value = NavParams(navDirections, extras)
         _navigate.value = NavParams() // Allows future navigation
     }
 

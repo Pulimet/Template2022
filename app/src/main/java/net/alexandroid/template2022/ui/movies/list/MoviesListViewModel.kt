@@ -1,4 +1,4 @@
-package net.alexandroid.template2022.ui.movies
+package net.alexandroid.template2022.ui.movies.list
 
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.FragmentNavigator
@@ -33,8 +33,10 @@ class MoviesListViewModel(
     }
 
     fun onUserMovieClick(movie: Movie, extras: FragmentNavigator.Extras) {
-        TODO("Not yet implemented")
-        // NavParams(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie), extras)
+        navViewModel.navigateTo(
+            MoviesListFragmentDirections.actionMoviesListFragmentToMovieDetailsFragment(movie),
+            extras
+        )
     }
 
     fun fetchMovies() {
