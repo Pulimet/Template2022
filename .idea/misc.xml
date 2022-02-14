@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_favorite_border.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_favorite_filled.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_example.xml" value="0.3265625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.32708333333333334" />
         <entry key="app/src/main/res/layout/fragment_example.xml" value="0.3265625" />

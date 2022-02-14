@@ -31,14 +31,14 @@ object Di {
     }
 
     private val appModule = module {
-        single { MoviesRepo(get()) }
+        single { MoviesRepo(get(), get()) }
 
         viewModel { NavViewModel() }
         viewModel { MainViewModel() }
         viewModel { HomeViewModel(get()) }
         viewModel { ExampleViewModel() }
         viewModel { MoviesListViewModel(get()) }
-        viewModel { MovieDetailsViewModel() }
+        viewModel { MovieDetailsViewModel(get()) }
     }
 
     private val networkModule = module {
