@@ -54,5 +54,6 @@ object Di {
             ).build()
         }
         single { get<MovieDatabase>().movieDao() }
+        single { get<MovieDatabase>().movieFavoriteDao() }
     }
 }
