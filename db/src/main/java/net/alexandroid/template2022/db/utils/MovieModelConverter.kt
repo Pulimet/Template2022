@@ -1,6 +1,7 @@
 package net.alexandroid.template2022.db.utils
 
 import net.alexandroid.template2022.db.model.Movie
+import net.alexandroid.template2022.db.model.MovieFavorite
 import net.alexandroid.template2022.network.models.TmdbNet
 import java.text.SimpleDateFormat
 import java.util.*
@@ -38,4 +39,14 @@ object MovieModelConverter {
             ""
         }
     }
+
+    fun convertMovieToMovieFavorite(movie: Movie) = MovieFavorite(
+        id = movie.id,
+        title = movie.title,
+        posterUrl = movie.posterUrl,
+        overview = movie.overview,
+        date = movie.date,
+        vote = movie.vote,
+        voteCount = movie.voteCount
+    )
 }
