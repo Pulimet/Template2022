@@ -28,11 +28,9 @@ class MoviesListViewModel(
         fetchMovies()
     }
 
-    fun saveClickedItemPosition(position: Int) {
-        savedItemPosition = position
-    }
 
-    fun onUserMovieClick(movie: Movie, extras: FragmentNavigator.Extras) {
+    fun onUserMovieClick(movie: Movie, extras: FragmentNavigator.Extras, position: Int) {
+        savedItemPosition = position
         navViewModel.navigateTo(
             MoviesListFragmentDirections.actionMoviesListFragmentToMovieDetailsFragment(movie),
             extras
@@ -46,7 +44,8 @@ class MoviesListViewModel(
         }
     }
 
-    fun onFavoritesClick() {
+    fun onFavoritesClick(position: Int) {
+        savedItemPosition = position
         navViewModel.navigateTo(MoviesListFragmentDirections.actionMoviesListFragmentToMovieFavoritesFragment())
     }
 }
