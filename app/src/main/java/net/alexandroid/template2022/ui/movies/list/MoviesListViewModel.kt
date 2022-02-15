@@ -19,7 +19,7 @@ class MoviesListViewModel(
 ) : BaseViewModel() {
 
     lateinit var navViewModel: NavViewModel
-    var savedItemPosition = 0
+    var savedItemPosition = -1
 
     private val _uiState = MutableStateFlow<MovieResult>(MovieResult.Empty)
     val uiState: StateFlow<MovieResult> = _uiState

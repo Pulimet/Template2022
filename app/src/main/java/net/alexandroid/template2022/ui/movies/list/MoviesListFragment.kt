@@ -22,7 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MoviesListFragment : Fragment(R.layout.fragment_movies_list), OnMovieClickListener {
     companion object {
-        private const val POSITION_POSTPONE = 4
+        private const val POSITION_FOR_DELAY = 2
     }
 
     private val binding by FragmentBinding(FragmentMoviesListBinding::bind)
@@ -46,7 +46,7 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), OnMovieClick
             layoutManager = GridLayoutManager(context, 2).apply { gridLayoutManager = this }
             adapter = HomeAdapter(this@MoviesListFragment).apply { homeAdapter = this }
 
-            if (viewModel.savedItemPosition > POSITION_POSTPONE) {
+            if (viewModel.savedItemPosition >= 0) {
                 // Solves return transition animation
                 postponeEnterTransition()
             }
@@ -76,11 +76,14 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), OnMovieClick
     }
 
     private fun scrollToPreviouslyClickedItem(layoutManager: RecyclerView.LayoutManager?) {
+        if (viewModel.savedItemPosition < 0) return
         lifecycleScope.launch {
-            if (viewModel.savedItemPosition > POSITION_POSTPONE) {
+            if (viewModel.savedItemPosition > POSITION_FOR_DELAY) {
                 delay(80) // Without this delay scrollToPosition function not working
                 layoutManager?.scrollToPosition(viewModel.savedItemPosition)
                 delay(10)
+                startPostponedEnterTransition()
+            } else {
                 startPostponedEnterTransition()
             }
         }
