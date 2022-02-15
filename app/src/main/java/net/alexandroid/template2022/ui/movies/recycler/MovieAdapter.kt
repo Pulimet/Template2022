@@ -1,12 +1,14 @@
-package net.alexandroid.template2022.ui.movies.list
+package net.alexandroid.template2022.ui.movies.recycler
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import net.alexandroid.template2022.R
 import net.alexandroid.template2022.db.model.Movie
+import net.alexandroid.template2022.ui.movies.recycler.MovieHolder
+import net.alexandroid.template2022.ui.movies.recycler.OnMovieClickListener
 
-class HomeAdapter(private val listener: OnMovieClickListener) :
+class MovieAdapter(private val listener: OnMovieClickListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var data = listOf<Movie>()

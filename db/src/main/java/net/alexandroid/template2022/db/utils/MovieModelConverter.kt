@@ -49,4 +49,18 @@ object MovieModelConverter {
         vote = movie.vote,
         voteCount = movie.voteCount
     )
+
+    fun convertMovieFavoriteToMovie(list: List<MovieFavorite>): List<Movie> {
+        return list.map {
+            Movie(
+                id = it.id,
+                title = it.title,
+                posterUrl = it.posterUrl,
+                overview = it.overview,
+                date = it.date,
+                vote = it.vote,
+                voteCount = it.voteCount
+            )
+        }
+    }
 }

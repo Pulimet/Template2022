@@ -45,4 +45,8 @@ class MoviesListViewModel(
             _uiState.value = moviesRepo.getMovies()
         }
     }
+
+    fun onFavoritesClick() {
+        navViewModel.navigateTo(MoviesListFragmentDirections.actionMoviesListFragmentToMovieFavoritesFragment())
+    }
 }

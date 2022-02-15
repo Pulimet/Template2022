@@ -1,4 +1,4 @@
-package net.alexandroid.template2022.ui.movies.list
+package net.alexandroid.template2022.ui.movies.recycler
 
 import android.view.View
 import androidx.core.view.ViewCompat

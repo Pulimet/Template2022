@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_moviesListFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
+        <action
+            android:id="@+id/action_moviesListFragment_to_movieFavoritesFragment"
+            app:destination="@id/movieFavoritesFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
@@ -40,5 +43,14 @@
         <argument
             android:name="movie"
             app:argType="net.alexandroid.template2022.db.model.Movie" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieFavoritesFragment"
+        android:name="net.alexandroid.template2022.ui.movies.favorites.MovieFavoritesFragment"
+        android:label="MovieFavoritesFragment"
+        tools:layout="@layout/fragment_movie_favorites" >
+        <action
+            android:id="@+id/action_movieFavoritesFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
     </fragment>
 </navigation>

@@ -33,4 +33,6 @@ class MoviesRepo(
             if (movieInFavorites) delete(movieFavorite) else insert(movieFavorite)
         }
     }
+
+    fun getFavoriteMovies() = movieFavoriteDao.getMovies()
 }
