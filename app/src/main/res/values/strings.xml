@@ -14,4 +14,13 @@
     <string name="desc_movie_image">Movie image</string>
     <string name="desc_add_to_favorites">Add to favorites</string>
 
+    <!-- Settings Fragment-->
+    <string name="minimum_votes">Minimum votes:</string>
+    <string name="minimum_rating">Minimum rating:</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Unsorted -->
+
 </resources>

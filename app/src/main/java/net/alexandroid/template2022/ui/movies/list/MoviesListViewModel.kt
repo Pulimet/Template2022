@@ -70,4 +70,9 @@ class MoviesListViewModel(
         savedItemPosition = position
         navViewModel.navigateTo(MoviesListFragmentDirections.actionMoviesListFragmentToMovieFavoritesFragment())
     }
+
+    fun onSettingsClick(position: Int) {
+        savedItemPosition = position
+        navViewModel.navigateTo(MoviesListFragmentDirections.actionMoviesListFragmentToMovieSettingsFragment())
+    }
 }

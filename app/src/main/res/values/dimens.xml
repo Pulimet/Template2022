@@ -5,4 +5,13 @@
     <dimen name="movie_title_padding">8dp</dimen>
     <dimen name="movie_description_text">16sp</dimen>
     <dimen name="movie_description_padding">8dp</dimen>
+
+
+    <!--SettingsFragment-->
+    <dimen name="settings_text_size">20sp</dimen>
+    <dimen name="settings_line_height">60dp</dimen>
+    <dimen name="settings_description_width">180dp</dimen>
+    <dimen name="settings_value_width">60dp</dimen>
+    <dimen name="settings_button_width">50dp</dimen>
+    <dimen name="settings_button_text_size">28sp</dimen>
 </resources>

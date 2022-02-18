@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!--Line 1-->
+    <TextView
+        android:id="@+id/tvMinVotesDesc"
+        android:layout_width="@dimen/settings_description_width"
+        android:layout_height="@dimen/settings_line_height"
+        android:gravity="center"
+        android:text="@string/minimum_votes"
+        android:textSize="@dimen/settings_text_size"
+
+        app:layout_constraintEnd_toStartOf="@id/tvMinVotesValue"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvMinVotesValue"
+        android:layout_width="@dimen/settings_value_width"
+        android:layout_height="@dimen/settings_line_height"
+        android:gravity="center"
+        android:paddingStart="12dp"
+        android:textColor="@color/purple_500"
+        android:textSize="@dimen/settings_text_size"
+        app:layout_constraintEnd_toStartOf="@id/btnMinusVotes"
+        app:layout_constraintStart_toEndOf="@id/tvMinVotesDesc"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry"
+        tools:text="2" />
+
+    <Button
+        android:id="@+id/btnMinusVotes"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="@dimen/settings_button_width"
+        android:layout_height="@dimen/settings_line_height"
+        android:paddingStart="20dp"
+        android:text="@string/minus"
+        android:textColor="@color/purple_500"
+        android:textSize="@dimen/settings_button_text_size"
+        app:layout_constraintEnd_toStartOf="@id/btnPlusVotes"
+        app:layout_constraintStart_toEndOf="@id/tvMinVotesValue"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry" />
+
+    <Button
+        android:id="@+id/btnPlusVotes"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="@dimen/settings_button_width"
+        android:layout_height="@dimen/settings_line_height"
+        android:text="@string/plus"
+        android:textColor="@color/purple_500"
+        android:textSize="@dimen/settings_button_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnMinusVotes"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Line 2-->
+    <TextView
+        android:id="@+id/tvMinRatingDesc"
+        android:layout_width="@dimen/settings_description_width"
+        android:layout_height="@dimen/settings_line_height"
+        android:gravity="center"
+        android:text="@string/minimum_rating"
+        android:textSize="@dimen/settings_text_size"
+        app:layout_constraintEnd_toStartOf="@id/tvMinRatingValue"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMinVotesDesc" />
+
+    <TextView
+        android:id="@+id/tvMinRatingValue"
+        android:layout_width="@dimen/settings_value_width"
+        android:layout_height="@dimen/settings_line_height"
+        android:gravity="center"
+        android:paddingStart="12dp"
+        android:textColor="@color/purple_500"
+        android:textSize="@dimen/settings_text_size"
+        app:layout_constraintEnd_toStartOf="@id/btnMinusRating"
+        app:layout_constraintStart_toEndOf="@id/tvMinRatingDesc"
+        app:layout_constraintTop_toBottomOf="@id/tvMinVotesDesc"
+        tools:ignore="RtlSymmetry"
+        tools:text="2" />
+
+    <Button
+        android:id="@+id/btnMinusRating"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="@dimen/settings_button_width"
+        android:layout_height="@dimen/settings_line_height"
+        android:paddingStart="20dp"
+        android:text="@string/minus"
+        android:textColor="@color/purple_500"
+        android:textSize="@dimen/settings_button_text_size"
+        app:layout_constraintEnd_toStartOf="@id/btnPlusRating"
+        app:layout_constraintStart_toEndOf="@id/tvMinRatingValue"
+        app:layout_constraintTop_toBottomOf="@id/tvMinVotesDesc"
+        tools:ignore="RtlSymmetry" />
+
+    <Button
+        android:id="@+id/btnPlusRating"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="@dimen/settings_button_width"
+        android:layout_height="@dimen/settings_line_height"
+        android:text="@string/plus"
+        android:textColor="@color/purple_500"
+        android:textSize="@dimen/settings_button_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnMinusRating"
+        app:layout_constraintTop_toBottomOf="@id/tvMinVotesDesc" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

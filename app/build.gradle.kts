@@ -47,7 +47,10 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-
+    // Preferences DataStore
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+    // Lifecycle components
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
     // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
@@ -63,9 +66,6 @@ dependencies {
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
-
-    // Lifecycle components
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
 
     // Image loading library
     implementation("io.coil-kt:coil:1.1.1")

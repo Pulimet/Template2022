@@ -113,6 +113,11 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), OnMovieClick
 
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId) {
+            R.id.action_settings -> {
+                val position = gridLayoutManager?.findFirstVisibleItemPosition() ?: 0
+                viewModel.onSettingsClick(position)
+                true
+            }
             R.id.action_favorites -> {
                 val position = gridLayoutManager?.findFirstVisibleItemPosition() ?: 0
                 viewModel.onFavoritesClick(position)
