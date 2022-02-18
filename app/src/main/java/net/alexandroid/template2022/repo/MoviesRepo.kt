@@ -14,8 +14,6 @@ class MoviesRepo(
     private val movieDao: MovieDao,
     private val movieFavoriteDao: MovieFavoriteDao
 ) {
-    private var isFirstTime = true
-
     init {
         logI("init")
     }

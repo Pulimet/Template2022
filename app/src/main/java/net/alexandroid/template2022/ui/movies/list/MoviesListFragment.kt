@@ -73,13 +73,13 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), OnMovieClick
             when (it) {
                 is MovieResult.Empty -> logD("Empty")
                 is MovieResult.Loading -> logD("Loading...")
-                is MovieResult.Success -> handleResultSuccess(it)
+                is MovieResult.Success -> handleDbResultSuccess(it)
                 is MovieResult.Error -> logD("Error")
             }
         }
     }
 
-    private fun handleResultSuccess(it: MovieResult.Success) {
+    private fun handleDbResultSuccess(it: MovieResult.Success) {
         logD()
         movieAdapter?.setItems(it.moviesList)
         scrollToPreviouslyClickedItem(gridLayoutManager)  // Scrolls to position of selected item on going back to the list
