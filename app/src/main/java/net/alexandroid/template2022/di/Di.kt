@@ -42,7 +42,15 @@ object Di {
         single(named(Prefs.MOVIE_RATING)) { androidContext().rating }
 
         // Repositories
-        single { MoviesRepo(get(), get(), get()) }
+        single {
+            MoviesRepo(
+                get(),
+                get(),
+                get(),
+                get(named(Prefs.MOVIE_VOTES)),
+                get(named(Prefs.MOVIE_RATING))
+            )
+        }
         single { MovieSettingsRepo(get(named(Prefs.MOVIE_VOTES)), get(named(Prefs.MOVIE_RATING))) }
 
         // ViewModels
