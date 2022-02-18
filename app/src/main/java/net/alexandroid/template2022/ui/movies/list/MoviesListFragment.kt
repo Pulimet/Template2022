@@ -48,7 +48,7 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), OnMovieClick
         setRecyclerView()
         setSwipeRefreshLayout()
         observeViewModel()
-        viewModel.fetchMovies()
+        viewModel.onFragmentViewCreated()
     }
 
     private fun setRecyclerView() {
@@ -80,6 +80,7 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), OnMovieClick
     }
 
     private fun handleResultSuccess(it: MovieResult.Success) {
+        logD()
         movieAdapter?.setItems(it.moviesList)
         scrollToPreviouslyClickedItem(gridLayoutManager)  // Scrolls to position of selected item on going back to the list
         if (it.moviesList.isNotEmpty()) binding.swipeRefreshLayout.isRefreshing = false

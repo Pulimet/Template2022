@@ -32,11 +32,11 @@ object Di {
     }
 
     private val appModule = module {
-        single { MoviesRepo(get(), get()) }
+        single { MoviesRepo(get(), get(), get()) }
 
         viewModel { NavViewModel() }
         viewModel { MainViewModel() }
-        viewModel { HomeViewModel(get()) }
+        viewModel { HomeViewModel() }
         viewModel { ExampleViewModel() }
         viewModel { MoviesListViewModel(get()) }
         viewModel { MovieDetailsViewModel(get()) }

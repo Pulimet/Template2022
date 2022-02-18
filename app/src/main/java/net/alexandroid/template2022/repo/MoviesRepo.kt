@@ -1,6 +1,7 @@
 package net.alexandroid.template2022.repo
 
 import kotlinx.coroutines.flow.Flow
+import net.alexandroid.template2022.db.dao.MovieDao
 import net.alexandroid.template2022.db.dao.MovieFavoriteDao
 import net.alexandroid.template2022.db.model.Movie
 import net.alexandroid.template2022.db.model.MovieFavorite
@@ -10,17 +11,26 @@ import net.alexandroid.template2022.utils.logI
 
 class MoviesRepo(
     private val tmdbApiService: TmdbApiService,
+    private val movieDao: MovieDao,
     private val movieFavoriteDao: MovieFavoriteDao
 ) {
+    private var isFirstTime = true
+
     init {
         logI("init")
     }
 
-    suspend fun getMovies() = try {
+    fun getMoviesFromDb() = movieDao.getMovies()
+
+    suspend fun getMoviesFromNetwork() {
         val movies = tmdbApiService.getMovies()
-        MovieResult.Success(MovieModelConverter.convertTmdbResultsToListOfMovies(movies))
-    } catch (e: Exception) {
-        MovieResult.Error(e)
+        val convertedMovies = MovieModelConverter.convertTmdbResultsToListOfMovies(movies)
+        saveFreshMoviesToDb(convertedMovies)
+    }
+
+    private suspend fun saveFreshMoviesToDb(convertedMovies: List<Movie>) {
+        movieDao.deleteAll()
+        movieDao.insertAll(convertedMovies)
     }
 
     // Favorites
@@ -28,7 +38,8 @@ class MoviesRepo(
         movieFavoriteDao.getMovie(movieId)
 
     suspend fun addOrRemoveMovieFromFavorites(movie: Movie, movieInFavorites: Boolean) {
-        val movieFavorite: MovieFavorite = MovieModelConverter.convertMovieToMovieFavorite(movie)
+        val movieFavorite: MovieFavorite =
+            MovieModelConverter.convertMovieToMovieFavorite(movie)
         movieFavoriteDao.run {
             if (movieInFavorites) delete(movieFavorite) else insert(movieFavorite)
         }
