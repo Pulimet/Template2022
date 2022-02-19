@@ -33,6 +33,7 @@ class MoviesListViewModel(
     fun onFragmentViewCreated() {
         logD()
         observeMoviesFromDb()
+        fetchMoviesFromNetwork()
     }
 
     private fun observeMoviesFromDb() {
