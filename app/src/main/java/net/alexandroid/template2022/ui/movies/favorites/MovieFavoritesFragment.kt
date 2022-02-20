@@ -53,7 +53,7 @@ class MovieFavoritesFragment : Fragment(R.layout.fragment_movie_favorites), OnMo
 
     private fun observeViewModel() {
         viewModel.favoritesList.collectIt(viewLifecycleOwner) {
-            movieAdapter?.setItems(it)
+            movieAdapter?.submitList(it)
             scrollToPreviouslyClickedItem(gridLayoutManager)  // Scrolls to position of selected item on going back to the list
         }
     }

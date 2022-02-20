@@ -81,7 +81,7 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), OnMovieClick
 
     private fun handleDbResultSuccess(it: MovieResult.Success) {
         logD()
-        movieAdapter?.setItems(it.moviesList)
+        movieAdapter?.submitList(it.moviesList)
         scrollToPreviouslyClickedItem(gridLayoutManager)  // Scrolls to position of selected item on going back to the list
         if (it.moviesList.isNotEmpty()) binding.swipeRefreshLayout.isRefreshing = false
     }
