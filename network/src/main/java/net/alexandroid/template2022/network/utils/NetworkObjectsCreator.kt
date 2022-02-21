@@ -8,8 +8,9 @@ import java.util.concurrent.TimeUnit
 
 object NetworkObjectsCreator {
     fun createOkHttpClient(logger: HttpLoggingInterceptor.Logger) = OkHttpClient.Builder()
-        .connectTimeout(10L, TimeUnit.SECONDS)
+        .connectTimeout(5L, TimeUnit.SECONDS)
         .readTimeout(10L, TimeUnit.SECONDS)
+        .callTimeout(15L, TimeUnit.SECONDS)
         .addInterceptor(HttpLoggingInterceptor(logger).apply {
             level = HttpLoggingInterceptor.Level.BASIC
         })
