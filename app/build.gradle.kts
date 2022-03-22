@@ -57,8 +57,6 @@ dependencies {
 
     // Koin Core features
     implementation("io.insert-koin:koin-android:$koinVersion")
-    // Koin main features for Android
-    implementation("io.insert-koin:koin-android:$koinVersion")
     // Koin - Jetpack WorkManager
     //implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
     // Koin - Navigation Graph
