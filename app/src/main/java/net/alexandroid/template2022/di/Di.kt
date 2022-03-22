@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.room.Room
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
 import net.alexandroid.template2022.db.MovieDatabase
 import net.alexandroid.template2022.di.Prefs.rating
 import net.alexandroid.template2022.di.Prefs.votes
@@ -30,7 +29,6 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import kotlin.coroutines.CoroutineContext
 
 object Di {
     fun setup(applicationContext: Context) {
