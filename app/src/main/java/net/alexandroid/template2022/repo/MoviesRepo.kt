@@ -12,6 +12,7 @@ import net.alexandroid.template2022.db.model.MovieFavorite
 import net.alexandroid.template2022.db.utils.MovieModelConverter
 import net.alexandroid.template2022.di.Prefs
 import net.alexandroid.template2022.network.services.TmdbApiService
+import net.alexandroid.template2022.utils.logE
 import net.alexandroid.template2022.utils.logI
 
 class MoviesRepo(
@@ -38,12 +39,17 @@ class MoviesRepo(
     suspend fun getMoviesFromNetwork() {
         val minNumOfVotes = getTempMinValue().first()
         val minRating = getTempMinRating().first()
-        val movies = tmdbApiService.getMovies(
-            minNumOfVotes = minNumOfVotes,
-            minRating = minRating
-        )
-        val convertedMovies = MovieModelConverter.convertTmdbResultsToListOfMovies(movies)
-        saveFreshMoviesToDb(convertedMovies)
+
+        try {
+            val movies = tmdbApiService.getMovies(
+                minNumOfVotes = minNumOfVotes,
+                minRating = minRating
+            )
+            val convertedMovies = MovieModelConverter.convertTmdbResultsToListOfMovies(movies)
+            saveFreshMoviesToDb(convertedMovies)
+        } catch (e: Exception) {
+            logE("Failed to fetch movies from network. (${e.message})")
+        }
     }
 
     private suspend fun saveFreshMoviesToDb(convertedMovies: List<Movie>) {
