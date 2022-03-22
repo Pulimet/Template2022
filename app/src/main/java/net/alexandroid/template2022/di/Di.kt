@@ -62,8 +62,8 @@ object Di {
         }
         single { MovieSettingsRepo(get(named(Prefs.MOVIE_VOTES)), get(named(Prefs.MOVIE_RATING))) }
 
-        // Dispatchers
-        single { Dispatchers.IO + SupervisorJob() + exceptionHandler }
+        // CoroutineContext
+        single { Dispatchers.IO + exceptionHandler }
 
         // ViewModels
         viewModel { NavViewModel() }
