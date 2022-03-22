@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    val roomVersion = "2.4.1"
+    val roomVersion = "2.4.2"
     implementation(project(":network"))
 
     implementation("androidx.core:core-ktx:1.7.0")

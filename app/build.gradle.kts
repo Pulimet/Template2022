@@ -52,15 +52,15 @@ dependencies {
     // Lifecycle components
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
     // Navigation Component
-    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
-    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.4.1")
+    implementation("androidx.navigation:navigation-ui-ktx:2.4.1")
 
     // Koin Core features
     implementation("io.insert-koin:koin-android:$koinVersion")
     // Koin main features for Android
     implementation("io.insert-koin:koin-android:$koinVersion")
     // Koin - Jetpack WorkManager
-    implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
+    //implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
     // Koin - Navigation Graph
     implementation("io.insert-koin:koin-androidx-navigation:$koinVersion")
 
