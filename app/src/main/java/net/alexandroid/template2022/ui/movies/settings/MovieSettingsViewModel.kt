@@ -9,10 +9,11 @@ import kotlinx.coroutines.launch
 import net.alexandroid.template2022.repo.MovieSettingsRepo
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
+import kotlin.coroutines.CoroutineContext
 
 class MovieSettingsViewModel(
     private val settingsRepo: MovieSettingsRepo,
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val ioCoroutineContext: CoroutineContext
 ) : BaseViewModel() {
     lateinit var navViewModel: NavViewModel
 
@@ -21,7 +22,7 @@ class MovieSettingsViewModel(
         settingsRepo.getMinVotes.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
 
     fun onBtnMinusVotesNumClick() {
-        viewModelScope.launch(ioDispatcher) {
+        viewModelScope.launch(ioCoroutineContext) {
             val current = minVotesLiveData.value
             val minus = when {
                 current > 300 -> 100
@@ -34,7 +35,7 @@ class MovieSettingsViewModel(
     }
 
     fun onBtnPlusVotesNumClick() {
-        viewModelScope.launch(ioDispatcher) {
+        viewModelScope.launch(ioCoroutineContext) {
             val current = minVotesLiveData.value
             val add = when {
                 current > 250 -> 100
@@ -51,14 +52,14 @@ class MovieSettingsViewModel(
         settingsRepo.getMinRating.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
 
     fun onBtnMinusRatingClick() {
-        viewModelScope.launch(ioDispatcher) {
+        viewModelScope.launch(ioCoroutineContext) {
             val current = minRatingLiveData.value
             if (current > 0) settingsRepo.saveMinRating(current - 1)
         }
     }
 
     fun onBtnPlusRatingClick() {
-        viewModelScope.launch(ioDispatcher) {
+        viewModelScope.launch(ioCoroutineContext) {
             val current = minRatingLiveData.value
             if (current < 9) settingsRepo.saveMinRating(current + 1)
         }

@@ -2,6 +2,9 @@ package net.alexandroid.template2022.di
 
 import android.content.Context
 import androidx.room.Room
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import net.alexandroid.template2022.db.MovieDatabase
 import net.alexandroid.template2022.di.Prefs.rating
 import net.alexandroid.template2022.di.Prefs.votes
@@ -20,12 +23,14 @@ import net.alexandroid.template2022.ui.movies.list.MoviesListViewModel
 import net.alexandroid.template2022.ui.movies.settings.MovieSettingsViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.OkHttpLogs
+import net.alexandroid.template2022.utils.logE
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import kotlin.coroutines.CoroutineContext
 
 object Di {
     fun setup(applicationContext: Context) {
@@ -34,6 +39,10 @@ object Di {
             androidContext(applicationContext)
             modules(appModule, networkModule, dbModule)
         }
+    }
+
+    private val exceptionHandler = CoroutineExceptionHandler { _, e ->
+        logE("CoroutineExceptionHandler:", t = e)
     }
 
     private val appModule = module {
@@ -53,15 +62,18 @@ object Di {
         }
         single { MovieSettingsRepo(get(named(Prefs.MOVIE_VOTES)), get(named(Prefs.MOVIE_RATING))) }
 
+        // Dispatchers
+        single { Dispatchers.IO + SupervisorJob() + exceptionHandler }
+
         // ViewModels
         viewModel { NavViewModel() }
         viewModel { MainViewModel() }
         viewModel { HomeViewModel() }
         viewModel { ExampleViewModel() }
-        viewModel { MoviesListViewModel(get()) }
+        viewModel { MoviesListViewModel(get(), get()) }
         viewModel { MovieDetailsViewModel(get()) }
         viewModel { MovieFavoritesViewModel(get()) }
-        viewModel { MovieSettingsViewModel(get()) }
+        viewModel { MovieSettingsViewModel(get(), get()) }
     }
 
     private val networkModule = module {
