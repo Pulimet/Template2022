@@ -14,6 +14,7 @@ import net.alexandroid.template2022.di.Prefs
 import net.alexandroid.template2022.network.services.TmdbApiService
 import net.alexandroid.template2022.utils.logE
 import net.alexandroid.template2022.utils.logI
+import java.net.UnknownHostException
 
 class MoviesRepo(
     private val tmdbApiService: TmdbApiService,
@@ -47,7 +48,7 @@ class MoviesRepo(
             )
             val convertedMovies = MovieModelConverter.convertTmdbResultsToListOfMovies(movies)
             saveFreshMoviesToDb(convertedMovies)
-        } catch (e: Exception) {
+        } catch (e: UnknownHostException) {
             logE("Failed to fetch movies from network. (${e.message})")
         }
     }

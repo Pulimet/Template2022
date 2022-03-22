@@ -43,6 +43,7 @@ object Di {
 
     private val exceptionHandler = CoroutineExceptionHandler { _, e ->
         logE("CoroutineExceptionHandler:", t = e)
+        throw e
     }
 
     private val appModule = module {
