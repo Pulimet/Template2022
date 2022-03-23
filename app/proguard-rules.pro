@@ -13,4 +13,4 @@
 #}
 
 # Remove all log* methods from prpject
--assumenosideeffects class net.alexandroid.template2022.utils.LoggerKt { *; }
+-assumenosideeffects class net.alexandroid.template2022.utils.logs.LoggerKt { *; }

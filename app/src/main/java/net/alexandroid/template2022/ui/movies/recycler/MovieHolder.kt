@@ -4,7 +4,8 @@ import android.view.View
 import androidx.core.view.ViewCompat
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
+import coil.ImageLoader
+import coil.request.ImageRequest
 import coil.size.Scale
 import net.alexandroid.template2022.databinding.ItemMovieBinding
 import net.alexandroid.template2022.db.model.Movie
@@ -19,10 +20,10 @@ class MovieHolder(v: View, private val listener: OnMovieClickListener) :
     private val binding = ItemMovieBinding.bind(v)
     private var movie: Movie? = null
 
-    fun onBindViewHolder(movie: Movie) {
+    fun onBindViewHolder(movie: Movie, imageLoader: ImageLoader) {
         this.movie = movie
         setVotes(movie)
-        loadImage(movie)
+        loadImage(movie, imageLoader)
         ViewCompat.setTransitionName(binding.imgMovie, "image_${movie.id}")
     }
 
@@ -34,15 +35,18 @@ class MovieHolder(v: View, private val listener: OnMovieClickListener) :
         }
     }
 
-    private fun loadImage(movie: Movie) {
+    private fun loadImage(movie: Movie, imageLoader: ImageLoader) {
         movie.posterUrl?.let {
-            binding.imgMovie.load(it) {
-                crossfade(true)
-                scale(Scale.FILL)
-                listener(onSuccess = { _, _ ->
-                    binding.tvVotes.visibility = View.VISIBLE
-                })
-            }
+            imageLoader.enqueue(
+                ImageRequest.Builder(binding.imgMovie.context)
+                    .data(it)
+                    .listener(onSuccess = { _, _ ->
+                        binding.tvVotes.visibility = View.VISIBLE
+                    })
+                    .scale(Scale.FILL)
+                    .target(binding.imgMovie)
+                    .build()
+            )
         }
     }
 

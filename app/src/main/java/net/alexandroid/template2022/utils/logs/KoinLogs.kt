@@ -1,7 +1,6 @@
-package net.alexandroid.template2022.di
+package net.alexandroid.template2022.utils.logs
 
 import net.alexandroid.template2022.BuildConfig
-import net.alexandroid.template2022.utils.logD
 import org.koin.core.logger.Level
 import org.koin.core.logger.Logger
 import org.koin.core.logger.MESSAGE

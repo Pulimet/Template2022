@@ -2,6 +2,7 @@ package net.alexandroid.template2022.di
 
 import android.content.Context
 import androidx.room.Room
+import coil.ImageLoader
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import net.alexandroid.template2022.db.MovieDatabase
@@ -21,8 +22,10 @@ import net.alexandroid.template2022.ui.movies.favorites.MovieFavoritesViewModel
 import net.alexandroid.template2022.ui.movies.list.MoviesListViewModel
 import net.alexandroid.template2022.ui.movies.settings.MovieSettingsViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
-import net.alexandroid.template2022.utils.OkHttpLogs
-import net.alexandroid.template2022.utils.logE
+import net.alexandroid.template2022.utils.logs.KoinLogs
+import net.alexandroid.template2022.utils.logs.OkHttpLogs
+import net.alexandroid.template2022.utils.logs.CoilLogs
+import net.alexandroid.template2022.utils.logs.logE
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -39,12 +42,16 @@ object Di {
         }
     }
 
-    private val exceptionHandler = CoroutineExceptionHandler { _, e ->
-        logE("CoroutineExceptionHandler:", t = e)
-        throw e
-    }
 
     private val appModule = module {
+        // Image Loader
+        single {
+            ImageLoader.Builder(androidContext())
+                .logger(CoilLogs())
+                .crossfade(true)
+                .build()
+        }
+
         // DataStore
         single(named(Prefs.MOVIE_VOTES)) { androidContext().votes }
         single(named(Prefs.MOVIE_RATING)) { androidContext().rating }
@@ -62,7 +69,12 @@ object Di {
         single { MovieSettingsRepo(get(named(Prefs.MOVIE_VOTES)), get(named(Prefs.MOVIE_RATING))) }
 
         // CoroutineContext
-        single { Dispatchers.IO + exceptionHandler }
+        single {
+            Dispatchers.IO + CoroutineExceptionHandler { _, e ->
+                logE("CoroutineExceptionHandler:", t = e)
+                throw e
+            }
+        }
 
         // ViewModels
         viewModel { NavViewModel() }

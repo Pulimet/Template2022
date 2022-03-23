@@ -10,10 +10,9 @@ import net.alexandroid.template2022.db.dao.MovieFavoriteDao
 import net.alexandroid.template2022.db.model.Movie
 import net.alexandroid.template2022.db.model.MovieFavorite
 import net.alexandroid.template2022.db.utils.MovieModelConverter
-import net.alexandroid.template2022.di.Prefs
 import net.alexandroid.template2022.network.services.TmdbApiService
-import net.alexandroid.template2022.utils.logE
-import net.alexandroid.template2022.utils.logI
+import net.alexandroid.template2022.utils.logs.logE
+import net.alexandroid.template2022.utils.logs.logI
 import java.net.UnknownHostException
 
 class MoviesRepo(

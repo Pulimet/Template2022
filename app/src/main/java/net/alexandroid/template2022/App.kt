@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import net.alexandroid.template2022.di.Di
-import net.alexandroid.template2022.utils.logD
+import net.alexandroid.template2022.utils.logs.logD
 import kotlin.coroutines.CoroutineContext
 
 @Suppress("unused")

@@ -1,9 +1,9 @@
-package net.alexandroid.template2022.utils
+package net.alexandroid.template2022.utils.logs
 
 import android.util.Log
 import net.alexandroid.template2022.BuildConfig
-import net.alexandroid.template2022.utils.Logger.logIt
-import net.alexandroid.template2022.utils.Logger.whoIsCallingMe
+import net.alexandroid.template2022.utils.logs.Logger.logIt
+import net.alexandroid.template2022.utils.logs.Logger.whoIsCallingMe
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.text.DateFormat

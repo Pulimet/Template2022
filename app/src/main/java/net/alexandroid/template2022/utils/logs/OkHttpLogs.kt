@@ -1,4 +1,4 @@
-package net.alexandroid.template2022.utils
+package net.alexandroid.template2022.utils.logs
 
 import okhttp3.logging.HttpLoggingInterceptor
 

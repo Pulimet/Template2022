@@ -2,17 +2,17 @@ package net.alexandroid.template2022.ui.movies.list
 
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.FragmentNavigator
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import net.alexandroid.template2022.db.model.Movie
 import net.alexandroid.template2022.repo.MovieResult
 import net.alexandroid.template2022.repo.MoviesRepo
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
-import net.alexandroid.template2022.utils.logD
-import net.alexandroid.template2022.utils.logE
+import net.alexandroid.template2022.utils.logs.logD
 import kotlin.coroutines.CoroutineContext
 
 class MoviesListViewModel(

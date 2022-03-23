@@ -12,7 +12,7 @@ import net.alexandroid.template2022.ui.navigation.IntentParams
 import net.alexandroid.template2022.ui.navigation.NavParams
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.collectIt
-import net.alexandroid.template2022.utils.logE
+import net.alexandroid.template2022.utils.logs.logE
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
