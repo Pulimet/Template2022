@@ -33,7 +33,7 @@ android {
 
 dependencies {
     val navVersion: String by rootProject.extra
-    val koinVersion = "3.1.5"
+    val koinVersion = "3.2.0-beta-1"
 
     // Modules dependencies
     implementation(project(":network"))
@@ -58,7 +58,7 @@ dependencies {
     // Koin Core features
     implementation("io.insert-koin:koin-android:$koinVersion")
     // Koin - Jetpack WorkManager
-    //implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
+    implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
     // Koin - Navigation Graph
     implementation("io.insert-koin:koin-androidx-navigation:$koinVersion")
 
