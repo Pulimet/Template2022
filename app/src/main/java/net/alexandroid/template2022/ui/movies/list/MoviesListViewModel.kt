@@ -5,7 +5,7 @@ import androidx.navigation.fragment.FragmentNavigator
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import net.alexandroid.template2022.db.model.Movie
 import net.alexandroid.template2022.repo.MovieResult
@@ -38,7 +38,7 @@ class MoviesListViewModel(
     private fun observeMoviesFromDb() {
         logD()
         viewModelScope.launch(ioCoroutineContext) {
-            moviesRepo.getMoviesFromDb().collect {
+            moviesRepo.getMoviesFromDb().collectLatest {
                 _uiState.value = MovieResult.Success(it)
             }
         }
