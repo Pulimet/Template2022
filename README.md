@@ -15,3 +15,4 @@ Learning modern Android development tools/best practises.
 - Navigation
 - Datastore
 - Room
+- WorkManager
