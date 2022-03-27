@@ -46,6 +46,7 @@ class MoviesListViewModel(
 
     fun onUserRefreshedMain() {
         logD()
+        savedItemPosition = 0
         fetchMoviesFromNetwork()
     }
 
