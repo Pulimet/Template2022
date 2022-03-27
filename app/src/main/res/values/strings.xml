@@ -8,6 +8,10 @@
 
     <!-- Movies -->
     <string name="movies">Movies</string>
+
+    <!--Movies Menu -->
+    <string name="action_settings">Settings</string>
+    <string name="action_schedule">Schedule</string>
     <string name="action_favorites">Favorites</string>
 
     <!-- Images Descriptions -->
@@ -19,7 +23,7 @@
     <string name="minimum_rating">Minimum rating:</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
-    <string name="action_settings">Settings</string>
+    <string name="notif_msg_loading_movies">Loading fresh movies list</string>
 
     <!-- Unsorted -->
 

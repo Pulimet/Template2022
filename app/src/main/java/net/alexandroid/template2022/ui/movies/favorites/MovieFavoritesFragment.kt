@@ -45,11 +45,8 @@ class MovieFavoritesFragment : Fragment(R.layout.fragment_movie_favorites), OnMo
     private fun setRecyclerView() {
         binding.homeRecyclerView.apply {
             layoutManager = GridLayoutManager(context, 2).apply { gridLayoutManager = this }
-            adapter = MovieAdapter(
-                this@MovieFavoritesFragment,
-                requireContext(),
-                imageLoader
-            ).apply { movieAdapter = this }
+            adapter = MovieAdapter(this@MovieFavoritesFragment, imageLoader)
+                .apply { movieAdapter = this }
 
             if (viewModel.savedItemPosition >= 0) {
                 // Solves return transition animation

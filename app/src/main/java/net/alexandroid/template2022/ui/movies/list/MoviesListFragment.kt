@@ -57,11 +57,8 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), OnMovieClick
     private fun setRecyclerView() {
         binding.homeRecyclerView.apply {
             layoutManager = GridLayoutManager(context, 2).apply { gridLayoutManager = this }
-            adapter = MovieAdapter(
-                this@MoviesListFragment,
-                requireContext(),
-                imageLoader
-            ).apply { movieAdapter = this }
+            adapter = MovieAdapter(this@MoviesListFragment, imageLoader)
+                .apply { movieAdapter = this }
 
             if (viewModel.savedItemPosition >= 0) {
                 // Solves return transition animation
@@ -128,6 +125,10 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), OnMovieClick
             R.id.action_favorites -> {
                 val position = gridLayoutManager?.findLastVisibleItemPosition() ?: 0
                 viewModel.onFavoritesClick(position)
+                true
+            }
+            R.id.action_schedule -> {
+                viewModel.onMenuScheduleClick()
                 true
             }
             else -> super.onOptionsItemSelected(item)

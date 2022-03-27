@@ -11,6 +11,8 @@ import net.alexandroid.template2022.db.model.Movie
 import net.alexandroid.template2022.db.model.MovieFavorite
 import net.alexandroid.template2022.db.utils.MovieModelConverter
 import net.alexandroid.template2022.network.services.TmdbApiService
+import net.alexandroid.template2022.utils.ImageLoading
+import net.alexandroid.template2022.utils.logs.logD
 import net.alexandroid.template2022.utils.logs.logE
 import net.alexandroid.template2022.utils.logs.logI
 import java.net.UnknownHostException
@@ -20,12 +22,14 @@ class MoviesRepo(
     private val movieDao: MovieDao,
     private val movieFavoriteDao: MovieFavoriteDao,
     private val dataStoreVotes: DataStore<Preferences>,
-    private val dataStoreRating: DataStore<Preferences>
+    private val dataStoreRating: DataStore<Preferences>,
+    private val imageLoading: ImageLoading
 ) {
     init {
         logI("init")
     }
 
+    // Settings
     private fun getTempMinValue() = dataStoreVotes.data.map { preferences ->
         preferences[MovieSettingsRepo.KEY_MIN_VOTES] ?: 2
     }
@@ -34,27 +38,37 @@ class MoviesRepo(
         preferences[MovieSettingsRepo.KEY_MIN_RATING] ?: 2
     }
 
+    // Movies
     fun getMoviesFromDb() = movieDao.getMovies()
 
-    suspend fun getMoviesFromNetwork() {
+    suspend fun getMoviesFromNetwork(): Boolean {
         val minNumOfVotes = getTempMinValue().first()
         val minRating = getTempMinRating().first()
 
-        try {
+        return try {
             val movies = tmdbApiService.getMovies(
                 minNumOfVotes = minNumOfVotes,
                 minRating = minRating
             )
             val convertedMovies = MovieModelConverter.convertTmdbResultsToListOfMovies(movies)
             saveFreshMoviesToDb(convertedMovies)
+            preloadMoviesImages(convertedMovies)
+            true
         } catch (e: UnknownHostException) {
             logE("Failed to fetch movies from network. (${e.message})")
+            false
         }
     }
 
-    private suspend fun saveFreshMoviesToDb(convertedMovies: List<Movie>) {
+    private suspend fun saveFreshMoviesToDb(movies: List<Movie>) {
+        logD()
         movieDao.deleteAll()
-        movieDao.insertAll(convertedMovies)
+        movieDao.insertAll(movies)
+    }
+
+    private fun preloadMoviesImages(movies: List<Movie>) {
+        logD()
+        imageLoading.preloadImages(movies)
     }
 
     // Favorites

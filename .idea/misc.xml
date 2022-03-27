@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_favorite_border.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_favorite_filled.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_schedule.xml" value="0.158" />
         <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.389" />
         <entry key="app/src/main/res/layout/activity_example.xml" value="0.3265625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.32708333333333334" />

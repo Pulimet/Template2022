@@ -2,6 +2,7 @@ package net.alexandroid.template2022.ui.movies.list
 
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.FragmentNavigator
+import androidx.work.WorkManager
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,11 +14,13 @@ import net.alexandroid.template2022.repo.MoviesRepo
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.logs.logD
+import net.alexandroid.template2022.worker.MovieWorker
 import kotlin.coroutines.CoroutineContext
 
 class MoviesListViewModel(
     private val moviesRepo: MoviesRepo,
-    private val ioCoroutineContext: CoroutineContext
+    private val ioCoroutineContext: CoroutineContext,
+    private val workManager: WorkManager
 ) : BaseViewModel() {
 
     lateinit var navViewModel: NavViewModel
@@ -75,5 +78,9 @@ class MoviesListViewModel(
     fun onSettingsClick(position: Int) {
         savedItemPosition = position
         navViewModel.navigateTo(MoviesListFragmentDirections.actionMoviesListFragmentToMovieSettingsFragment())
+    }
+
+    fun onMenuScheduleClick() {
+        MovieWorker.launch(workManager)
     }
 }

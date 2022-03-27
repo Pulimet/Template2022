@@ -2,6 +2,7 @@ package net.alexandroid.template2022.di
 
 import android.content.Context
 import androidx.room.Room
+import androidx.work.WorkManager
 import coil.ImageLoader
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
@@ -22,9 +23,10 @@ import net.alexandroid.template2022.ui.movies.favorites.MovieFavoritesViewModel
 import net.alexandroid.template2022.ui.movies.list.MoviesListViewModel
 import net.alexandroid.template2022.ui.movies.settings.MovieSettingsViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
+import net.alexandroid.template2022.utils.ImageLoading
+import net.alexandroid.template2022.utils.logs.CoilLogs
 import net.alexandroid.template2022.utils.logs.KoinLogs
 import net.alexandroid.template2022.utils.logs.OkHttpLogs
-import net.alexandroid.template2022.utils.logs.CoilLogs
 import net.alexandroid.template2022.utils.logs.logE
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -51,10 +53,14 @@ object Di {
                 .crossfade(true)
                 .build()
         }
+        single { ImageLoading(androidContext(), get()) }
 
         // DataStore
         single(named(Prefs.MOVIE_VOTES)) { androidContext().votes }
         single(named(Prefs.MOVIE_RATING)) { androidContext().rating }
+
+        // WorkManager
+        single { WorkManager.getInstance(androidContext()) }
 
         // Repositories
         single {
@@ -63,7 +69,8 @@ object Di {
                 get(),
                 get(),
                 get(named(Prefs.MOVIE_VOTES)),
-                get(named(Prefs.MOVIE_RATING))
+                get(named(Prefs.MOVIE_RATING)),
+                get()
             )
         }
         single { MovieSettingsRepo(get(named(Prefs.MOVIE_VOTES)), get(named(Prefs.MOVIE_RATING))) }
@@ -81,7 +88,7 @@ object Di {
         viewModel { MainViewModel() }
         viewModel { HomeViewModel() }
         viewModel { ExampleViewModel() }
-        viewModel { MoviesListViewModel(get(), get()) }
+        viewModel { MoviesListViewModel(get(), get(), get()) }
         viewModel { MovieDetailsViewModel(get()) }
         viewModel { MovieFavoritesViewModel(get()) }
         viewModel { MovieSettingsViewModel(get(), get()) }
