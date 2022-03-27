@@ -17,6 +17,4 @@ data class MovieFavorite(
     val date: String,
     val vote: Double,
     val voteCount: Int
-) : Parcelable {
-    fun getTitleWithYear() = title + " (" + MovieModelConverter.getYear(date) + ")"
-}
+) : Parcelable

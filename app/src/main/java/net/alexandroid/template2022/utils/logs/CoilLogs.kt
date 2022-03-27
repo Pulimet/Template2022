@@ -4,7 +4,7 @@ import android.util.Log
 import coil.util.Logger
 
 class CoilLogs : Logger {
-    override var level = Log.DEBUG
+    override var level = Log.WARN
 
     override fun log(tag: String, priority: Int, message: String?, throwable: Throwable?) {
         if (throwable != null) {
