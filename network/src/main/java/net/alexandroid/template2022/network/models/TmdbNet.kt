@@ -7,7 +7,7 @@ object TmdbNet {
         val page: Int,
         @SerializedName("total_results") val totalResults: Int,
         @SerializedName("total_pages") val totalPages: Int,
-        val results: MutableList<Movie>
+        val results: MutableList<Movie>?
     )
 
     data class Movie(

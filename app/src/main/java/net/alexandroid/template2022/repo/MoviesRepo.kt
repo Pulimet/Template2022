@@ -50,10 +50,16 @@ class MoviesRepo(
                 minNumOfVotes = minNumOfVotes,
                 minRating = minRating
             )
-            val convertedMovies = MovieModelConverter.convertTmdbResultsToListOfMovies(movies)
-            saveFreshMoviesToDb(convertedMovies)
-            preloadMoviesImages(convertedMovies)
-            true
+            if (movies.results == null) {
+                logE("Failed to get movies: $movies")
+                false
+            } else {
+                logD("movies: $movies")
+                val convertedMovies = MovieModelConverter.convertTmdbResultsToListOfMovies(movies)
+                saveFreshMoviesToDb(convertedMovies)
+                preloadMoviesImages(convertedMovies)
+                true
+            }
         } catch (e: UnknownHostException) {
             logE("Failed to fetch movies from network. (${e.message})")
             false

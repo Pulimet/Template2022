@@ -10,7 +10,7 @@ object MovieModelConverter {
     private const val TMDB_IMG_URL = "https://image.tmdb.org/t/p/w500"
 
     fun convertTmdbResultsToListOfMovies(movies: TmdbNet.Discover): List<Movie> {
-        return movies.results.map {
+        return movies.results?.map {
             Movie(
                 id = it.id,
                 title = it.title,
@@ -20,7 +20,7 @@ object MovieModelConverter {
                 vote = it.vote,
                 voteCount = it.voteCount
             )
-        }
+        } ?: emptyList()
     }
 
     private fun getImageUrl(movie: TmdbNet.Movie) =
