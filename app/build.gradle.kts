@@ -64,22 +64,17 @@ dependencies {
     // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+    // Work Manager
+    implementation("androidx.work:work-runtime-ktx:2.7.1")
 
     // Koin Core features
     implementation("io.insert-koin:koin-android:$koinVersion")
-    // Koin - Jetpack WorkManager
-    implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
-    // Koin - Navigation Graph
-    implementation("io.insert-koin:koin-androidx-navigation:$koinVersion")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
 
     // Image loading library
     implementation("io.coil-kt:coil:1.1.1")
-
-    // Work Manager
-    implementation("androidx.work:work-runtime-ktx:2.7.1")
 
     // Tests
     testImplementation("junit:junit:4.13.2")

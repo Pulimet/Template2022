@@ -4,7 +4,7 @@ import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.example.ExampleActivity
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 
-class HomeViewModel() : BaseViewModel() {
+class HomeViewModel : BaseViewModel() {
 
     lateinit var navViewModel: NavViewModel
 
