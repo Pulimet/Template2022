@@ -13,7 +13,8 @@ class HomeViewModel() : BaseViewModel() {
     }
 
     fun onBtnOpenActivityClick() {
-        navViewModel.startActivity(ExampleActivity::class.java)
+        //navViewModel.startActivity(ExampleActivity::class.java)
+        navViewModel.navigateTo(HomeFragmentDirections.actionHomeFragmentToExampleActivity())
     }
 
     fun onBntMoviesClick() {

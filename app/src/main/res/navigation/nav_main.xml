@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_moviesListFragment"
             app:destination="@id/moviesListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_exampleActivity"
+            app:destination="@id/exampleActivity" />
     </fragment>
 
     <fragment
@@ -61,4 +64,9 @@
         android:name="net.alexandroid.template2022.ui.movies.settings.MovieSettingsFragment"
         android:label="MovieSettingsFragment"
         tools:layout="@layout/fragment_movie_settings" />
+    <activity
+        android:id="@+id/exampleActivity"
+        android:name="net.alexandroid.template2022.ui.example.ExampleActivity"
+        android:label="activity_example"
+        tools:layout="@layout/activity_example" />
 </navigation>

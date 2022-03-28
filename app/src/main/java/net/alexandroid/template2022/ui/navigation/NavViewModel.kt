@@ -8,9 +8,9 @@ import kotlinx.coroutines.flow.StateFlow
 import net.alexandroid.template2022.ui.base.BaseViewModel
 
 class NavViewModel : BaseViewModel() {
-    // Fragment Navigation Support
+    // Navigation Support
     private val _navigate = MutableStateFlow(NavParams())
-    val getChangeFragment: StateFlow<NavParams> = _navigate
+    val getChangeNavigation: StateFlow<NavParams> = _navigate
 
     fun navigateTo(navDirections: NavDirections, extras: FragmentNavigator.Extras? = null) {
         _navigate.value = NavParams(navDirections, extras)

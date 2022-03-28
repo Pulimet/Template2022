@@ -45,16 +45,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeFragmentNavigation() {
-        navViewModel.getChangeFragment.collectIt(this) { navParams ->
+        navViewModel.getChangeNavigation.collectIt(this) { navParams ->
             try {
-                navigateToFragment(navParams)
+                navigateTo(navParams)
             } catch (e: IllegalArgumentException) {
                 logE(t = e)
             }
         }
     }
 
-    private fun navigateToFragment(navParams: NavParams) {
+    private fun navigateTo(navParams: NavParams) {
         if (navParams.navDirections == null) return
         navController.navigate(
             navParams.navDirections.actionId,
@@ -76,8 +76,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun startActivity(intentParams: IntentParams) {
         if (intentParams.intent == null) return
-        intentParams.clazz?.let {
-            intentParams.intent.setClass(this, intentParams.clazz)
+        intentParams.clazz?.let { clazz ->
+            intentParams.intent.setClass(this, clazz)
         }
         startActivity(intentParams.intent)
         if (intentParams.finish) finish()
