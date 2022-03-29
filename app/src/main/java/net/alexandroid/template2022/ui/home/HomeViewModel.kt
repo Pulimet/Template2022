@@ -1,7 +1,6 @@
 package net.alexandroid.template2022.ui.home
 
 import net.alexandroid.template2022.ui.base.BaseViewModel
-import net.alexandroid.template2022.ui.example.ExampleActivity
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 
 class HomeViewModel : BaseViewModel() {
@@ -19,5 +18,9 @@ class HomeViewModel : BaseViewModel() {
 
     fun onBntMoviesClick() {
         navViewModel.navigateTo(HomeFragmentDirections.actionHomeFragmentToMoviesListFragment())
+    }
+
+    fun onBtnApiClick() {
+        navViewModel.navigateTo(HomeFragmentDirections.actionHomeFragmentToApiFragment())
     }
 }

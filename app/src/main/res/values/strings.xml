@@ -9,6 +9,10 @@
     <!-- Movies -->
     <string name="movies">Movies</string>
 
+    <!-- API -->
+    <string name="api">API</string>
+
+
     <!--Movies Menu -->
     <string name="action_settings">Settings</string>
     <string name="action_schedule">Schedule</string>

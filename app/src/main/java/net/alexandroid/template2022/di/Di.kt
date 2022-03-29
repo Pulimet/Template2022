@@ -16,6 +16,7 @@ import net.alexandroid.template2022.network.utils.NetworkObjectsCreator.createWe
 import net.alexandroid.template2022.repo.MovieSettingsRepo
 import net.alexandroid.template2022.repo.MoviesRepo
 import net.alexandroid.template2022.ui.MainViewModel
+import net.alexandroid.template2022.ui.api.ApiViewModel
 import net.alexandroid.template2022.ui.example.ExampleViewModel
 import net.alexandroid.template2022.ui.home.HomeViewModel
 import net.alexandroid.template2022.ui.movies.details.MovieDetailsViewModel
@@ -92,6 +93,7 @@ object Di {
         viewModel { MovieDetailsViewModel(get()) }
         viewModel { MovieFavoritesViewModel(get()) }
         viewModel { MovieSettingsViewModel(get(), get()) }
+        viewModel { ApiViewModel() }
     }
 
     private val networkModule = module {
