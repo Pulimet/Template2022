@@ -74,7 +74,7 @@
         tools:layout="@layout/activity_example" />
     <fragment
         android:id="@+id/apiListFragment"
-        android:name="net.alexandroid.template2022.ui.api.ApiListFragment"
+        android:name="net.alexandroid.template2022.ui.api.list.ApiListFragment"
         android:label="ApiListFragment"
         tools:layout="@layout/fragment_api_list">
         <action
@@ -83,7 +83,7 @@
     </fragment>
     <fragment
         android:id="@+id/apiAddFragment"
-        android:name="net.alexandroid.template2022.ui.api.ApiAddFragment"
+        android:name="net.alexandroid.template2022.ui.api.add.ApiAddFragment"
         android:label="ApiAddFragment"
         tools:layout="@layout/fragment_add_api" />
 </navigation>

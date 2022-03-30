@@ -16,8 +16,8 @@ import net.alexandroid.template2022.network.utils.NetworkObjectsCreator.createWe
 import net.alexandroid.template2022.repo.MovieSettingsRepo
 import net.alexandroid.template2022.repo.MoviesRepo
 import net.alexandroid.template2022.ui.MainViewModel
-import net.alexandroid.template2022.ui.api.ApiAddViewModel
-import net.alexandroid.template2022.ui.api.ApiListViewModel
+import net.alexandroid.template2022.ui.api.add.ApiAddViewModel
+import net.alexandroid.template2022.ui.api.list.ApiListViewModel
 import net.alexandroid.template2022.ui.example.ExampleViewModel
 import net.alexandroid.template2022.ui.home.HomeViewModel
 import net.alexandroid.template2022.ui.movies.details.MovieDetailsViewModel

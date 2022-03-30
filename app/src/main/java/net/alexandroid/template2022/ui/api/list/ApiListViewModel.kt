@@ -1,4 +1,4 @@
-package net.alexandroid.template2022.ui.api
+package net.alexandroid.template2022.ui.api.list
 
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
