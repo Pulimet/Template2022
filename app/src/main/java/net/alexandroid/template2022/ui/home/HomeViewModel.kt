@@ -21,6 +21,6 @@ class HomeViewModel : BaseViewModel() {
     }
 
     fun onBtnApiClick() {
-        navViewModel.navigateTo(HomeFragmentDirections.actionHomeFragmentToApiFragment())
+        navViewModel.navigateTo(HomeFragmentDirections.actionHomeFragmentToApiListFragment())
     }
 }

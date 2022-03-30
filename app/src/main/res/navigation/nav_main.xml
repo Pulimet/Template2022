@@ -20,8 +20,8 @@
             android:id="@+id/action_homeFragment_to_exampleActivity"
             app:destination="@id/exampleActivity" />
         <action
-            android:id="@+id/action_homeFragment_to_apiFragment"
-            app:destination="@id/apiFragment" />
+            android:id="@+id/action_homeFragment_to_apiListFragment"
+            app:destination="@id/apiListFragment" />
     </fragment>
 
     <fragment
@@ -73,8 +73,8 @@
         android:label="activity_example"
         tools:layout="@layout/activity_example" />
     <fragment
-        android:id="@+id/apiFragment"
-        android:name="net.alexandroid.template2022.ui.api.ApiFragment"
-        android:label="ApiFragment"
-        tools:layout="@layout/fragment_api" />
+        android:id="@+id/apiListFragment"
+        android:name="net.alexandroid.template2022.ui.api.ApiListFragment"
+        android:label="ApiListFragment"
+        tools:layout="@layout/fragment_api_list" />
 </navigation>
