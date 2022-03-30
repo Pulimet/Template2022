@@ -24,14 +24,14 @@ class ApiFragment : Fragment(R.layout.fragment_api), View.OnClickListener {
 
     private fun setClickListener() {
         setOnClickListeners(
-            binding.tvText
+            binding.fabAddApi
         )
     }
 
     //  View.OnClickListener
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.tvText -> {}
+            R.id.fabAddApi -> viewModel.onFabAddApiClick()
         }
     }
 }

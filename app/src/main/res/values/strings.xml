@@ -8,10 +8,11 @@
 
     <!-- Movies -->
     <string name="movies">Movies</string>
+    <string name="notif_msg_loading_movies">Loading fresh movies list</string>
 
     <!-- API -->
     <string name="api">API</string>
-
+    <string name="add_api">Add API</string>
 
     <!--Movies Menu -->
     <string name="action_settings">Settings</string>
@@ -27,8 +28,6 @@
     <string name="minimum_rating">Minimum rating:</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
-    <string name="notif_msg_loading_movies">Loading fresh movies list</string>
-
     <!-- Unsorted -->
 
 </resources>
