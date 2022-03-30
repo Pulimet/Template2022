@@ -76,5 +76,14 @@
         android:id="@+id/apiListFragment"
         android:name="net.alexandroid.template2022.ui.api.ApiListFragment"
         android:label="ApiListFragment"
-        tools:layout="@layout/fragment_api_list" />
+        tools:layout="@layout/fragment_api_list">
+        <action
+            android:id="@+id/action_apiListFragment_to_apiAddFragment"
+            app:destination="@id/apiAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/apiAddFragment"
+        android:name="net.alexandroid.template2022.ui.api.ApiAddFragment"
+        android:label="ApiAddFragment"
+        tools:layout="@layout/fragment_add_api" />
 </navigation>
