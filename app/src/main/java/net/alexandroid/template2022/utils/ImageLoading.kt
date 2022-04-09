@@ -8,6 +8,7 @@ import net.alexandroid.template2022.db.model.Movie
 class ImageLoading(private val context: Context, private val imageLoader: ImageLoader) {
     fun preloadImages(list: List<Movie>?) {
         list?.forEach {
+            if (it.posterUrl == null) return@forEach
             val request = ImageRequest.Builder(context)
                 .data(it.posterUrl)
                 // Optional, but setting a ViewSizeResolver will conserve memory by limiting the size the image should be preloaded into memory at.

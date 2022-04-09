@@ -18,6 +18,7 @@ class MovieWorker(context: Context, params: WorkerParameters) :
         private const val WORK_NAME_FETCH_MOVIES = "WORK_NAME_FETCH_MOVIES"
 
         fun launch(workManager: WorkManager) {
+            logD("WorkManager.enqueueUniquePeriodicWork(...)")
             workManager.enqueueUniquePeriodicWork(
                 WORK_NAME_FETCH_MOVIES,
                 ExistingPeriodicWorkPolicy.KEEP,
