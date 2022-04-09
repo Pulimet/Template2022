@@ -23,15 +23,14 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
     }
 
     private fun setClickListener() {
-        setOnClickListeners(
-            binding.tvText
-        )
+        setOnClickListeners(binding.fabSave, binding.fabAddParam)
     }
 
     //  View.OnClickListener
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.tvText -> {}
+            R.id.fabSave -> viewModel.onSaveBtnClick()
+            R.id.fabAddParam -> viewModel.onAddParamBtnClick()
         }
     }
 }

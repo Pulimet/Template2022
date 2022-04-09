@@ -5,4 +5,12 @@ import net.alexandroid.template2022.ui.navigation.NavViewModel
 
 class ApiAddViewModel : BaseViewModel() {
     lateinit var navViewModel: NavViewModel
+
+    fun onSaveBtnClick() {
+
+    }
+
+    fun onAddParamBtnClick() {
+
+    }
 }
