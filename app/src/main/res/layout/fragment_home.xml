@@ -6,7 +6,7 @@
 
     <Button
         android:id="@+id/btnOpenFragment"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/btn_width"
         android:layout_height="wrap_content"
         android:text="@string/open_example_fragment"
         app:layout_constraintEnd_toStartOf="@id/btnOpenActivity"
@@ -15,7 +15,7 @@
 
     <Button
         android:id="@+id/btnOpenActivity"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/btn_width"
         android:layout_height="wrap_content"
         android:text="@string/open_example_activity"
         app:layout_constraintEnd_toStartOf="@id/btnMovies"
@@ -24,7 +24,7 @@
 
     <Button
         android:id="@+id/btnMovies"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/btn_width"
         android:layout_height="wrap_content"
         android:text="@string/movies"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
 
     <Button
         android:id="@+id/btnApi"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/btn_width"
         android:layout_height="wrap_content"
         android:text="@string/api"
         app:layout_constraintEnd_toEndOf="parent"

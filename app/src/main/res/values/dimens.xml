@@ -14,4 +14,5 @@
     <dimen name="settings_value_width">60dp</dimen>
     <dimen name="settings_button_width">50dp</dimen>
     <dimen name="settings_button_text_size">28sp</dimen>
+    <dimen name="btn_width">120dp</dimen>
 </resources>
