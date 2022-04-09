@@ -31,6 +31,7 @@
     <string name="base_url">Base URL (ex: http://google.com)</string>
     <string name="desc_base_url_icon">Base Url Icon</string>
     <string name="save">Save</string>
+    <string name="import_it">Import</string>
     <string name="desc_add_query_param">Add Query Param</string>
 
 

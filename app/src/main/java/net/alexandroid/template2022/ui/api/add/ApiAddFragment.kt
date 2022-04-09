@@ -23,7 +23,7 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
     }
 
     private fun setClickListener() {
-        setOnClickListeners(binding.fabSave, binding.fabAddParam)
+        setOnClickListeners(binding.fabSave, binding.fabAddParam, binding.fabImport)
     }
 
     //  View.OnClickListener
@@ -31,6 +31,7 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
         when (v?.id) {
             R.id.fabSave -> viewModel.onSaveBtnClick()
             R.id.fabAddParam -> viewModel.onAddParamBtnClick()
+            R.id.fabImport -> viewModel.onImportBtnClick()
         }
     }
 }
