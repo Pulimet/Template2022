@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="net.alexandroid.template2022.ui.home.HomeFragment"
-        android:label="HomeFragment"
+        android:label="Home"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_exampleFragment"
@@ -27,12 +27,12 @@
     <fragment
         android:id="@+id/exampleFragment"
         android:name="net.alexandroid.template2022.ui.example.ExampleFragment"
-        android:label="ExampleFragment"
+        android:label="Example of Fragment"
         tools:layout="@layout/fragment_example" />
     <fragment
         android:id="@+id/moviesListFragment"
         android:name="net.alexandroid.template2022.ui.movies.list.MoviesListFragment"
-        android:label="MoviesListFragment"
+        android:label="Movies List"
         tools:layout="@layout/fragment_movies_list">
         <action
             android:id="@+id/action_moviesListFragment_to_movieDetailsFragment"
@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/movieDetailsFragment"
         android:name="net.alexandroid.template2022.ui.movies.details.MovieDetailsFragment"
-        android:label="MovieDetailsFragment"
+        android:label="Movie Details"
         tools:layout="@layout/fragment_movie_details">
         <argument
             android:name="movie"
@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/movieFavoritesFragment"
         android:name="net.alexandroid.template2022.ui.movies.favorites.MovieFavoritesFragment"
-        android:label="MovieFavoritesFragment"
+        android:label="Movie Favorites"
         tools:layout="@layout/fragment_movie_favorites">
         <action
             android:id="@+id/action_movieFavoritesFragment_to_movieDetailsFragment"
@@ -65,7 +65,7 @@
     <fragment
         android:id="@+id/movieSettingsFragment"
         android:name="net.alexandroid.template2022.ui.movies.settings.MovieSettingsFragment"
-        android:label="MovieSettingsFragment"
+        android:label="Movie Settings"
         tools:layout="@layout/fragment_movie_settings" />
     <activity
         android:id="@+id/exampleActivity"
@@ -75,7 +75,7 @@
     <fragment
         android:id="@+id/apiListFragment"
         android:name="net.alexandroid.template2022.ui.api.list.ApiListFragment"
-        android:label="ApiListFragment"
+        android:label="Api List"
         tools:layout="@layout/fragment_api_list">
         <action
             android:id="@+id/action_apiListFragment_to_apiAddFragment"
@@ -84,6 +84,6 @@
     <fragment
         android:id="@+id/apiAddFragment"
         android:name="net.alexandroid.template2022.ui.api.add.ApiAddFragment"
-        android:label="ApiAddFragment"
+        android:label="Add Api"
         tools:layout="@layout/fragment_add_api" />
 </navigation>
