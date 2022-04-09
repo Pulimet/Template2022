@@ -30,7 +30,7 @@ class MovieWorker(context: Context, params: WorkerParameters) :
     private val moviesRepo: MoviesRepo by inject()
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
-        val message = applicationContext.getString(R.string.notif_msg_loading_movies)
+        val message = applicationContext.getString(R.string.notify_msg_loading_movies)
         return ForegroundInfo(
             Notifications.NOTIFICATION_ID,
             Notifications.createMoviesNotification(message, applicationContext)

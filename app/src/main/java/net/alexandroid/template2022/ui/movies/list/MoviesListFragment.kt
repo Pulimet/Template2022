@@ -23,6 +23,7 @@ import net.alexandroid.template2022.ui.movies.recycler.OnMovieClickListener
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.collectIt
 import net.alexandroid.template2022.utils.logs.logD
+import net.alexandroid.template2022.utils.showToast
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -129,6 +130,7 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), OnMovieClick
             }
             R.id.action_schedule -> {
                 viewModel.onMenuScheduleClick()
+                showToast(R.string.toast_schedule_movies_fetch)
                 true
             }
             else -> super.onOptionsItemSelected(item)

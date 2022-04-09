@@ -1,6 +1,9 @@
 package net.alexandroid.template2022.utils
 
 import android.view.View
+import android.widget.Toast
+import androidx.annotation.StringRes
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
@@ -33,4 +36,8 @@ fun LifecycleOwner.launchOnStarted(function: () -> Unit) {
 // Set on click listener
 fun View.OnClickListener.setOnClickListeners(vararg views: View) {
     views.forEach { it.setOnClickListener(this) }
+}
+
+fun Fragment.showToast(@StringRes resource: Int) {
+    Toast.makeText(context, getString(resource), Toast.LENGTH_SHORT).show()
 }

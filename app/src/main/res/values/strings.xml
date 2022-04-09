@@ -8,7 +8,8 @@
 
     <!-- Movies -->
     <string name="movies">Movies</string>
-    <string name="notif_msg_loading_movies">Loading fresh movies list</string>
+    <string name="notify_msg_loading_movies">Loading fresh movies list</string>
+    <string name="toast_schedule_movies_fetch">Movies will be fetched every 15 minutes</string>
 
     <!--Movies Menu -->
     <string name="action_settings">Settings</string>
