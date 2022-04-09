@@ -6,6 +6,8 @@ import net.alexandroid.template2022.utils.logs.logD
 
 class ApiAddViewModel : BaseViewModel() {
     lateinit var navViewModel: NavViewModel
+    var tempKey: String = ""
+    var tempValue: String = ""
 
     fun onSaveBtnClick() {
         logD()

@@ -36,6 +36,8 @@
     <string name="import_it">Import</string>
     <string name="desc_add_query_param">Add Query Param</string>
     <string name="add_parameter">Add Parameter</string>
+    <string name="key">Key</string>
+    <string name="value">Value</string>
 
 
     <!-- Unsorted -->
