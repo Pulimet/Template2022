@@ -13,7 +13,6 @@ import androidx.lifecycle.LifecycleOwner
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import net.alexandroid.template2022.R
-import net.alexandroid.template2022.utils.logs.logD
 
 class AddParamDialog(private val submitCallBack: SubmitCallBack) : View.OnClickListener,
     TextView.OnEditorActionListener, DialogInterface.OnDismissListener, DefaultLifecycleObserver {
@@ -24,6 +23,7 @@ class AddParamDialog(private val submitCallBack: SubmitCallBack) : View.OnClickL
     private var btnAddParam: View? = null
 
     fun show(context: Context) {
+        if (dialogAddParam != null) return
         dialogAddParam = MaterialAlertDialogBuilder(context)
             .setView(R.layout.dialog_add_param)
             .setOnDismissListener(this)
