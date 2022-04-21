@@ -2,6 +2,7 @@ package net.alexandroid.template2022.ui.api.add
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import net.alexandroid.template2022.R
 import net.alexandroid.template2022.databinding.FragmentAddApiBinding
@@ -24,17 +25,28 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.navViewModel = navViewModel
-        setClickListener()
-
         lifecycle.addObserver(addParamDialog)
+        observeViewModel()
+        setListeners()
+    }
 
-        viewModel.showDialog.collectIt(viewLifecycleOwner) {
-            if (it) addParamDialog.show(requireContext())
+    private fun observeViewModel() {
+        viewModel.apply {
+            showDialog.collectIt(viewLifecycleOwner) { if (it) addParamDialog.show(requireContext()) }
+            addBtnState.collectIt(viewLifecycleOwner) { binding.fabAddParam.isEnabled = it }
+            saveBtnState.collectIt(viewLifecycleOwner) { binding.fabSave.isEnabled = it }
+            baseUrlError.collectIt(viewLifecycleOwner) {
+                binding.tilBaseUrl.error = if (it == 0) "" else getString(it)
+            }
         }
     }
 
-    private fun setClickListener() {
+    private fun setListeners() {
         setOnClickListeners(binding.fabSave, binding.fabAddParam, binding.fabImport)
+
+        binding.tilBaseUrl.editText?.addTextChangedListener {
+            it?.let { url -> viewModel.onBaseUrlStateChange(url.toString()) }
+        }
     }
 
     //  View.OnClickListener

@@ -38,6 +38,7 @@
     <string name="add_parameter">Add Parameter</string>
     <string name="key">Key</string>
     <string name="value">Value</string>
+    <string name="not_valid_url">Not valid URL</string>
 
 
     <!-- Unsorted -->
