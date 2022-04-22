@@ -12,9 +12,7 @@ import net.alexandroid.template2022.db.model.Movie
 class MovieAdapter(
     private val listener: OnMovieClickListener,
     private val imageLoader: ImageLoader
-) : ListAdapter<Movie, MovieHolder>(MovieDiff()), CoroutineScope {
-
-    override val coroutineContext = Dispatchers.Main
+) : ListAdapter<Movie, MovieHolder>(MovieDiff()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)

@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/layout/fragment_movie_settings.xml" value="0.3890625" />
         <entry key="app/src/main/res/layout/fragment_movies_list.xml" value="0.3411458333333333" />
         <entry key="app/src/main/res/layout/item_movie.xml" value="0.3411458333333333" />
+        <entry key="app/src/main/res/layout/item_param.xml" value="0.15052083333333333" />
         <entry key="app/src/main/res/menu/movies.xml" value="0.16666666666666666" />
       </map>
     </option>

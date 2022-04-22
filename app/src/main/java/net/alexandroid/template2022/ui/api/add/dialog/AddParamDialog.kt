@@ -1,4 +1,4 @@
-package net.alexandroid.template2022.ui.api.add
+package net.alexandroid.template2022.ui.api.add.dialog
 
 import android.content.Context
 import android.content.DialogInterface
