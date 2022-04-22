@@ -15,3 +15,5 @@
 local.properties
 /app/release/app-release.apk
 /app/release/output-metadata.json
+/db/schemas/net.alexandroid.template2022.db.db.ApiDatabase/*.json
+/db/schemas/net.alexandroid.template2022.db.db.MovieDatabase/*.json
