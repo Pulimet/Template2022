@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import net.alexandroid.template2022.db.dao.MovieDao
 import net.alexandroid.template2022.db.dao.MovieFavoriteDao
-import net.alexandroid.template2022.db.model.Movie
-import net.alexandroid.template2022.db.model.MovieFavorite
+import net.alexandroid.template2022.db.model.movies.Movie
+import net.alexandroid.template2022.db.model.movies.MovieFavorite
 import net.alexandroid.template2022.db.utils.MovieModelConverter
 import net.alexandroid.template2022.network.services.TmdbApiService
 import net.alexandroid.template2022.utils.ImageLoading

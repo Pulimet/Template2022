@@ -4,7 +4,7 @@ import android.util.Patterns
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import net.alexandroid.template2022.R
-import net.alexandroid.template2022.ui.api.add.recycler.Param
+import net.alexandroid.template2022.db.model.api.Param
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.logs.logD

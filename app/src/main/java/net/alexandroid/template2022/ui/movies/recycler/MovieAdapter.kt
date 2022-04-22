@@ -4,10 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import coil.ImageLoader
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import net.alexandroid.template2022.R
-import net.alexandroid.template2022.db.model.Movie
+import net.alexandroid.template2022.db.model.movies.Movie
 
 class MovieAdapter(
     private val listener: OnMovieClickListener,

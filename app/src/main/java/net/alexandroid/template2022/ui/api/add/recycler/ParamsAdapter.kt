@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import net.alexandroid.template2022.R
+import net.alexandroid.template2022.db.model.api.Param
 
 class ParamsAdapter(private val listener: OnParamAction) :
     ListAdapter<Param, ParamHolder>(ParamDiff()) {

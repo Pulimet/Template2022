@@ -3,7 +3,7 @@ package net.alexandroid.template2022.utils
 import android.content.Context
 import coil.ImageLoader
 import coil.request.ImageRequest
-import net.alexandroid.template2022.db.model.Movie
+import net.alexandroid.template2022.db.model.movies.Movie
 
 class ImageLoading(private val context: Context, private val imageLoader: ImageLoader) {
     fun preloadImages(list: List<Movie>?) {

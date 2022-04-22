@@ -6,7 +6,8 @@ import androidx.work.WorkManager
 import coil.ImageLoader
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
-import net.alexandroid.template2022.db.MovieDatabase
+import net.alexandroid.template2022.db.db.ApiDatabase
+import net.alexandroid.template2022.db.db.MovieDatabase
 import net.alexandroid.template2022.di.Prefs.rating
 import net.alexandroid.template2022.di.Prefs.votes
 import net.alexandroid.template2022.network.NetworkConstants
@@ -114,7 +115,13 @@ object Di {
                 androidContext(), MovieDatabase::class.java, "movies_database"
             ).build()
         }
+        single {
+            Room.databaseBuilder(
+                androidContext(), ApiDatabase::class.java, "api_database"
+            ).build()
+        }
         single { get<MovieDatabase>().movieDao() }
         single { get<MovieDatabase>().movieFavoriteDao() }
+        single { get<ApiDatabase>().apiDao() }
     }
 }

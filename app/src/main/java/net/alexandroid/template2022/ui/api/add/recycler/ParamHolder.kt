@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import net.alexandroid.template2022.databinding.ItemParamBinding
+import net.alexandroid.template2022.db.model.api.Param
 
 class ParamHolder(v: View, private val listener: OnParamAction) :
     RecyclerView.ViewHolder(v), View.OnClickListener {

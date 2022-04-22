@@ -3,8 +3,8 @@ package net.alexandroid.template2022.ui.movies.details
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import net.alexandroid.template2022.db.model.Movie
-import net.alexandroid.template2022.db.model.MovieFavorite
+import net.alexandroid.template2022.db.model.movies.Movie
+import net.alexandroid.template2022.db.model.movies.MovieFavorite
 import net.alexandroid.template2022.repo.MoviesRepo
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel

@@ -1,4 +1,4 @@
-package net.alexandroid.template2022.db.model
+package net.alexandroid.template2022.db.model.movies
 
 import android.os.Parcelable
 import androidx.room.Entity

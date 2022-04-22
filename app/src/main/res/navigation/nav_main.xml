@@ -51,7 +51,7 @@
         tools:layout="@layout/fragment_movie_details">
         <argument
             android:name="movie"
-            app:argType="net.alexandroid.template2022.db.model.Movie" />
+            app:argType="net.alexandroid.template2022.db.model.movies.Movie" />
     </fragment>
     <fragment
         android:id="@+id/movieFavoritesFragment"

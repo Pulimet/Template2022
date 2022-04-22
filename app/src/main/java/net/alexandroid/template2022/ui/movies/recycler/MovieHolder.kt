@@ -8,7 +8,7 @@ import coil.ImageLoader
 import coil.request.ImageRequest
 import coil.size.Scale
 import net.alexandroid.template2022.databinding.ItemMovieBinding
-import net.alexandroid.template2022.db.model.Movie
+import net.alexandroid.template2022.db.model.movies.Movie
 
 class MovieHolder(v: View, private val listener: OnMovieClickListener) :
     RecyclerView.ViewHolder(v), View.OnClickListener {

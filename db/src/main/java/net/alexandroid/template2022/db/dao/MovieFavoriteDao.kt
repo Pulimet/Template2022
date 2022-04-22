@@ -2,7 +2,7 @@ package net.alexandroid.template2022.db.dao
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
-import net.alexandroid.template2022.db.model.MovieFavorite
+import net.alexandroid.template2022.db.model.movies.MovieFavorite
 
 @Dao
 interface MovieFavoriteDao {

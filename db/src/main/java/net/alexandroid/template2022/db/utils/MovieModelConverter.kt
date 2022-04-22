@@ -1,7 +1,7 @@
 package net.alexandroid.template2022.db.utils
 
-import net.alexandroid.template2022.db.model.Movie
-import net.alexandroid.template2022.db.model.MovieFavorite
+import net.alexandroid.template2022.db.model.movies.Movie
+import net.alexandroid.template2022.db.model.movies.MovieFavorite
 import net.alexandroid.template2022.network.models.TmdbNet
 import java.text.SimpleDateFormat
 import java.util.*

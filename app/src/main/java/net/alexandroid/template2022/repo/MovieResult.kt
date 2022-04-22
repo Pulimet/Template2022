@@ -1,6 +1,6 @@
 package net.alexandroid.template2022.repo
 
-import net.alexandroid.template2022.db.model.Movie
+import net.alexandroid.template2022.db.model.movies.Movie
 
 sealed class MovieResult {
     object Empty : MovieResult()

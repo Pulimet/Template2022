@@ -12,7 +12,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import net.alexandroid.template2022.R
 import net.alexandroid.template2022.databinding.FragmentMovieFavoritesBinding
-import net.alexandroid.template2022.db.model.Movie
+import net.alexandroid.template2022.db.model.movies.Movie
 import net.alexandroid.template2022.ui.binding.FragmentBinding
 import net.alexandroid.template2022.ui.movies.recycler.MovieAdapter
 import net.alexandroid.template2022.ui.movies.recycler.OnMovieClickListener
