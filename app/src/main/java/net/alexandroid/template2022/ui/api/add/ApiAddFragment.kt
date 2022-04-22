@@ -57,7 +57,7 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
     private fun setListeners() {
         setOnClickListeners(binding.fabSave, binding.fabAddParam, binding.fabImport)
 
-        binding.tilBaseUrl.editText?.addTextChangedListener {
+        binding.etBaseUrl.addTextChangedListener {
             it?.let { url -> viewModel.onBaseUrlStateChange(url.toString()) }
         }
     }
