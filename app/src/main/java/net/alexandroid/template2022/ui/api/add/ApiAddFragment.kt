@@ -9,12 +9,12 @@ import net.alexandroid.template2022.R
 import net.alexandroid.template2022.databinding.FragmentAddApiBinding
 import net.alexandroid.template2022.ui.api.add.dialog.AddParamDialog
 import net.alexandroid.template2022.ui.api.add.recycler.OnParamAction
-import net.alexandroid.template2022.ui.api.add.recycler.Param
 import net.alexandroid.template2022.ui.api.add.recycler.ParamsAdapter
 import net.alexandroid.template2022.ui.binding.FragmentBinding
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.collectIt
 import net.alexandroid.template2022.utils.setOnClickListeners
+import net.alexandroid.template2022.utils.showToast
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,24 +34,6 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
         observeViewModel()
         setListeners()
         setParamsRecyclerView()
-        paramsAdapter?.submitList(
-            mutableListOf(
-                Param("1", "2"),
-                Param("3", "4"),
-                Param("5", "6"),
-                Param("7", "8"),
-                Param("9", "10"),
-                Param("11", "12"),
-                Param("13", "14"),
-                Param("15", "16"),
-                Param("17", "18"),
-                Param("19", "20"),
-                Param("21", "22"),
-                Param("23", "24"),
-                Param("25", "26"),
-                Param("27", "28"),
-            )
-        )
     }
 
     override fun onDestroyView() {
@@ -64,6 +46,8 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
             showDialog.collectIt(viewLifecycleOwner) { if (it) addParamDialog.show(requireContext()) }
             addBtnState.collectIt(viewLifecycleOwner) { binding.fabAddParam.isEnabled = it }
             saveBtnState.collectIt(viewLifecycleOwner) { binding.fabSave.isEnabled = it }
+            paramsList.collectIt(viewLifecycleOwner) { paramsAdapter?.submitList(it) }
+            showToast.collectIt(viewLifecycleOwner) { if (it != 0) showToast(it) }
             baseUrlError.collectIt(viewLifecycleOwner) {
                 binding.tilBaseUrl.error = if (it == 0) "" else getString(it)
             }

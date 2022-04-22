@@ -39,6 +39,7 @@
     <string name="key">Key</string>
     <string name="value">Value</string>
     <string name="not_valid_url">Not valid URL</string>
+    <string name="not_valid_key">Key can\'t be empty</string>
 
 
     <!-- Unsorted -->
