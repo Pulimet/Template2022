@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toStartOf="@id/tvValue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.5"
+        app:layout_constraintWidth_percent="0.3"
         tools:text="key:"
         tools:ignore="RtlSymmetry" />
 
@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvKey"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.5"
+        app:layout_constraintWidth_percent="0.7"
         tools:text="value" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
