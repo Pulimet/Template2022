@@ -23,16 +23,6 @@ fun <T> StateFlow<T>.collectIt(lifecycleOwner: LifecycleOwner, function: (T) -> 
     }
 }
 
-// Launch function on coroutine when Activity STARTED.
-// Useful when you need to collect multiple StateFlows.
-fun LifecycleOwner.launchOnStarted(function: () -> Unit) {
-    lifecycleScope.launch {
-        repeatOnLifecycle(Lifecycle.State.STARTED) {
-            function.invoke()
-        }
-    }
-}
-
 // Set on click listener
 fun View.OnClickListener.setOnClickListeners(vararg views: View) {
     views.forEach { it.setOnClickListener(this) }

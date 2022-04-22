@@ -30,6 +30,11 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
         setListeners()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        lifecycle.removeObserver(addParamDialog)
+    }
+
     private fun observeViewModel() {
         viewModel.apply {
             showDialog.collectIt(viewLifecycleOwner) { if (it) addParamDialog.show(requireContext()) }
