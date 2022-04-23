@@ -13,4 +13,6 @@ class ApiRepo(private val apiDao: ApiDao) {
         apiDao.insert(api)
     }
 
+    fun getAll() = apiDao.getApis()
+
 }

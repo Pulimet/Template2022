@@ -101,7 +101,7 @@ object Di {
         viewModel { MovieSettingsViewModel(get(), get()) }
 
         // Api
-        viewModel { ApiListViewModel() }
+        viewModel { ApiListViewModel(get()) }
         viewModel { ApiAddViewModel(get(), get()) }
     }
 

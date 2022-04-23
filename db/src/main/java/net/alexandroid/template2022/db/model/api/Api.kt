@@ -9,7 +9,6 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "api")
 data class Api(
     @PrimaryKey
-    val id: Int = 0,
     val baseUrl: String,
     val params: List<Param>
 ) : Parcelable {

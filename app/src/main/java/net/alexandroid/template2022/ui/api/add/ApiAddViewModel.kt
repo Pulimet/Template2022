@@ -63,7 +63,7 @@ class ApiAddViewModel(
 
     fun onSaveBtnClick(baseUrl: String) {
         viewModelScope.launch(ioCoroutineContext) {
-            apiRepo.addApi(Api(baseUrl = baseUrl, params = paramsList.value))
+            apiRepo.addApi(Api(baseUrl, paramsList.value))
         }
         navViewModel.navigateUp()
     }
