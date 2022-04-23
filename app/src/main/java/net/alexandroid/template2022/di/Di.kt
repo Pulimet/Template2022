@@ -14,8 +14,9 @@ import net.alexandroid.template2022.network.NetworkConstants
 import net.alexandroid.template2022.network.services.TmdbApiService
 import net.alexandroid.template2022.network.utils.NetworkObjectsCreator
 import net.alexandroid.template2022.network.utils.NetworkObjectsCreator.createWebService
-import net.alexandroid.template2022.repo.MovieSettingsRepo
-import net.alexandroid.template2022.repo.MoviesRepo
+import net.alexandroid.template2022.repo.api.ApiRepo
+import net.alexandroid.template2022.repo.movie.MovieSettingsRepo
+import net.alexandroid.template2022.repo.movie.MoviesRepo
 import net.alexandroid.template2022.ui.MainViewModel
 import net.alexandroid.template2022.ui.api.add.ApiAddViewModel
 import net.alexandroid.template2022.ui.api.list.ApiListViewModel
@@ -77,6 +78,7 @@ object Di {
             )
         }
         single { MovieSettingsRepo(get(named(Prefs.MOVIE_VOTES)), get(named(Prefs.MOVIE_RATING))) }
+        single { ApiRepo(get()) }
 
         // CoroutineContext
         single {
@@ -100,7 +102,7 @@ object Di {
 
         // Api
         viewModel { ApiListViewModel() }
-        viewModel { ApiAddViewModel() }
+        viewModel { ApiAddViewModel(get(), get()) }
     }
 
     private val networkModule = module {

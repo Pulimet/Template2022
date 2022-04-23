@@ -1,4 +1,4 @@
-package net.alexandroid.template2022.repo
+package net.alexandroid.template2022.repo.movie
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

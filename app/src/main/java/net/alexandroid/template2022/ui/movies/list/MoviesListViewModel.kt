@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import net.alexandroid.template2022.db.model.movies.Movie
-import net.alexandroid.template2022.repo.MovieResult
-import net.alexandroid.template2022.repo.MoviesRepo
+import net.alexandroid.template2022.repo.movie.MovieResult
+import net.alexandroid.template2022.repo.movie.MoviesRepo
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.logs.logD

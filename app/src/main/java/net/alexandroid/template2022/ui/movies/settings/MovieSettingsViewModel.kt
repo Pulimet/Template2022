@@ -1,12 +1,10 @@
 package net.alexandroid.template2022.ui.movies.settings
 
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import net.alexandroid.template2022.repo.MovieSettingsRepo
+import net.alexandroid.template2022.repo.movie.MovieSettingsRepo
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import kotlin.coroutines.CoroutineContext

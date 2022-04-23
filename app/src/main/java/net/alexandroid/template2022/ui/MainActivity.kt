@@ -45,11 +45,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeFragmentNavigation() {
-        navViewModel.getChangeNavigation.collectIt(this) { navParams ->
-            try {
-                navigateTo(navParams)
-            } catch (e: IllegalArgumentException) {
-                logE(t = e)
+        navViewModel.apply {
+            getChangeNavigation.collectIt(this@MainActivity) { navParams ->
+                try {
+                    navigateTo(navParams)
+                } catch (e: IllegalArgumentException) {
+                    logE(t = e)
+                }
+            }
+            getNavigateUp.collectIt(this@MainActivity) {
+                if (it) navController.navigateUp()
             }
         }
     }

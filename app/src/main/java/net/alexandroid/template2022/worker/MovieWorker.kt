@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.work.*
 import kotlinx.coroutines.coroutineScope
 import net.alexandroid.template2022.R
-import net.alexandroid.template2022.repo.MoviesRepo
+import net.alexandroid.template2022.repo.movie.MoviesRepo
 import net.alexandroid.template2022.utils.Notifications
 import net.alexandroid.template2022.utils.logs.logD
 import org.koin.core.component.KoinComponent

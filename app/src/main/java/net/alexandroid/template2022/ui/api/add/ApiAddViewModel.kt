@@ -1,15 +1,23 @@
 package net.alexandroid.template2022.ui.api.add
 
 import android.util.Patterns
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 import net.alexandroid.template2022.R
+import net.alexandroid.template2022.db.model.api.Api
 import net.alexandroid.template2022.db.model.api.Param
+import net.alexandroid.template2022.repo.api.ApiRepo
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.logs.logD
+import kotlin.coroutines.CoroutineContext
 
-class ApiAddViewModel : BaseViewModel() {
+class ApiAddViewModel(
+    private val apiRepo: ApiRepo,
+    private val ioCoroutineContext: CoroutineContext
+) : BaseViewModel() {
     lateinit var navViewModel: NavViewModel
 
     private val _showDialog = MutableStateFlow(false)
@@ -53,8 +61,11 @@ class ApiAddViewModel : BaseViewModel() {
         }
     }
 
-    fun onSaveBtnClick() {
-        logD()
+    fun onSaveBtnClick(baseUrl: String) {
+        viewModelScope.launch(ioCoroutineContext) {
+            apiRepo.addApi(Api(baseUrl = baseUrl, params = paramsList.value))
+        }
+        navViewModel.navigateUp()
     }
 
     fun onImportBtnClick() {

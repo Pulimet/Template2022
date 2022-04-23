@@ -72,7 +72,7 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
     //  View.OnClickListener
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.fabSave -> viewModel.onSaveBtnClick()
+            R.id.fabSave -> viewModel.onSaveBtnClick(binding.etBaseUrl.text.toString())
             R.id.fabAddParam -> viewModel.onAddParamBtnClick()
             R.id.fabImport -> viewModel.onImportBtnClick()
         }

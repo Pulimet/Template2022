@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import net.alexandroid.template2022.db.model.movies.Movie
 import net.alexandroid.template2022.db.utils.MovieModelConverter
-import net.alexandroid.template2022.repo.MoviesRepo
+import net.alexandroid.template2022.repo.movie.MoviesRepo
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 
