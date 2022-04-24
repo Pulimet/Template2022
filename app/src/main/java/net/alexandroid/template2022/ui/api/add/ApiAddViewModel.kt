@@ -12,6 +12,8 @@ import net.alexandroid.template2022.repo.api.ApiRepo
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.logs.logD
+import java.net.URI
+import java.net.URISyntaxException
 import kotlin.coroutines.CoroutineContext
 
 class ApiAddViewModel(
@@ -41,6 +43,9 @@ class ApiAddViewModel(
 
     private val _saveBtnEnabled = MutableStateFlow(false)
     val saveBtnState: StateFlow<Boolean> = _saveBtnEnabled
+
+    private val _baseUrl = MutableStateFlow("")
+    val baseUrl: StateFlow<String> = _baseUrl
 
     private val _baseUrlError = MutableStateFlow(0)
     val baseUrlError: StateFlow<Int> = _baseUrlError
@@ -80,8 +85,36 @@ class ApiAddViewModel(
         showImportUrlDialog()
     }
 
-    fun onSubmitImportingUrl(url: String) {
-        logD("URL: $url")
+    fun onSubmitImportingUrl(inputUrl: String) {
+        logD("inputUrl: $inputUrl")
+        if (inputUrl.isEmpty()) {
+            showToast(R.string.not_valid_empty_url)
+            return
+        }
+        val url = addSchemaIfMissing(inputUrl)
+        try {
+            val uri = URI(url)
+            logD("scheme: ${uri.scheme}, domain: ${uri.host}, query: ${uri.query}")
+            _baseUrl.value = "${uri.scheme}://${uri.host}"
+            _paramsList.value.clear()
+
+            val params = uri.query.split("&")
+            params.forEach {
+                val keyValue = it.split("=")
+                if (keyValue.size == 2) {
+                    _paramsList.value.add(Param(keyValue[0], keyValue[1]))
+                }
+            }
+        } catch (e: URISyntaxException) {
+            showToast(R.string.not_valid_url)
+        }
+    }
+
+    private fun addSchemaIfMissing(inputUrl: String): String {
+        if (!inputUrl.startsWith("http://") && !inputUrl.startsWith("https://")) {
+            return "http://$inputUrl"
+        }
+        return inputUrl
     }
 
     fun onBaseUrlChanged(url: String) {

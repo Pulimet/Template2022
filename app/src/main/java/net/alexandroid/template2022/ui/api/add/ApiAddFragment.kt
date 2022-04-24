@@ -48,12 +48,23 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
 
     private fun observeViewModel() {
         viewModel.apply {
-            showAddParamDialog.collectIt(viewLifecycleOwner) { if (it) addParamDialog.show(requireContext()) }
-            showImportUrlDialog.collectIt(viewLifecycleOwner) { if (it) importUrlDialog.show(requireContext()) }
+            showAddParamDialog.collectIt(viewLifecycleOwner) {
+                if (it) addParamDialog.show(
+                    requireContext()
+                )
+            }
+            showImportUrlDialog.collectIt(viewLifecycleOwner) {
+                if (it) importUrlDialog.show(
+                    requireContext()
+                )
+            }
             addBtnState.collectIt(viewLifecycleOwner) { binding.fabAddParam.isEnabled = it }
             saveBtnState.collectIt(viewLifecycleOwner) { binding.fabSave.isEnabled = it }
             paramsList.collectIt(viewLifecycleOwner) { paramsAdapter?.submitList(it) }
             showToast.collectIt(viewLifecycleOwner) { if (it != 0) showToast(it) }
+            baseUrl.collectIt(viewLifecycleOwner) {
+                if (it.isNotEmpty()) binding.etBaseUrl.setText(it)
+            }
             baseUrlError.collectIt(viewLifecycleOwner) {
                 binding.tilBaseUrl.error = if (it == 0) "" else getString(it)
             }

@@ -43,6 +43,7 @@
     <string name="value">Value</string>
     <string name="not_valid_url">Not valid URL</string>
     <string name="not_valid_key">Key can\'t be empty</string>
+    <string name="not_valid_empty_url">URL can\'t be empty</string>
 
 
     <!-- Unsorted -->
