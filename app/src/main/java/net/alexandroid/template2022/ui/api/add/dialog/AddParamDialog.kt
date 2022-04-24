@@ -53,7 +53,7 @@ class AddParamDialog(private val callBack: SubmitParamCallBack) : View.OnClickLi
     // View.OnClickListener
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btnDialogImportUrl -> onKeyValueSubmit()
+            R.id.btnDialogAddParam -> onKeyValueSubmit()
         }
     }
 
