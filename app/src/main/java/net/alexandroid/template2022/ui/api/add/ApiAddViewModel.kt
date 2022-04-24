@@ -20,12 +20,20 @@ class ApiAddViewModel(
 ) : BaseViewModel() {
     lateinit var navViewModel: NavViewModel
 
-    private val _showDialog = MutableStateFlow(false)
-    val showDialog: StateFlow<Boolean> = _showDialog
+    private val _showAddParamDialog = MutableStateFlow(false)
+    val showAddParamDialog: StateFlow<Boolean> = _showAddParamDialog
 
-    private fun showDialog() {
-        _showDialog.value = true
-        _showDialog.value = false
+    private fun showAddParamDialog() {
+        _showAddParamDialog.value = true
+        _showAddParamDialog.value = false
+    }
+
+    private val _showImportUrlDialog = MutableStateFlow(false)
+    val showImportUrlDialog: StateFlow<Boolean> = _showImportUrlDialog
+
+    private fun showImportUrlDialog() {
+        _showImportUrlDialog.value = true
+        _showImportUrlDialog.value = false
     }
 
     private val _addBtnEnabled = MutableStateFlow(false)
@@ -49,7 +57,7 @@ class ApiAddViewModel(
     val paramsList: StateFlow<MutableList<Param>> = _paramsList
 
     fun onAddParamBtnClick() {
-        showDialog()
+        showAddParamDialog()
     }
 
     fun onNewParamSubmit(key: String, value: String) {
@@ -69,10 +77,14 @@ class ApiAddViewModel(
     }
 
     fun onImportBtnClick() {
-        logD()
+        showImportUrlDialog()
     }
 
-    fun onBaseUrlStateChange(url: String) {
+    fun onSubmitImportingUrl(url: String) {
+        logD("URL: $url")
+    }
+
+    fun onBaseUrlChanged(url: String) {
         val isValid = Patterns.WEB_URL.matcher(url).matches()
         _addBtnEnabled.value = isValid
         _saveBtnEnabled.value = isValid

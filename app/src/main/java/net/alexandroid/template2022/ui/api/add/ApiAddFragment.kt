@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import net.alexandroid.template2022.R
 import net.alexandroid.template2022.databinding.FragmentAddApiBinding
 import net.alexandroid.template2022.ui.api.add.dialog.AddParamDialog
+import net.alexandroid.template2022.ui.api.add.dialog.ImportUrlDialog
 import net.alexandroid.template2022.ui.api.add.recycler.OnParamAction
 import net.alexandroid.template2022.ui.api.add.recycler.ParamsAdapter
 import net.alexandroid.template2022.ui.binding.FragmentBinding
@@ -19,18 +20,22 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener,
-    AddParamDialog.SubmitCallBack, OnParamAction {
+    AddParamDialog.SubmitParamCallBack, ImportUrlDialog.SubmitUrlCallBack, OnParamAction {
 
     private val binding by FragmentBinding(FragmentAddApiBinding::bind)
     private val viewModel by viewModel<ApiAddViewModel>()
     private val navViewModel by sharedViewModel<NavViewModel>()
     private val addParamDialog = AddParamDialog(this)
+    private val importUrlDialog = ImportUrlDialog(this)
     private var paramsAdapter: ParamsAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.navViewModel = navViewModel
+
         lifecycle.addObserver(addParamDialog)
+        lifecycle.addObserver(importUrlDialog)
+
         observeViewModel()
         setListeners()
         setParamsRecyclerView()
@@ -43,7 +48,8 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
 
     private fun observeViewModel() {
         viewModel.apply {
-            showDialog.collectIt(viewLifecycleOwner) { if (it) addParamDialog.show(requireContext()) }
+            showAddParamDialog.collectIt(viewLifecycleOwner) { if (it) addParamDialog.show(requireContext()) }
+            showImportUrlDialog.collectIt(viewLifecycleOwner) { if (it) importUrlDialog.show(requireContext()) }
             addBtnState.collectIt(viewLifecycleOwner) { binding.fabAddParam.isEnabled = it }
             saveBtnState.collectIt(viewLifecycleOwner) { binding.fabSave.isEnabled = it }
             paramsList.collectIt(viewLifecycleOwner) { paramsAdapter?.submitList(it) }
@@ -58,7 +64,7 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
         setOnClickListeners(binding.fabSave, binding.fabAddParam, binding.fabImport)
 
         binding.etBaseUrl.addTextChangedListener {
-            it?.let { url -> viewModel.onBaseUrlStateChange(url.toString()) }
+            it?.let { url -> viewModel.onBaseUrlChanged(url.toString()) }
         }
     }
 
@@ -79,8 +85,13 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
     }
 
     // AddParamDialog.SubmitCallBack
-    override fun onSubmit(key: String, value: String) {
+    override fun onSubmitParam(key: String, value: String) {
         viewModel.onNewParamSubmit(key, value)
+    }
+
+    // ImportUrlDialog.SubmitUrlCallBack
+    override fun onSubmitUrl(url: String) {
+        viewModel.onSubmitImportingUrl(url)
     }
 
     // OnParamAction
