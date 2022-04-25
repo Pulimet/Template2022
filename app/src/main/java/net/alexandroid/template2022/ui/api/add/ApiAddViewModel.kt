@@ -102,17 +102,20 @@ class ApiAddViewModel(
             val uri = URI(url)
             logD("scheme: ${uri.scheme}, domain: ${uri.host}, query: ${uri.query}")
             _baseUrl.value = "${uri.scheme}://${uri.host}"
-            _paramsList.value.clear()
-
-            val params = uri.query.split("&")
-            params.forEach {
-                val keyValue = it.split("=")
-                if (keyValue.size == 2) {
-                    _paramsList.value.add(Param(keyValue[0], keyValue[1]))
-                }
-            }
+            parseAndUpdateParams(uri)
         } catch (e: URISyntaxException) {
             showToast(R.string.not_valid_url)
+        }
+    }
+
+    private fun parseAndUpdateParams(uri: URI) {
+        _paramsList.value.clear()
+        val params = uri.query.split("&")
+        params.forEach {
+            val keyValue = it.split("=")
+            if (keyValue.size == 2) {
+                _paramsList.value.add(Param(keyValue[0], keyValue[1]))
+            }
         }
     }
 
