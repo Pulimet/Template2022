@@ -75,8 +75,10 @@ class ApiAddViewModel(
         if (param.key.isEmpty()) {
             showToast(R.string.not_valid_key)
         } else {
-            // TODO If the key exist, edit instead adding new one
-            _paramsList.value.add(param)
+            _paramsList.value.apply {
+                find { it.key == param.key }?.let { remove(it) } // Remove if found param with the same key
+                add(param)
+            }
         }
     }
 
