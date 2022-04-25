@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import net.alexandroid.template2022.R
 import net.alexandroid.template2022.databinding.FragmentAddApiBinding
+import net.alexandroid.template2022.db.model.api.Param
 import net.alexandroid.template2022.ui.api.add.dialog.AddParamDialog
 import net.alexandroid.template2022.ui.api.add.dialog.ImportUrlDialog
 import net.alexandroid.template2022.ui.api.add.recycler.OnParamAction
@@ -49,14 +50,10 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
     private fun observeViewModel() {
         viewModel.apply {
             showAddParamDialog.collectIt(viewLifecycleOwner) {
-                if (it) addParamDialog.show(
-                    requireContext()
-                )
+                it?.let { addParamDialog.show(requireContext(), it) }
             }
             showImportUrlDialog.collectIt(viewLifecycleOwner) {
-                if (it) importUrlDialog.show(
-                    requireContext()
-                )
+                if (it) importUrlDialog.show(requireContext())
             }
             addBtnState.collectIt(viewLifecycleOwner) { binding.fabAddParam.isEnabled = it }
             saveBtnState.collectIt(viewLifecycleOwner) { binding.fabSave.isEnabled = it }
@@ -96,8 +93,8 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
     }
 
     // AddParamDialog.SubmitCallBack
-    override fun onSubmitParam(key: String, value: String) {
-        viewModel.onNewParamSubmit(key, value)
+    override fun onSubmitParam(param: Param) {
+        viewModel.onNewParamSubmit(param)
     }
 
     // ImportUrlDialog.SubmitUrlCallBack
@@ -106,7 +103,11 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
     }
 
     // OnParamAction
-    override fun onClick() {
+    override fun onBtnEditClick(param: Param) {
+        viewModel.onBtnEditParamClick(param)
+    }
 
+    override fun onBtnDeleteClick(param: Param) {
+        viewModel.onBtnDeleteParamClick(param)
     }
 }

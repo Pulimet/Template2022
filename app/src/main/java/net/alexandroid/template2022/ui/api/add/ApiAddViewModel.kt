@@ -22,12 +22,17 @@ class ApiAddViewModel(
 ) : BaseViewModel() {
     lateinit var navViewModel: NavViewModel
 
-    private val _showAddParamDialog = MutableStateFlow(false)
-    val showAddParamDialog: StateFlow<Boolean> = _showAddParamDialog
+    private val _showAddParamDialog = MutableStateFlow<Param?>(null)
+    val showAddParamDialog: StateFlow<Param?> = _showAddParamDialog
 
     private fun showAddParamDialog() {
-        _showAddParamDialog.value = true
-        _showAddParamDialog.value = false
+        _showAddParamDialog.value = Param("", "")
+        _showAddParamDialog.value = null
+    }
+
+    private fun showEditParamDialog(param: Param) {
+        _showAddParamDialog.value = param
+        _showAddParamDialog.value = null
     }
 
     private val _showImportUrlDialog = MutableStateFlow(false)
@@ -65,12 +70,13 @@ class ApiAddViewModel(
         showAddParamDialog()
     }
 
-    fun onNewParamSubmit(key: String, value: String) {
-        logD("Key: $key, Value: $value")
-        if (key.isEmpty()) {
+    fun onNewParamSubmit(param: Param) {
+        logD("Key: ${param.key}, Value: ${param.value}")
+        if (param.key.isEmpty()) {
             showToast(R.string.not_valid_key)
         } else {
-            _paramsList.value.add(Param(key, value))
+            // TODO If the key exist, edit instead adding new one
+            _paramsList.value.add(param)
         }
     }
 
@@ -122,5 +128,13 @@ class ApiAddViewModel(
         _addBtnEnabled.value = isValid
         _saveBtnEnabled.value = isValid
         _baseUrlError.value = if (isValid) 0 else R.string.not_valid_url
+    }
+
+    fun onBtnEditParamClick(param: Param) {
+        showEditParamDialog(param)
+    }
+
+    fun onBtnDeleteParamClick(param: Param) {
+        // TODO Support deleting param
     }
 }

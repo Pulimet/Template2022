@@ -12,6 +12,7 @@ import androidx.lifecycle.LifecycleOwner
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import net.alexandroid.template2022.R
+import net.alexandroid.template2022.db.model.api.Param
 
 class AddParamDialog(private val callBack: SubmitParamCallBack) : View.OnClickListener,
     TextView.OnEditorActionListener, DialogInterface.OnDismissListener, DefaultLifecycleObserver {
@@ -21,13 +22,14 @@ class AddParamDialog(private val callBack: SubmitParamCallBack) : View.OnClickLi
     private var tilValue: TextInputLayout? = null
     private var btnAddParam: View? = null
 
-    fun show(context: Context) {
+    fun show(context: Context, param: Param) {
         if (dialog != null) return
         dialog = MaterialAlertDialogBuilder(context)
             .setView(R.layout.dialog_add_param)
             .setOnDismissListener(this)
             .show()?.apply {
                 findViews()
+                setData(param)
                 setDialogListeners()
             }
     }
@@ -38,6 +40,11 @@ class AddParamDialog(private val callBack: SubmitParamCallBack) : View.OnClickLi
         btnAddParam = findViewById(R.id.btnDialogAddParam)
     }
 
+    private fun setData(param: Param) {
+        tilKey?.editText?.setText(param.key)
+        tilValue?.editText?.setText(param.value)
+    }
+
     private fun setDialogListeners() {
         tilValue?.editText?.setOnEditorActionListener(this)
         btnAddParam?.setOnClickListener(this)
@@ -46,7 +53,7 @@ class AddParamDialog(private val callBack: SubmitParamCallBack) : View.OnClickLi
     private fun onKeyValueSubmit() {
         val key = tilKey?.editText?.text?.toString() ?: ""
         val value = tilValue?.editText?.text?.toString() ?: ""
-        callBack.onSubmitParam(key, value)
+        callBack.onSubmitParam(Param(key, value))
         dialog?.dismiss()
     }
 
@@ -89,6 +96,6 @@ class AddParamDialog(private val callBack: SubmitParamCallBack) : View.OnClickLi
 
     // CallBack
     interface SubmitParamCallBack {
-        fun onSubmitParam(key: String, value: String)
+        fun onSubmitParam(param: Param)
     }
 }

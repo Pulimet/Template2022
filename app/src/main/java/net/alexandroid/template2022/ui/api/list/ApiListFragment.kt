@@ -64,6 +64,9 @@ class ApiListFragment : Fragment(R.layout.fragment_api_list), View.OnClickListen
 
     // OnApiAction
     override fun onClick() {
-
+        // TODO support deleting Api
+        // TODO support editing Api
+        // TODO support invoking Api
+        // TODO support scheduling Api
     }
 }
