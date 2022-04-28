@@ -74,14 +74,16 @@ class ApiAddViewModel(
         logD("Key: ${param.key}, Value: ${param.value} (isEditModeParam: $isEditModeParam)")
         if (param.key.isEmpty()) {
             showToast(R.string.not_valid_key)
-        } else {
-            val newList = _paramsList.value.toMutableList()
-            newList.apply {
-                find { it.key == isEditModeParam?.key }?.let { remove(it) } // Remove if found param with the same key
-                add(param)
-            }
-            _paramsList.value = newList
+            return
         }
+        val newList = _paramsList.value.toMutableList()
+        newList.apply {
+            val keyToRemove = isEditModeParam?.key?: param.key
+            find { it.key == keyToRemove }?.let { remove(it) } // Remove if found param with the same key
+            add(param)
+        }
+        _paramsList.value = newList.toList()
+
     }
 
     fun onSaveBtnClick(baseUrl: String) {
@@ -122,7 +124,7 @@ class ApiAddViewModel(
                 newList.add(Param(keyValue[0], keyValue[1]))
             }
         }
-        _paramsList.value = newList
+        _paramsList.value = newList.toList()
     }
 
     private fun addSchemaIfMissing(inputUrl: String): String {
@@ -144,6 +146,10 @@ class ApiAddViewModel(
     }
 
     fun onBtnDeleteParamClick(param: Param) {
-        // TODO Support deleting param
+        val newList = _paramsList.value.toMutableList()
+        newList.apply {
+            find { it.key == param.key }?.let { remove(it) } // Remove if found param with the same key
+        }
+        _paramsList.value = newList.toList()
     }
 }
