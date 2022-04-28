@@ -63,22 +63,24 @@ class ApiAddViewModel(
         _showToast.value = 0
     }
 
-    private val _paramsList = MutableStateFlow(mutableListOf<Param>())
-    val paramsList: StateFlow<MutableList<Param>> = _paramsList
+    private val _paramsList = MutableStateFlow(listOf<Param>())
+    val paramsList: StateFlow<List<Param>> = _paramsList
 
     fun onAddParamBtnClick() {
         showAddParamDialog()
     }
 
-    fun onNewParamSubmit(param: Param) {
-        logD("Key: ${param.key}, Value: ${param.value}")
+    fun onSubmitParam(param: Param, isEditModeParam: Param?) {
+        logD("Key: ${param.key}, Value: ${param.value} (isEditModeParam: $isEditModeParam)")
         if (param.key.isEmpty()) {
             showToast(R.string.not_valid_key)
         } else {
-            _paramsList.value.apply {
-                find { it.key == param.key }?.let { remove(it) } // Remove if found param with the same key
+            val newList = _paramsList.value.toMutableList()
+            newList.apply {
+                find { it.key == isEditModeParam?.key }?.let { remove(it) } // Remove if found param with the same key
                 add(param)
             }
+            _paramsList.value = newList
         }
     }
 
@@ -111,14 +113,16 @@ class ApiAddViewModel(
     }
 
     private fun parseAndUpdateParams(uri: URI) {
-        _paramsList.value.clear()
+        _paramsList.value = emptyList()
+        val newList = mutableListOf<Param>()
         val params = uri.query.split("&")
         params.forEach {
             val keyValue = it.split("=")
             if (keyValue.size == 2) {
-                _paramsList.value.add(Param(keyValue[0], keyValue[1]))
+                newList.add(Param(keyValue[0], keyValue[1]))
             }
         }
+        _paramsList.value = newList
     }
 
     private fun addSchemaIfMissing(inputUrl: String): String {

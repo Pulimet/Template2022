@@ -4,6 +4,6 @@ import androidx.recyclerview.widget.DiffUtil
 import net.alexandroid.template2022.db.model.api.Param
 
 class ParamDiff : DiffUtil.ItemCallback<Param>() {
-    override fun areItemsTheSame(oldItem: Param, newItem: Param) = oldItem.key == newItem.key
+    override fun areItemsTheSame(oldItem: Param, newItem: Param) = oldItem.key == newItem.key &&  oldItem.value == newItem.value
     override fun areContentsTheSame(oldItem: Param, newItem: Param) = oldItem == newItem
 }

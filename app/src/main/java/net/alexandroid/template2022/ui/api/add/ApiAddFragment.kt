@@ -15,6 +15,7 @@ import net.alexandroid.template2022.ui.api.add.recycler.ParamsAdapter
 import net.alexandroid.template2022.ui.binding.FragmentBinding
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.collectIt
+import net.alexandroid.template2022.utils.logs.logD
 import net.alexandroid.template2022.utils.setOnClickListeners
 import net.alexandroid.template2022.utils.showToast
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -57,7 +58,10 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
             }
             addBtnState.collectIt(viewLifecycleOwner) { binding.fabAddParam.isEnabled = it }
             saveBtnState.collectIt(viewLifecycleOwner) { binding.fabSave.isEnabled = it }
-            paramsList.collectIt(viewLifecycleOwner) { paramsAdapter?.submitList(it) }
+            paramsList.collectIt(viewLifecycleOwner) {
+                logD("Observed params list change: $it")
+                paramsAdapter?.submitList(it)
+            }
             showToast.collectIt(viewLifecycleOwner) { if (it != 0) showToast(it) }
             baseUrl.collectIt(viewLifecycleOwner) {
                 if (it.isNotEmpty()) binding.etBaseUrl.setText(it)
@@ -93,8 +97,8 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
     }
 
     // AddParamDialog.SubmitCallBack
-    override fun onSubmitParam(param: Param) {
-        viewModel.onNewParamSubmit(param)
+    override fun onSubmitParam(param: Param, isEditModeParam: Param?) {
+        viewModel.onSubmitParam(param, isEditModeParam)
     }
 
     // ImportUrlDialog.SubmitUrlCallBack

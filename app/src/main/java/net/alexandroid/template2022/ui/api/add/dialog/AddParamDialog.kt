@@ -21,9 +21,11 @@ class AddParamDialog(private val callBack: SubmitParamCallBack) : View.OnClickLi
     private var tilKey: TextInputLayout? = null
     private var tilValue: TextInputLayout? = null
     private var btnAddParam: View? = null
+    private var isEditModeParam: Param? = null
 
     fun show(context: Context, param: Param) {
         if (dialog != null) return
+        isEditModeParam = if (param.key.isNotEmpty()) param else null
         dialog = MaterialAlertDialogBuilder(context)
             .setView(R.layout.dialog_add_param)
             .setOnDismissListener(this)
@@ -53,7 +55,7 @@ class AddParamDialog(private val callBack: SubmitParamCallBack) : View.OnClickLi
     private fun onKeyValueSubmit() {
         val key = tilKey?.editText?.text?.toString() ?: ""
         val value = tilValue?.editText?.text?.toString() ?: ""
-        callBack.onSubmitParam(Param(key, value))
+        callBack.onSubmitParam(Param(key, value), isEditModeParam)
         dialog?.dismiss()
     }
 
@@ -96,6 +98,6 @@ class AddParamDialog(private val callBack: SubmitParamCallBack) : View.OnClickLi
 
     // CallBack
     interface SubmitParamCallBack {
-        fun onSubmitParam(param: Param)
+        fun onSubmitParam(param: Param, isEditMode: Param?)
     }
 }

@@ -29,7 +29,6 @@
     <!-- API -->
     <string name="api">API</string>
     <string name="add_api">Add API</string>
-    <string name="add_param">Add</string>
     <string name="import_url">Import</string>
     <string name="base_url">Base URL (ex: http://google.com)</string>
     <string name="import_url_hint">URL (ex: http://google.com)</string>
