@@ -83,7 +83,6 @@ class ApiAddViewModel(
             add(param)
         }
         _paramsList.value = newList.toList()
-
     }
 
     fun onSaveBtnClick(baseUrl: String) {
