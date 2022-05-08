@@ -78,7 +78,7 @@ class ApiAddViewModel(
         }
         val newList = _paramsList.value.toMutableList()
         newList.apply {
-            val keyToRemove = isEditModeParam?.key?: param.key
+            val keyToRemove = isEditModeParam?.key ?: param.key
             find { it.key == keyToRemove }?.let { remove(it) } // Remove if found param with the same key
             add(param)
         }
@@ -114,7 +114,10 @@ class ApiAddViewModel(
     }
 
     private fun parseAndUpdateParams(uri: URI) {
+        logD("Query: ${uri.query}")
         _paramsList.value = emptyList()
+        if (uri.query == null) return
+
         val newList = mutableListOf<Param>()
         val params = uri.query.split("&")
         params.forEach {
