@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.launch
 import net.alexandroid.template2022.R
 import net.alexandroid.template2022.databinding.FragmentApiListBinding
+import net.alexandroid.template2022.db.model.api.Api
 import net.alexandroid.template2022.ui.api.list.recycler.ApiAdapter
 import net.alexandroid.template2022.ui.api.list.recycler.OnApiAction
 import net.alexandroid.template2022.ui.binding.FragmentBinding
@@ -63,11 +64,17 @@ class ApiListFragment : Fragment(R.layout.fragment_api_list), View.OnClickListen
     }
 
     // OnApiAction
-    override fun onClick() {
-        // TODO support deleting Api
-        // TODO support editing Api
+    override fun onClick(api: Api) {
         // TODO support invoking Api - single shot
         // TODO support scheduling Api withe result as notification
         // TODO support scheduling notification with action to invoke api
+    }
+
+    override fun onBtnEditClick(api: Api) {
+        viewModel.onBtnEditApi(api)
+    }
+
+    override fun onBtnDeleteClick(api: Api) {
+        viewModel.onBtnDeleteApi(api)
     }
 }

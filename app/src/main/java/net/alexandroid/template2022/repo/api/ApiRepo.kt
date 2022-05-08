@@ -9,10 +9,14 @@ class ApiRepo(private val apiDao: ApiDao) {
         logI("init")
     }
 
+    fun getAll() = apiDao.getApis()
+
     suspend fun addApi(api: Api) {
         apiDao.insert(api)
     }
 
-    fun getAll() = apiDao.getApis()
+    suspend fun deleteApi(api: Api) {
+        apiDao.delete(api)
+    }
 
 }
