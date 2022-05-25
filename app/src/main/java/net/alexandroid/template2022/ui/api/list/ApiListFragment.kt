@@ -47,10 +47,6 @@ class ApiListFragment : Fragment(R.layout.fragment_api_list), View.OnClickListen
     private fun observeViewModel() {
         lifecycleScope.launch {
             viewModel.apiList().flowWithLifecycle(lifecycle).collect {
-                logD("size: ${it.size}")
-                it.forEach { api ->
-                    logD("${api.baseUrl} - Params: ${api.params}")
-                }
                 apiAdapter?.submitList(it)
             }
         }

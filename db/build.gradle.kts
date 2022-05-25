@@ -20,6 +20,7 @@ android {
             }
         }
     }
+    namespace = "net.alexandroid.template2022.db"
 }
 
 dependencies {

@@ -39,23 +39,24 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    namespace = "net.alexandroid.template2022"
 }
 
 dependencies {
     val navVersion: String by rootProject.extra
-    val koinVersion = "3.2.0-beta-1"
+    val koinVersion = "3.2.0"
 
     // Modules dependencies
     implementation(project(":network"))
     implementation(project(":db"))
 
     // com.google
-    implementation("com.google.android.material:material:1.5.0")
+    implementation("com.google.android.material:material:1.6.0")
 
     // AndroidX
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     // Preferences DataStore
     implementation ("androidx.datastore:datastore-preferences:1.0.0")
@@ -71,10 +72,10 @@ dependencies {
     implementation("io.insert-koin:koin-android:$koinVersion")
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
 
     // Image loading library
-    implementation("io.coil-kt:coil:1.1.1")
+    implementation("io.coil-kt:coil:2.1.0")
 
     // Tests
     testImplementation("junit:junit:4.13.2")
