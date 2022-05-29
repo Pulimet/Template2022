@@ -19,4 +19,11 @@ class ApiRepo(private val apiDao: ApiDao) {
         apiDao.delete(api)
     }
 
+    suspend fun editApi(api: Api, apiArgument: Api) {
+        if (api.baseUrl != apiArgument.baseUrl) {
+            apiDao.delete(apiArgument)
+        }
+        apiDao.insert(api)
+    }
+
 }

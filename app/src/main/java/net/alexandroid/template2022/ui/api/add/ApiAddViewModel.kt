@@ -90,9 +90,14 @@ class ApiAddViewModel(
         _paramsList.value = newList.toList()
     }
 
-    fun onSaveBtnClick(baseUrl: String) {
+    fun onSaveBtnClick(baseUrl: String, apiArgument: Api?) {
         viewModelScope.launch(ioCoroutineContext) {
-            apiRepo.addApi(Api(baseUrl, paramsList.value))
+            val api = Api(baseUrl, paramsList.value)
+            if (apiArgument == null) {
+                apiRepo.addApi(api)
+            } else {
+                apiRepo.editApi(api, apiArgument)
+            }
         }
         navViewModel.navigateUp()
     }
