@@ -15,7 +15,7 @@ class App : Application(), CoroutineScope {
 
     override fun onCreate() {
         super.onCreate()
-        logD("=== Application Created ===")
-        launch { Di.setup(applicationContext) }
+        logD("=== Application onCreate() ===")
+        Di.setup(applicationContext)
     }
 }

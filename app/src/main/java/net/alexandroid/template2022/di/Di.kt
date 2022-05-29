@@ -28,24 +28,26 @@ import net.alexandroid.template2022.ui.movies.list.MoviesListViewModel
 import net.alexandroid.template2022.ui.movies.settings.MovieSettingsViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.ImageLoading
-import net.alexandroid.template2022.utils.logs.CoilLogs
-import net.alexandroid.template2022.utils.logs.KoinLogs
-import net.alexandroid.template2022.utils.logs.OkHttpLogs
-import net.alexandroid.template2022.utils.logs.logE
+import net.alexandroid.template2022.utils.logs.*
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.context.startKoin
+import org.koin.core.module.dsl.singleOf
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import kotlin.system.measureTimeMillis
 
 object Di {
     fun setup(applicationContext: Context) {
-        startKoin {
-            logger(KoinLogs())
-            androidContext(applicationContext)
-            modules(appModule, networkModule, dbModule)
+        val timeInMillis = measureTimeMillis {
+            startKoin {
+                logger(KoinLogs())
+                androidContext(applicationContext)
+                modules(appModule, networkModule, dbModule)
+            }
         }
+        logI("=== DI is ready (timeInMillis: $timeInMillis)===")
     }
 
 
@@ -78,7 +80,7 @@ object Di {
             )
         }
         single { MovieSettingsRepo(get(named(Prefs.MOVIE_VOTES)), get(named(Prefs.MOVIE_RATING))) }
-        single { ApiRepo(get()) }
+        singleOf(::ApiRepo)
 
         // CoroutineContext
         single {
@@ -89,20 +91,20 @@ object Di {
         }
 
         // ViewModels
-        viewModel { NavViewModel() }
-        viewModel { MainViewModel() }
-        viewModel { HomeViewModel() }
-        viewModel { ExampleViewModel() }
+        viewModelOf(::NavViewModel)
+        viewModelOf(::MainViewModel)
+        viewModelOf(::HomeViewModel)
+        viewModelOf(::ExampleViewModel)
 
         // Movies
-        viewModel { MoviesListViewModel(get(), get(), get()) }
-        viewModel { MovieDetailsViewModel(get()) }
-        viewModel { MovieFavoritesViewModel(get()) }
-        viewModel { MovieSettingsViewModel(get(), get()) }
+        viewModelOf(::MoviesListViewModel)
+        viewModelOf(::MovieDetailsViewModel)
+        viewModelOf(::MovieFavoritesViewModel)
+        viewModelOf(::MovieSettingsViewModel)
 
         // Api
-        viewModel { ApiListViewModel(get(), get()) }
-        viewModel { ApiAddViewModel(get(), get()) }
+        viewModelOf(::ApiListViewModel)
+        viewModelOf(::ApiAddViewModel)
     }
 
     private val networkModule = module {
