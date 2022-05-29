@@ -22,8 +22,7 @@ class ApiListViewModel(
     fun apiList() = apiRepo.getAll()
 
     fun onBtnEditApi(api: Api) {
-        // TODO support editing Api
-        // navViewModel.navigateTo(ApiListFragmentDirections.actionApiListFragmentToApiAddFragment())
+        navViewModel.navigateTo(ApiListFragmentDirections.actionApiListFragmentToApiAddFragment(api))
     }
 
     fun onBtnDeleteApi(api: Api) {

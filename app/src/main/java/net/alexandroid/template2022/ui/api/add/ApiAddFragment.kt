@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import net.alexandroid.template2022.R
 import net.alexandroid.template2022.databinding.FragmentAddApiBinding
@@ -25,6 +26,7 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
     AddParamDialog.SubmitParamCallBack, ImportUrlDialog.SubmitUrlCallBack, OnParamAction {
 
     private val binding by FragmentBinding(FragmentAddApiBinding::bind)
+    private val args: ApiAddFragmentArgs by navArgs()
     private val viewModel by viewModel<ApiAddViewModel>()
     private val navViewModel by sharedViewModel<NavViewModel>()
     private val addParamDialog = AddParamDialog(this)
@@ -41,6 +43,7 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
         observeViewModel()
         setListeners()
         setParamsRecyclerView()
+        setValuesIfArgumentExist()
     }
 
     override fun onDestroyView() {
@@ -87,6 +90,10 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
         }
     }
 
+    private fun setValuesIfArgumentExist() {
+        args.api?.let { viewModel.loadArgumentApi(it) }
+    }
+
     //  View.OnClickListener
     override fun onClick(v: View?) {
         when (v?.id) {
@@ -97,8 +104,8 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
     }
 
     // AddParamDialog.SubmitCallBack
-    override fun onSubmitParam(param: Param, isEditModeParam: Param?) {
-        viewModel.onSubmitParam(param, isEditModeParam)
+    override fun onSubmitParam(param: Param, isEditMode: Param?) {
+        viewModel.onSubmitParam(param, isEditMode)
     }
 
     // ImportUrlDialog.SubmitUrlCallBack

@@ -17,8 +17,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val mainViewModel by viewModel<MainViewModel>()
-    private val navViewModel by viewModel<NavViewModel>()
+    private val mainViewModel: MainViewModel by viewModel()
+    private val navViewModel: NavViewModel by viewModel()
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {

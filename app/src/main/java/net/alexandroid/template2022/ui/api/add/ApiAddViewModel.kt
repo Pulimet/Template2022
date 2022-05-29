@@ -70,6 +70,11 @@ class ApiAddViewModel(
         showAddParamDialog()
     }
 
+    fun loadArgumentApi(api: Api) {
+        _baseUrl.value = api.baseUrl
+        _paramsList.value = api.params
+    }
+
     fun onSubmitParam(param: Param, isEditModeParam: Param?) {
         logD("Key: ${param.key}, Value: ${param.value} (isEditModeParam: $isEditModeParam)")
         if (param.key.isEmpty()) {

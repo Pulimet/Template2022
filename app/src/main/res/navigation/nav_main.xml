@@ -85,5 +85,11 @@
         android:id="@+id/apiAddFragment"
         android:name="net.alexandroid.template2022.ui.api.add.ApiAddFragment"
         android:label="Add Api"
-        tools:layout="@layout/fragment_add_api" />
+        tools:layout="@layout/fragment_add_api" >
+        <argument
+            android:name="api"
+            app:argType="net.alexandroid.template2022.db.model.api.Api"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>
