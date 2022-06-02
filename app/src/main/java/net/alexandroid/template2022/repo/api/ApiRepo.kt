@@ -2,9 +2,10 @@ package net.alexandroid.template2022.repo.api
 
 import net.alexandroid.template2022.db.dao.ApiDao
 import net.alexandroid.template2022.db.model.api.Api
+import net.alexandroid.template2022.ui.api.ApiCaller
 import net.alexandroid.template2022.utils.logs.logI
 
-class ApiRepo(private val apiDao: ApiDao) {
+class ApiRepo(private val apiDao: ApiDao, private val apiCaller: ApiCaller) {
     init {
         logI("init")
     }
@@ -24,6 +25,10 @@ class ApiRepo(private val apiDao: ApiDao) {
             apiDao.delete(apiArgument)
         }
         apiDao.insert(api)
+    }
+
+    fun callFor(api: Api) {
+        apiCaller.call(api)
     }
 
 }

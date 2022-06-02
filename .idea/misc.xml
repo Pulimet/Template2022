@@ -5,6 +5,7 @@
       <map>
         <entry key="../../Library/Android/sdk/platforms/android-32/data/res/drawable/editbox_background.xml" value="0.1335" />
         <entry key="app/src/main/res/drawable/bg_param.xml" value="0.1335" />
+        <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.1875" />
         <entry key="app/src/main/res/drawable/ic_favorite_border.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_favorite_filled.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_schedule.xml" value="0.158" />

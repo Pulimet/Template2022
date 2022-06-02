@@ -18,6 +18,7 @@ import net.alexandroid.template2022.repo.api.ApiRepo
 import net.alexandroid.template2022.repo.movie.MovieSettingsRepo
 import net.alexandroid.template2022.repo.movie.MoviesRepo
 import net.alexandroid.template2022.ui.MainViewModel
+import net.alexandroid.template2022.ui.api.ApiCaller
 import net.alexandroid.template2022.ui.api.add.ApiAddViewModel
 import net.alexandroid.template2022.ui.api.list.ApiListViewModel
 import net.alexandroid.template2022.ui.example.ExampleViewModel
@@ -44,7 +45,9 @@ object Di {
             startKoin {
                 logger(KoinLogs())
                 androidContext(applicationContext)
-                modules(appModule, networkModule, dbModule)
+                modules(
+                    appModule, viewModelsModule, reposModule, networkModule, dbModule, imageModule
+                )
             }
         }
         logI("=== DI is ready (timeInMillis: $timeInMillis)===")
@@ -52,35 +55,12 @@ object Di {
 
 
     private val appModule = module {
-        // Image Loader
-        single {
-            ImageLoader.Builder(androidContext())
-                .logger(CoilLogs())
-                .crossfade(true)
-                .build()
-        }
-        single { ImageLoading(androidContext(), get()) }
-
         // DataStore
         single(named(Prefs.MOVIE_VOTES)) { androidContext().votes }
         single(named(Prefs.MOVIE_RATING)) { androidContext().rating }
 
         // WorkManager
         single { WorkManager.getInstance(androidContext()) }
-
-        // Repositories
-        single {
-            MoviesRepo(
-                get(),
-                get(),
-                get(),
-                get(named(Prefs.MOVIE_VOTES)),
-                get(named(Prefs.MOVIE_RATING)),
-                get()
-            )
-        }
-        single { MovieSettingsRepo(get(named(Prefs.MOVIE_VOTES)), get(named(Prefs.MOVIE_RATING))) }
-        singleOf(::ApiRepo)
 
         // CoroutineContext
         single {
@@ -89,8 +69,9 @@ object Di {
                 throw e
             }
         }
+    }
 
-        // ViewModels
+    private val viewModelsModule = module {
         viewModelOf(::NavViewModel)
         viewModelOf(::MainViewModel)
         viewModelOf(::HomeViewModel)
@@ -105,6 +86,33 @@ object Di {
         // Api
         viewModelOf(::ApiListViewModel)
         viewModelOf(::ApiAddViewModel)
+    }
+
+    private val reposModule = module {
+        // Repositories
+        single {
+            MoviesRepo(
+                get(),
+                get(),
+                get(),
+                get(named(Prefs.MOVIE_VOTES)),
+                get(named(Prefs.MOVIE_RATING)),
+                get()
+            )
+        }
+        single { MovieSettingsRepo(get(named(Prefs.MOVIE_VOTES)), get(named(Prefs.MOVIE_RATING))) }
+        singleOf(::ApiCaller)
+        singleOf(::ApiRepo)
+    }
+
+    private val imageModule = module {
+        single {
+            ImageLoader.Builder(androidContext())
+                .logger(CoilLogs())
+                .crossfade(true)
+                .build()
+        }
+        single { ImageLoading(androidContext(), get()) }
     }
 
     private val networkModule = module {

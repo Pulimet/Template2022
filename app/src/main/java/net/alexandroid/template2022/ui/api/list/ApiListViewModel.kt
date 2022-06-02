@@ -31,6 +31,12 @@ class ApiListViewModel(
         }
     }
 
+    fun onApiClick(api: Api) {
+        viewModelScope.launch(ioCoroutineContext) {
+            apiRepo.callFor(api)
+        }
+    }
+
     fun onBtnScheduleApi(api: Api) {
         // TODO support scheduling Api call with result as notification
         // TODO support scheduling notification with action to invoke api

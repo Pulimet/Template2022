@@ -54,7 +54,7 @@ class ApiListFragment : Fragment(R.layout.fragment_api_list), View.OnClickListen
             .launchIn(lifecycleScope)
     }
 
-    //  View.OnClickListener
+    // View.OnClickListener
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.fabAddApi -> viewModel.onFabAddApiClick()
@@ -63,7 +63,7 @@ class ApiListFragment : Fragment(R.layout.fragment_api_list), View.OnClickListen
 
     // OnApiAction
     override fun onClick(api: Api) {
-        // TODO support invoking Api - single shot
+        viewModel.onApiClick(api)
     }
 
     override fun onBtnEditClick(api: Api) {
