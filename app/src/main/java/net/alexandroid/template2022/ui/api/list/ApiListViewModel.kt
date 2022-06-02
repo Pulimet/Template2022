@@ -30,4 +30,9 @@ class ApiListViewModel(
             apiRepo.deleteApi(api)
         }
     }
+
+    fun onBtnScheduleApi(api: Api) {
+        // TODO support scheduling Api call with result as notification
+        // TODO support scheduling notification with action to invoke api
+    }
 }

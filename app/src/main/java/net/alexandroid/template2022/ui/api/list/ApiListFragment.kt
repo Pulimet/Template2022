@@ -64,8 +64,6 @@ class ApiListFragment : Fragment(R.layout.fragment_api_list), View.OnClickListen
     // OnApiAction
     override fun onClick(api: Api) {
         // TODO support invoking Api - single shot
-        // TODO support scheduling Api withe result as notification
-        // TODO support scheduling notification with action to invoke api
     }
 
     override fun onBtnEditClick(api: Api) {
@@ -74,5 +72,9 @@ class ApiListFragment : Fragment(R.layout.fragment_api_list), View.OnClickListen
 
     override fun onBtnDeleteClick(api: Api) {
         viewModel.onBtnDeleteApi(api)
+    }
+
+    override fun onBtnScheduleClick(api: Api) {
+        viewModel.onBtnScheduleApi(api)
     }
 }

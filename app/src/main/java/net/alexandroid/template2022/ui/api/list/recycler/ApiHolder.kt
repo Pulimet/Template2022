@@ -14,7 +14,7 @@ class ApiHolder(v: View, private val listener: OnApiAction) :
     private var api: Api? = null
 
     init {
-        setOnClickListeners(itemView, binding.btnEdit, binding.btnDelete)
+        setOnClickListeners(itemView, binding.btnEdit, binding.btnDelete, binding.btnSchedule)
     }
 
     fun onBindViewHolder(api: Api) {
@@ -29,6 +29,7 @@ class ApiHolder(v: View, private val listener: OnApiAction) :
             when (v?.id) {
                 R.id.btnEdit -> listener.onBtnEditClick(it)
                 R.id.btnDelete -> listener.onBtnDeleteClick(it)
+                R.id.btnSchedule -> listener.onBtnScheduleClick(it)
                 else -> listener.onClick(it)
             }
         }

@@ -6,4 +6,5 @@ interface OnApiAction {
     fun onClick(api: Api)
     fun onBtnEditClick(api: Api)
     fun onBtnDeleteClick(api: Api)
+    fun onBtnScheduleClick(api: Api)
 }
