@@ -115,8 +115,8 @@ class ApiAddViewModel(
         val url = addSchemaIfMissing(inputUrl)
         try {
             val uri = URI(url)
-            logD("scheme: ${uri.scheme}, domain: ${uri.host}, query: ${uri.query}")
-            _baseUrl.value = "${uri.scheme}://${uri.host}"
+            logD("scheme: ${uri.scheme}, domain: ${uri.host}, path: ${uri.path}, query: ${uri.query}")
+            _baseUrl.value = "${uri.scheme}://${uri.host}${uri.path}"
             parseAndUpdateParams(uri)
         } catch (e: URISyntaxException) {
             showToast(R.string.not_valid_url)
