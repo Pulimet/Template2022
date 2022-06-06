@@ -6,6 +6,7 @@ import net.alexandroid.template2022.db.model.api.Api
 import net.alexandroid.template2022.repo.api.ApiRepo
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
+import net.alexandroid.template2022.utils.logs.logD
 import kotlin.coroutines.CoroutineContext
 
 class ApiListViewModel(
@@ -31,9 +32,11 @@ class ApiListViewModel(
         }
     }
 
+    @Suppress("BlockingMethodInNonBlockingContext")
     fun onApiClick(api: Api) {
         viewModelScope.launch(ioCoroutineContext) {
-            apiRepo.callFor(api)
+            val responseBody = apiRepo.callFor(api)
+            logD(responseBody.string())
         }
     }
 

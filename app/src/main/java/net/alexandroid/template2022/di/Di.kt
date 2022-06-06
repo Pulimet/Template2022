@@ -11,6 +11,7 @@ import net.alexandroid.template2022.db.db.MovieDatabase
 import net.alexandroid.template2022.di.Prefs.rating
 import net.alexandroid.template2022.di.Prefs.votes
 import net.alexandroid.template2022.network.NetworkConstants
+import net.alexandroid.template2022.network.services.ApiCallerService
 import net.alexandroid.template2022.network.services.TmdbApiService
 import net.alexandroid.template2022.network.utils.NetworkObjectsCreator
 import net.alexandroid.template2022.network.utils.NetworkObjectsCreator.createWebService
@@ -119,6 +120,7 @@ object Di {
         single<HttpLoggingInterceptor.Logger> { OkHttpLogs() }
         single { NetworkObjectsCreator.createOkHttpClient(get()) }
         single { createWebService<TmdbApiService>(get(), NetworkConstants.TMDB_URL) }
+        single { createWebService<ApiCallerService>(get(), NetworkConstants.GOOGLE_URL) }
     }
 
     private val dbModule = module {

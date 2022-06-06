@@ -27,8 +27,6 @@ class ApiRepo(private val apiDao: ApiDao, private val apiCaller: ApiCaller) {
         apiDao.insert(api)
     }
 
-    fun callFor(api: Api) {
-        apiCaller.call(api)
-    }
+    suspend fun callFor(api: Api) = apiCaller.call(api)
 
 }
