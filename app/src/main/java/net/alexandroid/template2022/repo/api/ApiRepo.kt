@@ -27,6 +27,10 @@ class ApiRepo(private val apiDao: ApiDao, private val apiCaller: ApiCaller) {
         apiDao.insert(api)
     }
 
-    suspend fun callFor(api: Api) = apiCaller.call(api)
-
+    suspend fun callFor(api: Api): ApiResult =
+        try {
+            ApiResult.Success(apiCaller.call(api))
+        } catch (e: Exception) {
+            ApiResult.Error(e)
+        }
 }

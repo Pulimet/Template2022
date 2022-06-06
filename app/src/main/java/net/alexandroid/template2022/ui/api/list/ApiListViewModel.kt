@@ -4,9 +4,11 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import net.alexandroid.template2022.db.model.api.Api
 import net.alexandroid.template2022.repo.api.ApiRepo
+import net.alexandroid.template2022.repo.api.ApiResult
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.logs.logD
+import net.alexandroid.template2022.utils.logs.logE
 import kotlin.coroutines.CoroutineContext
 
 class ApiListViewModel(
@@ -35,9 +37,16 @@ class ApiListViewModel(
     @Suppress("BlockingMethodInNonBlockingContext")
     fun onApiClick(api: Api) {
         viewModelScope.launch(ioCoroutineContext) {
-            // TODO Decide where to catch exception on 404 or other error
-            val responseBody = apiRepo.callFor(api)
-            logD(responseBody.string())
+            val apiResult = apiRepo.callFor(api)
+            when (apiResult) {
+                is ApiResult.Success -> {
+                    logD(apiResult.responseBody.string())
+                }
+                is ApiResult.Error -> {
+                    logE("Failed", t = apiResult.exception)
+                }
+            }
+
         }
     }
 
