@@ -35,6 +35,7 @@ class ApiListViewModel(
     @Suppress("BlockingMethodInNonBlockingContext")
     fun onApiClick(api: Api) {
         viewModelScope.launch(ioCoroutineContext) {
+            // TODO Decide where to catch exception on 404 or other error
             val responseBody = apiRepo.callFor(api)
             logD(responseBody.string())
         }

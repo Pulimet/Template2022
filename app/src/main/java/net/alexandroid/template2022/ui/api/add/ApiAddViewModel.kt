@@ -92,7 +92,8 @@ class ApiAddViewModel(
 
     fun onSaveBtnClick(baseUrl: String, apiArgument: Api?) {
         viewModelScope.launch(ioCoroutineContext) {
-            val api = Api(baseUrl, paramsList.value)
+            val url = addSchemaIfMissing(baseUrl)
+            val api = Api(url, paramsList.value)
             if (apiArgument == null) {
                 apiRepo.addApi(api)
             } else {
