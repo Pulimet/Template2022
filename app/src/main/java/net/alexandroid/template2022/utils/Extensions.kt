@@ -29,5 +29,9 @@ fun View.OnClickListener.setOnClickListeners(vararg views: View) {
 }
 
 fun Fragment.showToast(@StringRes resource: Int) {
-    Toast.makeText(context, getString(resource), Toast.LENGTH_SHORT).show()
+    showToast(getString(resource))
+}
+
+fun Fragment.showToast(message: String) {
+    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }

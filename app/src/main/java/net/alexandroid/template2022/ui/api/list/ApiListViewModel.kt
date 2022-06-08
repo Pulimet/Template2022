@@ -1,6 +1,8 @@
 package net.alexandroid.template2022.ui.api.list
 
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import net.alexandroid.template2022.db.model.api.Api
 import net.alexandroid.template2022.repo.api.ApiRepo
@@ -17,6 +19,9 @@ class ApiListViewModel(
 ) : BaseViewModel() {
 
     lateinit var navViewModel: NavViewModel
+
+    private val _showToast = MutableStateFlow<String?>(null)
+    val showToast: StateFlow<String?> = _showToast
 
     fun onFabAddApiClick() {
         navViewModel.navigateTo(ApiListFragmentDirections.actionApiListFragmentToApiAddFragment())
@@ -37,16 +42,18 @@ class ApiListViewModel(
     @Suppress("BlockingMethodInNonBlockingContext")
     fun onApiClick(api: Api) {
         viewModelScope.launch(ioCoroutineContext) {
-            val apiResult = apiRepo.callFor(api)
-            when (apiResult) {
+            when (val apiResult = apiRepo.callFor(api)) {
                 is ApiResult.Success -> {
-                    logD(apiResult.responseBody.string())
+                    val msg = apiResult.responseBody.string()
+                    logD(msg)
+                    _showToast.value = "Success: ${msg.substring(0, msg.length.coerceAtMost(100))}"
                 }
                 is ApiResult.Error -> {
-                    logE("Failed", t = apiResult.exception)
+                    val msg = apiResult.exception.message ?: ""
+                    logE("Failed: $msg")
+                    _showToast.value = "Failed: ${msg.substring(0, msg.length.coerceAtMost(100))}"
                 }
             }
-
         }
     }
 

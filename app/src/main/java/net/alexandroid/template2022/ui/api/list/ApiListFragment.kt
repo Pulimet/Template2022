@@ -16,7 +16,9 @@ import net.alexandroid.template2022.ui.api.list.recycler.ApiAdapter
 import net.alexandroid.template2022.ui.api.list.recycler.OnApiAction
 import net.alexandroid.template2022.ui.binding.FragmentBinding
 import net.alexandroid.template2022.ui.navigation.NavViewModel
+import net.alexandroid.template2022.utils.collectIt
 import net.alexandroid.template2022.utils.setOnClickListeners
+import net.alexandroid.template2022.utils.showToast
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -46,12 +48,15 @@ class ApiListFragment : Fragment(R.layout.fragment_api_list), View.OnClickListen
     }
 
     private fun observeViewModel() {
-        viewModel.apiList()
-            .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-            .onEach {
-                apiAdapter?.submitList(it)
-            }
-            .launchIn(lifecycleScope)
+        viewModel.apply {
+            showToast.collectIt(viewLifecycleOwner) { if (it != null) showToast(it) }
+            apiList()
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .onEach {
+                    apiAdapter?.submitList(it)
+                }
+                .launchIn(lifecycleScope)
+        }
     }
 
     // View.OnClickListener
