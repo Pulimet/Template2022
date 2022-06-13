@@ -80,16 +80,28 @@
         <action
             android:id="@+id/action_apiListFragment_to_apiAddFragment"
             app:destination="@id/apiAddFragment" />
+        <action
+            android:id="@+id/action_apiListFragment_to_scheduleApiFragment"
+            app:destination="@id/scheduleApiFragment" />
     </fragment>
     <fragment
         android:id="@+id/apiAddFragment"
         android:name="net.alexandroid.template2022.ui.api.add.ApiAddFragment"
         android:label="Add Api"
-        tools:layout="@layout/fragment_add_api" >
+        tools:layout="@layout/fragment_add_api">
+        <argument
+            android:name="api"
+            android:defaultValue="@null"
+            app:argType="net.alexandroid.template2022.db.model.api.Api"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/scheduleApiFragment"
+        android:name="net.alexandroid.template2022.ui.api.schedule.ScheduleApiFragment"
+        android:label="Schedule Api">
         <argument
             android:name="api"
             app:argType="net.alexandroid.template2022.db.model.api.Api"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:nullable="true" />
     </fragment>
 </navigation>

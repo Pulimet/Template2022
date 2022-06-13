@@ -58,8 +58,8 @@ class ApiListViewModel(
     }
 
     fun onBtnScheduleApi(api: Api) {
-        // TODO open ScheduleApiFragment
-        // TODO support scheduling Api call with result as notification
-        // TODO support scheduling notification with action to invoke api
+        navViewModel.navigateTo(
+            ApiListFragmentDirections.actionApiListFragmentToScheduleApiFragment(api)
+        )
     }
 }

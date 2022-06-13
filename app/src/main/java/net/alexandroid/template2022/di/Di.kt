@@ -22,6 +22,7 @@ import net.alexandroid.template2022.ui.MainViewModel
 import net.alexandroid.template2022.ui.api.ApiCaller
 import net.alexandroid.template2022.ui.api.add.ApiAddViewModel
 import net.alexandroid.template2022.ui.api.list.ApiListViewModel
+import net.alexandroid.template2022.ui.api.schedule.ScheduleApiViewModel
 import net.alexandroid.template2022.ui.example.ExampleViewModel
 import net.alexandroid.template2022.ui.home.HomeViewModel
 import net.alexandroid.template2022.ui.movies.details.MovieDetailsViewModel
@@ -87,6 +88,7 @@ object Di {
         // Api
         viewModelOf(::ApiListViewModel)
         viewModelOf(::ApiAddViewModel)
+        viewModelOf(::ScheduleApiViewModel)
     }
 
     private val reposModule = module {

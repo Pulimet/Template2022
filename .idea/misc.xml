@@ -11,7 +11,7 @@
         <entry key="app/src/main/res/drawable/ic_schedule.xml" value="0.158" />
         <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.389" />
         <entry key="app/src/main/res/layout/activity_example.xml" value="0.3265625" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1388101983002833" />
         <entry key="app/src/main/res/layout/dialog_add_param.xml" value="0.1515625" />
         <entry key="app/src/main/res/layout/dialog_import_url.xml" value="0.2859375" />
         <entry key="app/src/main/res/layout/fragment_add_api.xml" value="0.2786458333333333" />
@@ -24,6 +24,7 @@
         <entry key="app/src/main/res/layout/fragment_movie_favorites.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/layout/fragment_movie_settings.xml" value="0.3890625" />
         <entry key="app/src/main/res/layout/fragment_movies_list.xml" value="0.3411458333333333" />
+        <entry key="app/src/main/res/layout/fragment_schedule_api.xml" value="0.3885416666666667" />
         <entry key="app/src/main/res/layout/item_api.xml" value="0.17135416666666667" />
         <entry key="app/src/main/res/layout/item_movie.xml" value="0.3411458333333333" />
         <entry key="app/src/main/res/layout/item_param.xml" value="0.335" />
