@@ -29,6 +29,7 @@
     <!-- API -->
     <string name="api">API</string>
     <string name="add_api">Add API</string>
+    <string name="schedule">Schedule</string>
     <string name="import_url">Import</string>
     <string name="base_url">Base URL (ex: http://google.com)</string>
     <string name="import_url_hint">URL (ex: http://google.com)</string>
@@ -43,6 +44,9 @@
     <string name="not_valid_url">Not valid URL</string>
     <string name="not_valid_key">Key can\'t be empty</string>
     <string name="not_valid_empty_url">URL can\'t be empty</string>
+    <string name="checkbox_show_notif_before_request">Show reminding notification with action</string>
+    <string name="checkbox_show_notif_on_request">Show notification on request</string>
+    <string name="checkbox_show_notif_on_response">Show notification on response</string>
 
 
     <!-- Unsorted -->

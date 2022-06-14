@@ -21,6 +21,7 @@ class ScheduleApiFragment : Fragment(R.layout.fragment_schedule_api), View.OnCli
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.navViewModel = navViewModel
+        binding.tvUrl.text = args.api?.getUrl() ?: ""
         setClickListener()
 
         // TODO support scheduling Api call with result as notification
@@ -29,7 +30,7 @@ class ScheduleApiFragment : Fragment(R.layout.fragment_schedule_api), View.OnCli
 
     private fun setClickListener() {
         setOnClickListeners(
-            binding.tvText
+            binding.tvUrl
         )
     }
 
