@@ -8,6 +8,7 @@ import net.alexandroid.template2022.R
 import net.alexandroid.template2022.databinding.FragmentScheduleApiBinding
 import net.alexandroid.template2022.ui.binding.FragmentBinding
 import net.alexandroid.template2022.ui.navigation.NavViewModel
+import net.alexandroid.template2022.utils.collectIt
 import net.alexandroid.template2022.utils.setOnClickListeners
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,6 +24,7 @@ class ScheduleApiFragment : Fragment(R.layout.fragment_schedule_api), View.OnCli
         viewModel.navViewModel = navViewModel
         binding.tvUrl.text = args.api?.getUrl() ?: ""
         setClickListener()
+        observeViewModel()
     }
 
     private fun setClickListener() {
@@ -32,6 +34,12 @@ class ScheduleApiFragment : Fragment(R.layout.fragment_schedule_api), View.OnCli
             binding.btnSetRepeat,
             binding.fabScheduleApi
         )
+    }
+
+    private fun observeViewModel() {
+        viewModel.apply {
+            scheduleBtnState.collectIt(viewLifecycleOwner) { binding.fabScheduleApi.isEnabled = it }
+        }
     }
 
     //  View.OnClickListener
