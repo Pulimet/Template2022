@@ -22,11 +22,11 @@ import net.alexandroid.template2022.utils.showToast
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener,
+class AddApiFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener,
     AddParamDialog.SubmitParamCallBack, ImportUrlDialog.SubmitUrlCallBack, OnParamAction {
 
     private val binding by FragmentBinding(FragmentAddApiBinding::bind)
-    private val args: ApiAddFragmentArgs by navArgs()
+    private val args: AddApiFragmentArgs by navArgs()
     private val viewModel by viewModel<ApiAddViewModel>()
     private val navViewModel by sharedViewModel<NavViewModel>()
     private val addParamDialog = AddParamDialog(this)
@@ -86,7 +86,7 @@ class ApiAddFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
     private fun setParamsRecyclerView() {
         binding.paramsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = ParamsAdapter(this@ApiAddFragment).apply { paramsAdapter = this }
+            adapter = ParamsAdapter(this@AddApiFragment).apply { paramsAdapter = this }
         }
     }
 

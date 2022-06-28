@@ -86,7 +86,7 @@
     </fragment>
     <fragment
         android:id="@+id/apiAddFragment"
-        android:name="net.alexandroid.template2022.ui.api.add.ApiAddFragment"
+        android:name="net.alexandroid.template2022.ui.api.add.AddApiFragment"
         android:label="Add Api"
         tools:layout="@layout/fragment_add_api">
         <argument
