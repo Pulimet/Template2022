@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp">
+    android:padding="12dp">
 
     <TextView
         android:id="@+id/tvUrl"
@@ -18,16 +18,29 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="http://www.googl.com/kuku?a=1" />
 
-    <com.google.android.material.checkbox.MaterialCheckBox
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvUrl" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/cbShowNotifBefore"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/checkbox_show_notif_before_request"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvUrl" />
+        app:layout_constraintTop_toBottomOf="@id/line" />
 
-    <com.google.android.material.checkbox.MaterialCheckBox
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/cbShowNotifRequest"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -36,7 +49,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cbShowNotifBefore" />
 
-    <com.google.android.material.checkbox.MaterialCheckBox
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/cbShowNotifResponse"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -44,6 +57,83 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cbShowNotifRequest" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cbShowNotifResponse" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSetLaunchDate"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/btn_set_date"
+        app:layout_constraintEnd_toStartOf="@id/tvLaunchDate"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line2"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <TextView
+        android:id="@+id/tvLaunchDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/not_set_date"
+        app:layout_constraintBottom_toBottomOf="@id/btnSetLaunchDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnSetLaunchDate"
+        app:layout_constraintTop_toTopOf="@id/btnSetLaunchDate" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSetLaunchTime"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/btn_set_time"
+        app:layout_constraintEnd_toStartOf="@id/tvLaunchTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSetLaunchDate" />
+
+    <TextView
+        android:id="@+id/tvLaunchTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/not_set_time"
+        app:layout_constraintBottom_toBottomOf="@id/btnSetLaunchTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnSetLaunchTime"
+        app:layout_constraintTop_toTopOf="@id/btnSetLaunchTime" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSetRepeat"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/btn_set_repeat"
+        app:layout_constraintEnd_toStartOf="@id/tvRepeat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSetLaunchTime" />
+
+    <TextView
+        android:id="@+id/tvRepeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/not_set_repeat"
+        app:layout_constraintBottom_toBottomOf="@id/btnSetRepeat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnSetRepeat"
+        app:layout_constraintTop_toTopOf="@id/btnSetRepeat" />
 
     <!-- TODO Show dialog with date picker and action Buttons: Today, cancel, ok
          <DatePicker
@@ -55,15 +145,15 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"-->
 
-   <!--TODO allow to set repeat interval-->
-
+    <!--TODO allow to set repeat interval-->
 
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fabAddApi"
+        android:id="@+id/fabScheduleApi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:enabled="false"
         android:text="@string/schedule"
         app:icon="@drawable/ic_schedule"
         app:layout_constraintBottom_toBottomOf="parent"

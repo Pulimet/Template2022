@@ -47,6 +47,12 @@
     <string name="checkbox_show_notif_before_request">Show reminding notification with action</string>
     <string name="checkbox_show_notif_on_request">Show notification on request</string>
     <string name="checkbox_show_notif_on_response">Show notification on response</string>
+    <string name="btn_set_date">Set Launch date</string>
+    <string name="not_set_date">Not set launch date</string>
+    <string name="btn_set_time">Set Launch time</string>
+    <string name="not_set_time">Not set launch time</string>
+    <string name="btn_set_repeat">Set Repeat interval</string>
+    <string name="not_set_repeat">Not set repeat interval</string>
 
 
     <!-- Unsorted -->

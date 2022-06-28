@@ -23,21 +23,24 @@ class ScheduleApiFragment : Fragment(R.layout.fragment_schedule_api), View.OnCli
         viewModel.navViewModel = navViewModel
         binding.tvUrl.text = args.api?.getUrl() ?: ""
         setClickListener()
-
-        // TODO support scheduling Api call with result as notification
-        // TODO support scheduling notification with action to invoke api
     }
 
     private fun setClickListener() {
         setOnClickListeners(
-            binding.tvUrl
+            binding.btnSetLaunchDate,
+            binding.btnSetLaunchTime,
+            binding.btnSetRepeat,
+            binding.fabScheduleApi
         )
     }
 
     //  View.OnClickListener
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.tvText -> {}
+            R.id.btnSetLaunchDate -> viewModel.onBtnSetLaunchDateClick()
+            R.id.btnSetLaunchTime -> viewModel.onBtnSetLaunchTimeClick()
+            R.id.btnSetRepeat -> viewModel.onBtnSetRepeatClick()
+            R.id.fabScheduleApi -> viewModel.onFabScheduleApiClick()
         }
     }
 }
