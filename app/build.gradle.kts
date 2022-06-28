@@ -72,7 +72,7 @@ dependencies {
     implementation("io.insert-koin:koin-android:$koinVersion")
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.3")
 
     // Image loading library
     implementation("io.coil-kt:coil:2.1.0")

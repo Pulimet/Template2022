@@ -27,7 +27,7 @@ dependencies {
     val roomVersion = "2.4.2"
     implementation(project(":network"))
 
-    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.core:core-ktx:1.8.0")
 
     // Room
     api("androidx.room:room-runtime:$roomVersion")
