@@ -1,7 +1,7 @@
 package net.alexandroid.template2022.ui.api.schedule
 
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 
@@ -9,7 +9,7 @@ class ScheduleApiViewModel : BaseViewModel() {
     lateinit var navViewModel: NavViewModel
 
     private val _scheduleBtnEnabled = MutableStateFlow(false)
-    val scheduleBtnState: StateFlow<Boolean> = _scheduleBtnEnabled
+    val scheduleBtnState = _scheduleBtnEnabled.asStateFlow()
 
     fun onBtnSetLaunchDateClick() {
         TODO("Not yet implemented")

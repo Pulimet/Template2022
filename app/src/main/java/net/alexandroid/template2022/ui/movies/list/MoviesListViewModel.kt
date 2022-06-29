@@ -5,7 +5,7 @@ import androidx.navigation.fragment.FragmentNavigator
 import androidx.work.WorkManager
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import net.alexandroid.template2022.db.model.movies.Movie
@@ -27,7 +27,7 @@ class MoviesListViewModel(
     var savedItemPosition = -1
 
     private val _uiState = MutableStateFlow<MovieResult>(MovieResult.Empty)
-    val uiState: StateFlow<MovieResult> = _uiState
+    val uiState = _uiState.asStateFlow()
 
     private var fetchMoviesJob: Job? = null
 

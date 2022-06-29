@@ -2,8 +2,10 @@ package net.alexandroid.template2022.ui.api.add
 
 import android.util.Patterns
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import net.alexandroid.template2022.R
 import net.alexandroid.template2022.db.model.api.Api
@@ -22,49 +24,45 @@ class ApiAddViewModel(
 ) : BaseViewModel() {
     lateinit var navViewModel: NavViewModel
 
-    private val _showAddParamDialog = MutableStateFlow<Param?>(null)
-    val showAddParamDialog: StateFlow<Param?> = _showAddParamDialog
+    private val _showAddParamDialog = MutableSharedFlow<Param>()
+    val showAddParamDialog = _showAddParamDialog.asSharedFlow()
 
     private fun showAddParamDialog() {
-        _showAddParamDialog.value = Param("", "")
-        _showAddParamDialog.value = null
+        viewModelScope.launch { _showAddParamDialog.emit(Param("", "")) }
     }
 
     private fun showEditParamDialog(param: Param) {
-        _showAddParamDialog.value = param
-        _showAddParamDialog.value = null
+        viewModelScope.launch { _showAddParamDialog.emit(param) }
     }
 
-    private val _showImportUrlDialog = MutableStateFlow(false)
-    val showImportUrlDialog: StateFlow<Boolean> = _showImportUrlDialog
+    private val _showImportUrlDialog = MutableSharedFlow<Boolean>()
+    val showImportUrlDialog = _showImportUrlDialog.asSharedFlow()
 
     private fun showImportUrlDialog() {
-        _showImportUrlDialog.value = true
-        _showImportUrlDialog.value = false
+        viewModelScope.launch { _showImportUrlDialog.emit(true) }
     }
 
     private val _addBtnEnabled = MutableStateFlow(false)
-    val addBtnState: StateFlow<Boolean> = _addBtnEnabled
+    val addBtnState = _addBtnEnabled.asStateFlow()
 
     private val _saveBtnEnabled = MutableStateFlow(false)
-    val saveBtnState: StateFlow<Boolean> = _saveBtnEnabled
+    val saveBtnState = _saveBtnEnabled.asStateFlow()
 
     private val _baseUrl = MutableStateFlow("")
-    val baseUrl: StateFlow<String> = _baseUrl
+    val baseUrl = _baseUrl.asStateFlow()
 
     private val _baseUrlError = MutableStateFlow(0)
-    val baseUrlError: StateFlow<Int> = _baseUrlError
+    val baseUrlError = _baseUrlError.asStateFlow()
 
-    private val _showToast = MutableStateFlow(0)
-    val showToast: StateFlow<Int> = _showToast
+    private val _showToast = MutableSharedFlow<Int>()
+    val showToast = _showToast.asSharedFlow()
 
     private fun showToast(resId: Int) {
-        _showToast.value = resId
-        _showToast.value = 0
+        viewModelScope.launch { _showToast.emit(resId) }
     }
 
     private val _paramsList = MutableStateFlow(listOf<Param>())
-    val paramsList: StateFlow<List<Param>> = _paramsList
+    val paramsList = _paramsList.asStateFlow()
 
     fun onAddParamBtnClick() {
         showAddParamDialog()

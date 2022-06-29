@@ -1,35 +1,34 @@
 package net.alexandroid.template2022.ui.navigation
 
 import android.content.Intent
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.FragmentNavigator
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.launch
 import net.alexandroid.template2022.ui.base.BaseViewModel
 
 class NavViewModel : BaseViewModel() {
     // Navigation Support
-    private val _navigate = MutableStateFlow(NavParams())
-    val getChangeNavigation: StateFlow<NavParams> = _navigate
-    private val _navigateUp = MutableStateFlow(false)
-    val getNavigateUp: StateFlow<Boolean> = _navigateUp
+    private val _navigate = MutableSharedFlow<NavParams>()
+    val getChangeNavigation = _navigate.asSharedFlow()
+    private val _navigateUp = MutableSharedFlow<Boolean>()
+    val getNavigateUp = _navigateUp.asSharedFlow()
 
     fun navigateTo(navDirections: NavDirections, extras: FragmentNavigator.Extras? = null) {
-        _navigate.value = NavParams(navDirections, extras)
-        _navigate.value = NavParams() // Allows future navigation
+        viewModelScope.launch { _navigate.emit(NavParams(navDirections, extras)) }
     }
 
     fun navigateUp() {
-        _navigateUp.value = true
-        _navigateUp.value = false
+        viewModelScope.launch { _navigateUp.emit(true) }
     }
 
     // Change Activity Support
-    private val _startActivity = MutableStateFlow(IntentParams())
-    val getStartActivity: StateFlow<IntentParams> = _startActivity
+    private val _startActivity = MutableSharedFlow<IntentParams>()
+    val getStartActivity = _startActivity.asSharedFlow()
 
     fun startActivity(clazz: Class<*>) {
-        _startActivity.value = IntentParams(clazz, Intent(), false)
-        _startActivity.value = IntentParams()
+        viewModelScope.launch { _startActivity.emit(IntentParams(clazz, Intent(), false)) }
     }
 }
