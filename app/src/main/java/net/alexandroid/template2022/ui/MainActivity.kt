@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             getNavigateUp.collectIt(this@MainActivity) {
-                if (it) navController.navigateUp()
+                navController.navigateUp()
             }
         }
     }

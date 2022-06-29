@@ -35,11 +35,11 @@ class ApiAddViewModel(
         viewModelScope.launch { _showAddParamDialog.emit(param) }
     }
 
-    private val _showImportUrlDialog = MutableSharedFlow<Boolean>()
+    private val _showImportUrlDialog = MutableSharedFlow<Unit>()
     val showImportUrlDialog = _showImportUrlDialog.asSharedFlow()
 
     private fun showImportUrlDialog() {
-        viewModelScope.launch { _showImportUrlDialog.emit(true) }
+        viewModelScope.launch { _showImportUrlDialog.emit(Unit) }
     }
 
     private val _addBtnEnabled = MutableStateFlow(false)

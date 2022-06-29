@@ -54,10 +54,10 @@ class AddApiFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
     private fun observeViewModel() {
         viewModel.apply {
             showAddParamDialog.collectIt(viewLifecycleOwner) {
-                it?.let { addParamDialog.show(requireContext(), it) }
+                addParamDialog.show(requireContext(), it)
             }
             showImportUrlDialog.collectIt(viewLifecycleOwner) {
-                if (it) importUrlDialog.show(requireContext())
+                importUrlDialog.show(requireContext())
             }
             addBtnState.collectIt(viewLifecycleOwner) { binding.fabAddParam.isEnabled = it }
             saveBtnState.collectIt(viewLifecycleOwner) { binding.fabSave.isEnabled = it }
@@ -65,7 +65,7 @@ class AddApiFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
                 logD("Observed params list change: $it")
                 paramsAdapter?.submitList(it)
             }
-            showToast.collectIt(viewLifecycleOwner) { if (it != 0) showToast(it) }
+            showToast.collectIt(viewLifecycleOwner) { showToast(it) }
             baseUrl.collectIt(viewLifecycleOwner) {
                 if (it.isNotEmpty()) binding.etBaseUrl.setText(it)
             }

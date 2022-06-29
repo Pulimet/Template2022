@@ -49,7 +49,7 @@ class ApiListFragment : Fragment(R.layout.fragment_api_list), View.OnClickListen
 
     private fun observeViewModel() {
         viewModel.apply {
-            showToast.collectIt(viewLifecycleOwner) { if (it != null) showToast(it) }
+            showToast.collectIt(viewLifecycleOwner) { showToast(it) }
             apiList()
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .onEach {

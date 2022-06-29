@@ -13,7 +13,7 @@ class NavViewModel : BaseViewModel() {
     // Navigation Support
     private val _navigate = MutableSharedFlow<NavParams>()
     val getChangeNavigation = _navigate.asSharedFlow()
-    private val _navigateUp = MutableSharedFlow<Boolean>()
+    private val _navigateUp = MutableSharedFlow<Unit>()
     val getNavigateUp = _navigateUp.asSharedFlow()
 
     fun navigateTo(navDirections: NavDirections, extras: FragmentNavigator.Extras? = null) {
@@ -21,7 +21,7 @@ class NavViewModel : BaseViewModel() {
     }
 
     fun navigateUp() {
-        viewModelScope.launch { _navigateUp.emit(true) }
+        viewModelScope.launch { _navigateUp.emit(Unit) }
     }
 
     // Change Activity Support
