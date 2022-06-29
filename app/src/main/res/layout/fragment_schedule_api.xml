@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvUrl" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/cbShowNotifBefore"
+        android:id="@+id/switchShowNotifBefore"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/checkbox_show_notif_before_request"
@@ -41,22 +41,22 @@
 
 
     <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/cbShowNotifRequest"
+        android:id="@+id/switchShowNotifRequest"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/checkbox_show_notif_on_request"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cbShowNotifBefore" />
+        app:layout_constraintTop_toBottomOf="@id/switchShowNotifBefore" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/cbShowNotifResponse"
+        android:id="@+id/switchShowNotifResponse"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/checkbox_show_notif_on_response"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cbShowNotifRequest" />
+        app:layout_constraintTop_toBottomOf="@id/switchShowNotifRequest" />
 
     <View
         android:id="@+id/line2"
@@ -68,7 +68,7 @@
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cbShowNotifResponse" />
+        app:layout_constraintTop_toBottomOf="@id/switchShowNotifResponse" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSetLaunchDate"
@@ -87,11 +87,11 @@
         android:id="@+id/tvLaunchDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/not_set_date"
         app:layout_constraintBottom_toBottomOf="@id/btnSetLaunchDate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnSetLaunchDate"
-        app:layout_constraintTop_toTopOf="@id/btnSetLaunchDate" />
+        app:layout_constraintTop_toTopOf="@id/btnSetLaunchDate"
+        tools:text="@string/not_set_date" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSetLaunchTime"
@@ -108,11 +108,11 @@
         android:id="@+id/tvLaunchTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/not_set_time"
         app:layout_constraintBottom_toBottomOf="@id/btnSetLaunchTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnSetLaunchTime"
-        app:layout_constraintTop_toTopOf="@id/btnSetLaunchTime" />
+        app:layout_constraintTop_toTopOf="@id/btnSetLaunchTime"
+        tools:text="@string/not_set_time" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSetRepeat"
@@ -129,11 +129,11 @@
         android:id="@+id/tvRepeat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/not_set_repeat"
         app:layout_constraintBottom_toBottomOf="@id/btnSetRepeat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnSetRepeat"
-        app:layout_constraintTop_toTopOf="@id/btnSetRepeat" />
+        app:layout_constraintTop_toTopOf="@id/btnSetRepeat"
+        tools:text="@string/not_set_repeat" />
 
     <!-- TODO Show dialog with date picker and action Buttons: Today, cancel, ok
          <DatePicker

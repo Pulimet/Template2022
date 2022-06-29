@@ -31,6 +31,7 @@ import net.alexandroid.template2022.ui.movies.list.MoviesListViewModel
 import net.alexandroid.template2022.ui.movies.settings.MovieSettingsViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.ImageLoading
+import net.alexandroid.template2022.utils.GetResource
 import net.alexandroid.template2022.utils.logs.*
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -57,6 +58,9 @@ object Di {
 
 
     private val appModule = module {
+        // Resources
+        singleOf(::GetResource)
+
         // DataStore
         single(named(Prefs.MOVIE_VOTES)) { androidContext().votes }
         single(named(Prefs.MOVIE_RATING)) { androidContext().rating }
