@@ -38,14 +38,25 @@ class ScheduleApiFragment : Fragment(R.layout.fragment_schedule_api), View.OnCli
 
     private fun observeViewModel() {
         viewModel.apply {
+            // State
             notifForAction.collectIt(viewLifecycleOwner) { binding.switchShowNotifBefore.isChecked = it }
             notifOnRequest.collectIt(viewLifecycleOwner) { binding.switchShowNotifRequest.isChecked = it }
             notifOnResponse.collectIt(viewLifecycleOwner) { binding.switchShowNotifResponse.isChecked = it }
             launchDateText.collectIt(viewLifecycleOwner) { binding.tvLaunchDate.text = it }
             launchTimeText.collectIt(viewLifecycleOwner) { binding.tvLaunchTime.text = it }
             repeatText.collectIt(viewLifecycleOwner) { binding.tvRepeat.text = it }
-
             scheduleBtnState.collectIt(viewLifecycleOwner) { binding.fabScheduleApi.isEnabled = it }
+
+            // Dialogs
+            openDatePicker.collectIt(viewLifecycleOwner) {
+                // TODO Open Dialog
+            }
+            openTimePicker.collectIt(viewLifecycleOwner) {
+                // TODO Open Dialog
+            }
+            openRepeatPicker.collectIt(viewLifecycleOwner) {
+                // TODO Open Dialog
+            }
         }
     }
 

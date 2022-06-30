@@ -1,11 +1,14 @@
 package net.alexandroid.template2022.ui.api.schedule
 
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import net.alexandroid.template2022.R
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.GetResource
+import net.alexandroid.template2022.utils.emitSharedFlow
 
 class ScheduleApiViewModel(getResource: GetResource) : BaseViewModel() {
     lateinit var navViewModel: NavViewModel
@@ -31,16 +34,26 @@ class ScheduleApiViewModel(getResource: GetResource) : BaseViewModel() {
     private val _repeatText = MutableStateFlow(getResource.getString(R.string.not_set_repeat))
     val repeatText = _repeatText.asStateFlow()
 
+    private val _openDatePicker = MutableSharedFlow<Unit>()
+    val openDatePicker = _openDatePicker.asSharedFlow()
+
+    private val _openTimePicker = MutableSharedFlow<Unit>()
+    val openTimePicker = _openTimePicker.asSharedFlow()
+
+    private val _openRepeatPicker = MutableSharedFlow<Unit>()
+    val openRepeatPicker = _openRepeatPicker.asSharedFlow()
+
+    // User Actions
     fun onBtnSetLaunchDateClick() {
-        TODO("Not yet implemented")
+        emitSharedFlow(_openDatePicker)
     }
 
     fun onBtnSetLaunchTimeClick() {
-        TODO("Not yet implemented")
+        emitSharedFlow(_openTimePicker)
     }
 
     fun onBtnSetRepeatClick() {
-        TODO("Not yet implemented")
+        emitSharedFlow(_openRepeatPicker)
     }
 
     fun onFabScheduleApiClick() {

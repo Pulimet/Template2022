@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import net.alexandroid.template2022.ui.base.BaseViewModel
+import net.alexandroid.template2022.utils.emitSharedFlow
 
 class NavViewModel : BaseViewModel() {
     // Navigation Support
@@ -21,7 +22,7 @@ class NavViewModel : BaseViewModel() {
     }
 
     fun navigateUp() {
-        viewModelScope.launch { _navigateUp.emit(Unit) }
+        emitSharedFlow(_navigateUp)
     }
 
     // Change Activity Support

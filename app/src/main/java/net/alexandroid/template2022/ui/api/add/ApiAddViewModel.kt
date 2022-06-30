@@ -13,6 +13,7 @@ import net.alexandroid.template2022.db.model.api.Param
 import net.alexandroid.template2022.repo.api.ApiRepo
 import net.alexandroid.template2022.ui.base.BaseViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
+import net.alexandroid.template2022.utils.emitSharedFlow
 import net.alexandroid.template2022.utils.logs.logD
 import java.net.URI
 import java.net.URISyntaxException
@@ -39,7 +40,7 @@ class ApiAddViewModel(
     val showImportUrlDialog = _showImportUrlDialog.asSharedFlow()
 
     private fun showImportUrlDialog() {
-        viewModelScope.launch { _showImportUrlDialog.emit(Unit) }
+        emitSharedFlow(_showImportUrlDialog)
     }
 
     private val _addBtnEnabled = MutableStateFlow(false)
