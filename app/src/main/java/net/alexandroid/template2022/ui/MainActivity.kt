@@ -8,23 +8,22 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import net.alexandroid.template2022.R
 import net.alexandroid.template2022.databinding.ActivityMainBinding
-import net.alexandroid.template2022.ui.navigation.IntentParams
-import net.alexandroid.template2022.ui.navigation.NavParams
+import net.alexandroid.template2022.ui.navigation.NavObserver
 import net.alexandroid.template2022.ui.navigation.NavViewModel
-import net.alexandroid.template2022.utils.collectIt
-import net.alexandroid.template2022.utils.logs.logE
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavObserver.Provider {
     private lateinit var binding: ActivityMainBinding
     private val navViewModel: NavViewModel by viewModel()
+    private val navObserver: NavObserver by inject { parametersOf(this) }
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setViewBinding()
-        observeFragmentNavigation()
-        observeActivityNavigation()
+        navObserver.observe()
     }
 
     private fun setViewBinding() {
@@ -39,55 +38,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupNavigationUi() {
         navController = findNavController(R.id.nav_host_fragment)
-        val appBarConfiguration = AppBarConfiguration(getListOfHomeDestinations())
+        val appBarConfiguration = AppBarConfiguration(navObserver.getListOfHomeDestinations())
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
     }
 
-    private fun observeFragmentNavigation() {
-        navViewModel.apply {
-            getChangeNavigation.collectIt(this@MainActivity) { navParams ->
-                try {
-                    navigateTo(navParams)
-                } catch (e: IllegalArgumentException) {
-                    logE(t = e)
-                }
-            }
-            getNavigateUp.collectIt(this@MainActivity) {
-                navController.navigateUp()
-            }
-        }
-    }
-
-    private fun navigateTo(navParams: NavParams) {
-        if (navParams.navDirections == null) return
-        navController.navigate(
-            navParams.navDirections.actionId,
-            navParams.navDirections.arguments,
-            navParams.navOptions,
-            navParams.extras
-        )
-    }
-
-    private fun observeActivityNavigation() {
-        navViewModel.getStartActivity.collectIt(this) { intentParams ->
-            try {
-                startActivity(intentParams)
-            } catch (e: Exception) {
-                logE(t = e)
-            }
-        }
-    }
-
-    private fun startActivity(intentParams: IntentParams) {
-        if (intentParams.intent == null) return
-        intentParams.clazz?.let { clazz ->
-            intentParams.intent.setClass(this, clazz)
-        }
-        startActivity(intentParams.intent)
-        if (intentParams.finish) finish()
-    }
-
-    private fun getListOfHomeDestinations() = setOf(R.id.homeFragment)
-
     override fun onSupportNavigateUp() = navController.navigateUp() || super.onSupportNavigateUp()
+
+    // NavObserver.Provider
+    override fun provideActivity() = this
+    override fun provideNavController() = navController
+    override fun provideNavViewModel() = navViewModel
 }

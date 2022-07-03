@@ -28,6 +28,7 @@ import net.alexandroid.template2022.ui.movies.details.MovieDetailsViewModel
 import net.alexandroid.template2022.ui.movies.favorites.MovieFavoritesViewModel
 import net.alexandroid.template2022.ui.movies.list.MoviesListViewModel
 import net.alexandroid.template2022.ui.movies.settings.MovieSettingsViewModel
+import net.alexandroid.template2022.ui.navigation.NavObserver
 import net.alexandroid.template2022.ui.navigation.NavViewModel
 import net.alexandroid.template2022.utils.GetResource
 import net.alexandroid.template2022.utils.ImageLoading
@@ -36,6 +37,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.context.startKoin
+import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -59,6 +61,7 @@ object Di {
     private val appModule = module {
         // Resources
         singleOf(::GetResource)
+        factoryOf(::NavObserver)
 
         // DataStore
         single(named(Prefs.MOVIE_VOTES)) { androidContext().votes }
