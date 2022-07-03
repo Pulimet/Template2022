@@ -18,7 +18,6 @@ import net.alexandroid.template2022.network.utils.NetworkObjectsCreator.createWe
 import net.alexandroid.template2022.repo.api.ApiRepo
 import net.alexandroid.template2022.repo.movie.MovieSettingsRepo
 import net.alexandroid.template2022.repo.movie.MoviesRepo
-import net.alexandroid.template2022.ui.MainViewModel
 import net.alexandroid.template2022.ui.api.ApiCaller
 import net.alexandroid.template2022.ui.api.add.ApiAddViewModel
 import net.alexandroid.template2022.ui.api.list.ApiListViewModel
@@ -30,8 +29,8 @@ import net.alexandroid.template2022.ui.movies.favorites.MovieFavoritesViewModel
 import net.alexandroid.template2022.ui.movies.list.MoviesListViewModel
 import net.alexandroid.template2022.ui.movies.settings.MovieSettingsViewModel
 import net.alexandroid.template2022.ui.navigation.NavViewModel
-import net.alexandroid.template2022.utils.ImageLoading
 import net.alexandroid.template2022.utils.GetResource
+import net.alexandroid.template2022.utils.ImageLoading
 import net.alexandroid.template2022.utils.logs.*
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -79,7 +78,6 @@ object Di {
 
     private val viewModelsModule = module {
         viewModelOf(::NavViewModel)
-        viewModelOf(::MainViewModel)
         viewModelOf(::HomeViewModel)
         viewModelOf(::ExampleViewModel)
 
