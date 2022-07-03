@@ -59,4 +59,16 @@ class ScheduleApiViewModel(getResource: GetResource) : BaseViewModel() {
     fun onFabScheduleApiClick() {
         TODO("Not yet implemented")
     }
+
+    fun onDateSelected() {
+        TODO("Not yet implemented")
+    }
+
+    fun onTimeSelected() {
+        TODO("Not yet implemented")
+    }
+
+    fun onRepeatSelected() {
+        TODO("Not yet implemented")
+    }
 }

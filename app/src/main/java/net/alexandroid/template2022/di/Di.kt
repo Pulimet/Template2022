@@ -20,8 +20,13 @@ import net.alexandroid.template2022.repo.movie.MovieSettingsRepo
 import net.alexandroid.template2022.repo.movie.MoviesRepo
 import net.alexandroid.template2022.ui.api.ApiCaller
 import net.alexandroid.template2022.ui.api.add.ApiAddViewModel
+import net.alexandroid.template2022.ui.api.add.dialog.AddParamDialog
+import net.alexandroid.template2022.ui.api.add.dialog.ImportUrlDialog
 import net.alexandroid.template2022.ui.api.list.ApiListViewModel
 import net.alexandroid.template2022.ui.api.schedule.ScheduleApiViewModel
+import net.alexandroid.template2022.ui.api.schedule.dialog.DateDialog
+import net.alexandroid.template2022.ui.api.schedule.dialog.RepeatDialog
+import net.alexandroid.template2022.ui.api.schedule.dialog.TimeDialog
 import net.alexandroid.template2022.ui.example.ExampleViewModel
 import net.alexandroid.template2022.ui.home.HomeViewModel
 import net.alexandroid.template2022.ui.movies.details.MovieDetailsViewModel
@@ -77,6 +82,13 @@ object Di {
                 throw e
             }
         }
+
+        // Dialogs
+        factoryOf(::AddParamDialog)
+        factoryOf(::ImportUrlDialog)
+        factoryOf(::DateDialog)
+        factoryOf(::TimeDialog)
+        factoryOf(::RepeatDialog)
     }
 
     private val viewModelsModule = module {

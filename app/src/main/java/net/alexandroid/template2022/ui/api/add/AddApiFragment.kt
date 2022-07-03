@@ -19,8 +19,10 @@ import net.alexandroid.template2022.utils.collectIt
 import net.alexandroid.template2022.utils.logs.logD
 import net.alexandroid.template2022.utils.setOnClickListeners
 import net.alexandroid.template2022.utils.showToast
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class AddApiFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener,
     AddParamDialog.SubmitParamCallBack, ImportUrlDialog.SubmitUrlCallBack, OnParamAction {
@@ -29,8 +31,8 @@ class AddApiFragment : Fragment(R.layout.fragment_add_api), View.OnClickListener
     private val args: AddApiFragmentArgs by navArgs()
     private val viewModel by viewModel<ApiAddViewModel>()
     private val navViewModel by sharedViewModel<NavViewModel>()
-    private val addParamDialog = AddParamDialog(this)
-    private val importUrlDialog = ImportUrlDialog(this)
+    private val addParamDialog: AddParamDialog by inject { parametersOf(this) }
+    private val importUrlDialog: ImportUrlDialog by inject { parametersOf(this) }
     private var paramsAdapter: ParamsAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
