@@ -61,7 +61,7 @@ dependencies {
     // Preferences DataStore
     implementation ("androidx.datastore:datastore-preferences:1.0.0")
     // Lifecycle components
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.0")
     // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
