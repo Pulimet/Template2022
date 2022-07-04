@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), NavObserver.Provider {
 
     private fun setupNavigationUi() {
         navController = findNavController(R.id.nav_host_fragment)
-        val appBarConfiguration = AppBarConfiguration(navObserver.getListOfHomeDestinations())
+        val appBarConfiguration = AppBarConfiguration(navObserver.getSetOfHomeDestinations())
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
     }
 

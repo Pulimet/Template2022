@@ -44,6 +44,7 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), OnMovieClick
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+        // TODO Switch to MenuProvider
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -8,7 +8,7 @@ import net.alexandroid.template2022.utils.logs.logE
 
 class NavObserver(private val provider: Provider) {
 
-    fun getListOfHomeDestinations() = setOf(R.id.homeFragment)
+    fun getSetOfHomeDestinations() = setOf(R.id.homeFragment)
 
     fun observe() {
         observeFragmentNavigation()
