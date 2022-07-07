@@ -3,6 +3,7 @@ package net.alexandroid.template2022.worker
 import android.content.Context
 import androidx.work.*
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import net.alexandroid.template2022.R
 import net.alexandroid.template2022.repo.movie.MoviesRepo
 import net.alexandroid.template2022.utils.Notifications
@@ -22,9 +23,19 @@ class MovieWorker(context: Context, params: WorkerParameters) :
             workManager.enqueueUniquePeriodicWork(
                 WORK_NAME_FETCH_MOVIES,
                 ExistingPeriodicWorkPolicy.KEEP,
-                PeriodicWorkRequestBuilder<MovieWorker>(15, TimeUnit.MINUTES).build()
+                getPeriodicWorkRequest()
             )
         }
+
+        private fun getPeriodicWorkRequest() = PeriodicWorkRequestBuilder<MovieWorker>(15, TimeUnit.MINUTES)
+            .setInitialDelay(30, TimeUnit.SECONDS)
+            .setConstraints(getConstraints())
+            .build()
+
+        private fun getConstraints() = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.UNMETERED)
+            //.setRequiresCharging(true)
+            .build()
     }
 
     private val moviesRepo: MoviesRepo by inject()
@@ -40,6 +51,7 @@ class MovieWorker(context: Context, params: WorkerParameters) :
     override suspend fun doWork(): Result = coroutineScope {
         logD("=== Movie Worker Lunched ===")
         if (moviesRepo.getMoviesFromNetwork()) {
+            delay(30000)
             logD("Movies list updated in background")
             Result.success()
         } else {
