@@ -1,6 +1,7 @@
 package net.alexandroid.template2022.worker
 
 import android.content.Context
+import android.os.Build
 import androidx.work.*
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
@@ -34,6 +35,12 @@ class MovieWorker(context: Context, params: WorkerParameters) :
 
         private fun getConstraints() = Constraints.Builder()
             .setRequiredNetworkType(NetworkType.UNMETERED)
+            /*.apply {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    setRequiresDeviceIdle(true)
+                }
+            }*/
+            //.setRequiresBatteryNotLow(true)
             //.setRequiresCharging(true)
             .build()
     }
