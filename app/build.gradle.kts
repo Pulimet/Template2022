@@ -44,7 +44,6 @@ android {
 
 dependencies {
     val navVersion: String by rootProject.extra
-    val koinVersion = "3.2.0"
 
     // Modules dependencies
     implementation(project(":network"))
@@ -69,7 +68,7 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.7.1")
 
     // Koin Core features
-    implementation("io.insert-koin:koin-android:$koinVersion")
+    implementation("io.insert-koin:koin-android:3.2.0")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.3")
