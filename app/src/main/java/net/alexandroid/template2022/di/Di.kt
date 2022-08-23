@@ -78,7 +78,8 @@ object Di {
         // CoroutineContext
         single {
             Dispatchers.IO + CoroutineExceptionHandler { _, e ->
-                logE("CoroutineExceptionHandler:", t = e)
+                logE("Coroutines Exception Handler:", t = e)
+                logE("===> ${e.stackTraceToString()}")
                 throw e
             }
         }
