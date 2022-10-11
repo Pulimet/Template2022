@@ -8,8 +8,7 @@ plugins {
 android {
     defaultConfig {
         minSdk = 21
-        targetSdk = 32
-        compileSdk = 32
+        compileSdk = 33
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -24,10 +23,10 @@ android {
 }
 
 dependencies {
-    val roomVersion = "2.4.2"
+    val roomVersion = "2.4.3"
     implementation(project(":network"))
 
-    implementation("androidx.core:core-ktx:1.8.0")
+    implementation("androidx.core:core-ktx:1.9.0")
 
     // Room
     api("androidx.room:room-runtime:$roomVersion")
@@ -35,5 +34,5 @@ dependencies {
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$roomVersion")
     // GSON
-    implementation("com.google.code.gson:gson:2.9.0")
+    implementation("com.google.code.gson:gson:2.9.1")
 }

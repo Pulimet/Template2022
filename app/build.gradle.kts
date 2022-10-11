@@ -7,9 +7,9 @@ plugins {
 android {
     defaultConfig {
         applicationId = "net.alexandroid.template2022"
-        compileSdk = 32
+        compileSdk = 33
         minSdk = 21
-        targetSdk = 32
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
@@ -53,8 +53,8 @@ dependencies {
     implementation("com.google.android.material:material:1.6.1")
 
     // AndroidX
-    implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.appcompat:appcompat:1.5.0")
+    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.appcompat:appcompat:1.5.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     // Preferences DataStore
@@ -68,13 +68,13 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.7.1")
 
     // Koin Core features
-    implementation("io.insert-koin:koin-android:3.2.0")
+    implementation("io.insert-koin:koin-android:3.2.2")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
     // Image loading library
-    implementation("io.coil-kt:coil:2.1.0")
+    implementation("io.coil-kt:coil:2.2.2")
 
     // Tests
     testImplementation("junit:junit:4.13.2")
